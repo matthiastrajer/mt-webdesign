@@ -44,22 +44,34 @@ export default {
 };
 
 /**
+ * Sveltia/Decap CMS schickt site_id mal als reinen Hostnamen
+ * ("mt-webdesign.at"), mal als volle URL. Wir extrahieren beides:
+ * host für die Erlaubnisprüfung, origin für das spätere postMessage-Ziel.
+ */
+function parseSiteId(siteId) {
+  if (!siteId) return null;
+  try {
+    const u = new URL(siteId);
+    return { host: u.hostname.toLowerCase(), origin: u.origin };
+  } catch {
+    const host = siteId.split('/')[0].toLowerCase();
+    if (!host) return null;
+    return { host, origin: `https://${host}` };
+  }
+}
+
+/**
  * Origin-Check: der Site-Aufrufer muss auf einer erlaubten Domain sitzen.
  * Verhindert, dass beliebige fremde Seiten den Auth-Proxy für ihre eigenen
  * Zwecke missbrauchen.
  */
-function isAllowedOrigin(origin, env) {
-  if (!origin) return false;
+function isAllowedHost(host, env) {
+  if (!host) return false;
   const allowed = (env.ALLOWED_DOMAINS || '')
     .split(',')
     .map((d) => d.trim().toLowerCase())
     .filter(Boolean);
-  try {
-    const host = new URL(origin).hostname.toLowerCase();
-    return allowed.some((d) => host === d || host.endsWith(`.${d}`));
-  } catch {
-    return false;
-  }
+  return allowed.some((d) => host === d || host.endsWith(`.${d}`));
 }
 
 /**
@@ -74,17 +86,19 @@ function handleAuthorize(url, env) {
     return new Response(`Unsupported provider: ${provider}`, { status: 400 });
   }
 
-  // site_id ist das Origin der aufrufenden CMS-Seite (z. B. https://mt-webdesign.at)
-  const siteId = url.searchParams.get('site_id') ?? '';
-  if (!isAllowedOrigin(siteId, env)) {
+  const rawSiteId = url.searchParams.get('site_id') ?? '';
+  const parsed = parseSiteId(rawSiteId);
+  if (!parsed || !isAllowedHost(parsed.host, env)) {
     return new Response(
-      `Origin nicht erlaubt: "${siteId}". In ALLOWED_DOMAINS eintragen.`,
+      `Origin nicht erlaubt: "${rawSiteId}". In ALLOWED_DOMAINS eintragen.`,
       { status: 403 },
     );
   }
 
   const scope = url.searchParams.get('scope') || DEFAULT_SCOPE;
-  const state = siteId; // wir brauchen das Origin später beim Callback
+  // Origin (mit https://) im state mitgeben, damit der Callback das
+  // richtige postMessage-Ziel kennt.
+  const state = parsed.origin;
 
   const authUrl = new URL(AUTHORIZATION_URL);
   authUrl.searchParams.set('client_id', env.GITHUB_CLIENT_ID);
@@ -107,7 +121,8 @@ async function handleCallback(url, env) {
   if (!code) {
     return htmlResponse(errorPage('Kein OAuth-Code von GitHub erhalten.'));
   }
-  if (!isAllowedOrigin(state, env)) {
+  const parsed = parseSiteId(state);
+  if (!parsed || !isAllowedHost(parsed.host, env)) {
     return htmlResponse(
       errorPage(`Origin im state nicht erlaubt: "${state}"`),
     );
@@ -140,7 +155,7 @@ async function handleCallback(url, env) {
     provider: 'github',
   };
 
-  return htmlResponse(successPage(state, payload));
+  return htmlResponse(successPage(parsed.origin, payload));
 }
 
 function htmlResponse(html) {
