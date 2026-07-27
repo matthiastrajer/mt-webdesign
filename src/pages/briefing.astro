@@ -111,7 +111,14 @@ const questions = [
       'Karriere- / Jobs-Bereich',
       'Login-Bereich für Kunden / Mitgliederbereich',
       'Darkmode',
+      'Sonstiges (bitte unten beschreiben)',
     ],
+    extraField: {
+      kind: 'input',
+      name: 'Funktionen — Sonstiges',
+      label: 'Sonstiges — was fehlt in der Liste?',
+      placeholder: 'z. B. Bewerbungsformular, Rechnungsarchiv im Kunden-Login, Live-Verfügbarkeit …',
+    },
   },
   {
     n: '10',
@@ -132,9 +139,18 @@ const questions = [
     type: 'radios',
     name: 'Fotos vorhanden',
     options: [
-      'Ja (können bei Auftragserteilung nachgesendet werden)',
+      'Ja, ich hänge sie unten direkt an',
+      'Ja, sende ich später nach',
       'Nein',
     ],
+    extraField: {
+      kind: 'files',
+      name: 'Referenzfotos',
+      label: 'Fotos direkt anhängen (optional, mehrere Dateien möglich)',
+      hint: 'JPG, PNG oder PDF · gerne mehrere auf einmal auswählen',
+      accept: 'image/*,.pdf',
+      multiple: true,
+    },
   },
   {
     n: '12',
@@ -167,6 +183,16 @@ const questions = [
       name: 'Anmerkungen',
       placeholder: 'z. B. Beispiel-Websites, die Ihnen gefallen; besondere Anforderungen; interne Zielgruppen …',
     },
+  },
+  {
+    n: '15',
+    q: 'Möchten Sie weitere Dateien oder Fotos anhängen?',
+    hint: 'Logo-Dateien, Corporate-Design-Vorlagen, alte Website-Screenshots, Preislisten, Texte … alles, was hilft. Kein Muss.',
+    type: 'files',
+    name: 'Anhänge',
+    accept: 'image/*,.pdf,.doc,.docx,.zip,.svg,.ai,.psd',
+    multiple: true,
+    fieldHint: 'Beliebiges Format · mehrere Dateien auf einmal möglich',
   },
 ];
 ---
@@ -214,7 +240,7 @@ const questions = [
           </div>
           <div class="brief__meta-item">
             <span class="mono brief__meta-label">Fragen</span>
-            <span class="brief__meta-value">14 Stück</span>
+            <span class="brief__meta-value">15 Stück</span>
           </div>
           <div class="brief__meta-item">
             <span class="mono brief__meta-label">Speicherung</span>
@@ -236,6 +262,7 @@ const questions = [
         class="brief__form"
         action="https://formsubmit.co/hallo@mt-webdesign.at"
         method="POST"
+        enctype="multipart/form-data"
       >
         <input type="hidden" name="_subject" value="Neues Briefing — Website-Anfrage" />
         <input type="hidden" name="_captcha" value="true" />
@@ -342,6 +369,50 @@ const questions = [
                     </span>
                   </label>
                 ))}
+              </div>
+            )}
+
+            {question.type === 'files' && (
+              <div class="file-field">
+                <label class="file-input">
+                  <input
+                    type="file"
+                    name={question.name}
+                    accept={question.accept}
+                    multiple={question.multiple}
+                  />
+                </label>
+                {question.fieldHint && <p class="file-field__hint">{question.fieldHint}</p>}
+              </div>
+            )}
+
+            {question.extraField?.kind === 'input' && (
+              <div class="extra-field">
+                <label class="extra-field__label" for={`extra-${question.n}`}>
+                  {question.extraField.label}
+                </label>
+                <input
+                  id={`extra-${question.n}`}
+                  class="input"
+                  type="text"
+                  name={question.extraField.name}
+                  placeholder={question.extraField.placeholder}
+                />
+              </div>
+            )}
+
+            {question.extraField?.kind === 'files' && (
+              <div class="extra-field">
+                <span class="extra-field__label">{question.extraField.label}</span>
+                <label class="file-input">
+                  <input
+                    type="file"
+                    name={question.extraField.name}
+                    accept={question.extraField.accept}
+                    multiple={question.extraField.multiple}
+                  />
+                </label>
+                {question.extraField.hint && <p class="file-field__hint">{question.extraField.hint}</p>}
               </div>
             )}
           </section>
@@ -661,6 +732,92 @@ const questions = [
     min-height: 46px;
     font-size: 14.5px;
     gap: 0.7rem;
+  }
+
+  /* ============ Extra & File Field ============ */
+  .extra-field {
+    margin-top: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: 0.85rem;
+    border-top: 1px dashed var(--line);
+  }
+
+  .extra-field__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+    text-transform: uppercase;
+  }
+
+  .extra-field .input {
+    margin-top: 0.25rem;
+  }
+
+  .file-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .file-field__hint {
+    color: var(--ink-3);
+    font-size: 12.5px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .file-input {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    background: color-mix(in srgb, var(--paper) 55%, var(--paper-2));
+    border: 1px dashed var(--line-strong);
+    border-radius: 2px;
+    padding: 0.9rem 1rem;
+    cursor: pointer;
+    transition: border-color var(--dur) var(--ease-out),
+      background var(--dur) var(--ease-out);
+  }
+
+  .file-input:hover,
+  .file-input:focus-within {
+    border-color: var(--brass);
+    background: var(--paper);
+  }
+
+  .file-input input[type='file'] {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink-2);
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  .file-input input[type='file']::file-selector-button {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    padding: 0.55rem 1rem;
+    margin-right: 0.85rem;
+    cursor: pointer;
+    transition: background var(--dur) var(--ease-out),
+      color var(--dur) var(--ease-out),
+      border-color var(--dur) var(--ease-out);
+  }
+
+  .file-input input[type='file']::file-selector-button:hover {
+    background: var(--brass);
+    color: var(--ink);
+    border-color: var(--brass);
   }
 
   .choice {
