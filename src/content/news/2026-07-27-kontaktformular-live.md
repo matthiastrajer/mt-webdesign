@@ -1,9 +1,9 @@
 ---
-title: "Kontaktformular jetzt live"
+title: Kontaktformular jetzt live
 date: 2026-07-27
-excerpt: "Anfragen kommen ab sofort direkt in mein Postfach — inklusive Datei-Upload für Fotos und Unterlagen im Briefing-Fragebogen."
-cover: "placeholder.svg"
-coverAlt: "Symbolbild Kontaktformular"
+excerpt: Anfragen kommen ab sofort direkt in mein Postfach — inklusive Datei-Upload für Fotos und Unterlagen im Briefing-Fragebogen.
+cover: /news/6159fgAdVUL._AC_SX466_.jpg
+coverAlt: Symbolbild Kontaktformular
 ---
 
 Ab sofort kannst du Anfragen direkt über das Kontaktformular auf
