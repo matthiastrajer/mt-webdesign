@@ -37,6 +37,23 @@ const base = import.meta.env.BASE_URL;
         </div>
       </div>
 
+      <div class="contact__right">
+        <!-- Detailliertes Briefing zuerst — für Kunden, die schon wissen, was sie wollen -->
+        <div class="form__briefing contact__briefing reveal reveal--delay-1">
+          <div class="form__head form__briefing-head">
+            <span class="mono form__id">FORM · 001</span>
+            <span class="mono form__id">Detailliertes Briefing</span>
+          </div>
+          <h3 class="form__briefing-title">{c.briefingTitle}</h3>
+          <p>{c.briefingBody}</p>
+          <a href={`${base}briefing`} class="btn form__briefing-btn">
+            <span>{c.briefingButton}</span>
+            <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
+
       <!--
         Formsubmit.co: einmalige Bestätigungsmail beim ersten Absenden bestätigen.
       -->
@@ -54,7 +71,7 @@ const base = import.meta.env.BASE_URL;
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
         <div class="form__head">
-          <span class="mono form__id">FORM · 001</span>
+          <span class="mono form__id">FORM · 002</span>
           <span class="mono form__id">Projektanfrage</span>
         </div>
 
@@ -110,33 +127,19 @@ const base = import.meta.env.BASE_URL;
             <path d="M5 12h14M13 6l6 6-6 6"/>
           </svg>
         </button>
-
-        <div class="form__briefing">
-          <div class="form__head form__briefing-head">
-            <span class="mono form__id">FORM · 002</span>
-            <span class="mono form__id">Detailliertes Briefing</span>
-          </div>
-          <h3 class="form__briefing-title">{c.briefingTitle}</h3>
-          <p>{c.briefingBody}</p>
-          <a href={`${base}briefing`} class="btn form__briefing-btn">
-            <span>{c.briefingButton}</span>
-            <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M5 12h14M13 6l6 6-6 6"/>
-            </svg>
-          </a>
-        </div>
       </form>
 
-      <!-- Success-Kachel (nach Absenden per Query-Param sichtbar) -->
-      <div class="contact__success reveal reveal--delay-1" id="contactSuccess" hidden>
-        <div class="contact__success-mark">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
+        <!-- Success-Kachel (nach Absenden per Query-Param sichtbar) -->
+        <div class="contact__success reveal reveal--delay-1" id="contactSuccess" hidden>
+          <div class="contact__success-mark">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <p class="eyebrow">Erhalten · FORM-002</p>
+          <h3>{c.successHeading}</h3>
+          <p>{c.successBody}</p>
         </div>
-        <p class="eyebrow">Erhalten · FORM-001</p>
-        <h3>{c.successHeading}</h3>
-        <p>{c.successBody}</p>
       </div>
     </div>
   </div>
@@ -223,6 +226,13 @@ const base = import.meta.env.BASE_URL;
   a.contact__direct-item:hover .contact__value {
     color: var(--brass);
     border-bottom-color: var(--brass);
+  }
+
+  /* Rechte Spalte: Briefing-Box und Formular gestapelt */
+  .contact__right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
   /* Form */
@@ -515,11 +525,16 @@ const base = import.meta.env.BASE_URL;
     flex-direction: column;
     gap: 1.15rem;
     align-items: stretch;
-    margin-top: 2rem;
     padding: clamp(1.5rem, 3vw, 2.25rem);
     border: 1px solid var(--line);
     background: color-mix(in srgb, var(--paper) 55%, var(--paper-2));
     position: relative;
+  }
+
+  /* Standalone-Variante: sitzt jetzt außerhalb des Formulars,
+     kein Top-Margin nötig (Flex-Gap regelt den Abstand) */
+  .contact__briefing {
+    margin: 0;
   }
 
   .form__briefing::before,
