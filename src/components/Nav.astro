@@ -1,20 +1,26 @@
 ---
+const base = import.meta.env.BASE_URL;
+const isNewsPage = Astro.url.pathname.replace(/\/$/, '') === `${base}news`.replace(/\/$/, '')
+  || Astro.url.pathname.startsWith(`${base}news/`);
 ---
 
 <nav class="nav">
   <div class="nav__inner container">
-    <a href={import.meta.env.BASE_URL} class="nav__logo" aria-label="MT-Webdesign Startseite">
+    <a href={base} class="nav__logo" aria-label="MT-Webdesign Startseite">
       <span class="nav__mark">MT</span>
       <span class="nav__wordmark">Webdesign</span>
     </a>
 
     <ul class="nav__links">
-      <li><a href="#leistungen" class="nav__link">Leistungen</a></li>
-      <li><a href="#ablauf" class="nav__link">Ablauf</a></li>
-      <li><a href="#faq" class="nav__link">Häufig gefragt</a></li>
+      <li><a href={`${base}#leistungen`} class="nav__link">Leistungen</a></li>
+      <li><a href={`${base}#ablauf`} class="nav__link">Ablauf</a></li>
+      <li><a href={`${base}#faq`} class="nav__link">Häufig gefragt</a></li>
+      <li>
+        <a href={`${base}news/`} class:list={['nav__link', isNewsPage && 'nav__link--active']}>News</a>
+      </li>
     </ul>
 
-    <a href="#kontakt" class="btn nav__cta">
+    <a href={`${base}#kontakt`} class="btn nav__cta">
       <span>Kontakt</span>
       <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M5 12h14M13 6l6 6-6 6"/>
@@ -107,8 +113,13 @@
     color: var(--ink);
   }
 
-  .nav__link:hover::after {
+  .nav__link:hover::after,
+  .nav__link--active::after {
     transform: scaleX(1);
+  }
+
+  .nav__link--active {
+    color: var(--ink);
   }
 
   .nav__cta {

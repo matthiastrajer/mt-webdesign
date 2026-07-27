@@ -1,0 +1,225 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const base = import.meta.env.BASE_URL;
+
+const posts = (await getCollection('news', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+
+const dateFmt = (d: Date) =>
+  d.toLocaleDateString('de-AT', { day: '2-digit', month: 'long', year: 'numeric' });
+---
+
+<Base
+  title="News — MT-Webdesign"
+  description="Neuigkeiten von MT-Webdesign — neue Funktionen, Projekte, Hinweise für kleine und mittlere Betriebe."
+>
+  <Nav />
+
+  <main class="news">
+    <div class="container news__inner">
+      <span class="section-label">
+        <span class="section-label__id">N01</span>
+        <span>News</span>
+      </span>
+
+      <header class="news__header">
+        <p class="eyebrow">Aktuelles</p>
+        <h1 class="news__title">Was es Neues gibt.</h1>
+        <p class="lead">
+          Hinweise zu neuen Funktionen, aktuellen Projekten und Themen,
+          die für kleine und mittlere Betriebe relevant sind.
+        </p>
+      </header>
+
+      {posts.length === 0 ? (
+        <p class="news__empty">Aktuell keine News. Schaut später wieder vorbei.</p>
+      ) : (
+        <ol class="news__list">
+          {posts.map((post) => (
+            <li class="news-card">
+              <a href={`${base}news/${post.slug}`} class="news-card__link">
+                <div class="news-card__media">
+                  {post.data.cover ? (
+                    <img
+                      src={`${base}news/${post.data.cover}`}
+                      alt={post.data.coverAlt ?? ''}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div class="news-card__media-fallback" aria-hidden="true">
+                      <span class="mono">MT · N</span>
+                    </div>
+                  )}
+                </div>
+                <div class="news-card__body">
+                  <time class="mono news-card__date" datetime={post.data.date.toISOString()}>
+                    {dateFmt(post.data.date)}
+                  </time>
+                  <h2 class="news-card__title">{post.data.title}</h2>
+                  <p class="news-card__excerpt">{post.data.excerpt}</p>
+                  <span class="news-card__cta">
+                    <span>Weiterlesen</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M5 12h14M13 6l6 6-6 6"/>
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ol>
+      )}
+    </div>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  .news {
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(4rem, 8vw, 6rem);
+  }
+
+  .news__inner {
+    max-width: 960px;
+  }
+
+  .news__header {
+    margin: 2.5rem 0 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 640px;
+  }
+
+  .news__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2rem, 4vw + 1rem, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0.25rem 0 0.5rem;
+  }
+
+  .news__empty {
+    color: var(--ink-2);
+    padding: 3rem 0;
+    text-align: center;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .news__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .news-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    transition: border-color var(--dur) var(--ease-out),
+      transform var(--dur) var(--ease-out);
+  }
+
+  .news-card:hover {
+    border-color: var(--brass);
+    transform: translateY(-2px);
+  }
+
+  .news-card__link {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    color: inherit;
+  }
+
+  .news-card__media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--paper) 40%, var(--paper-2));
+  }
+
+  .news-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .news-card__media-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--brass);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+  }
+
+  .news-card__body {
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .news-card__date {
+    color: var(--brass);
+    letter-spacing: 0.08em;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .news-card__title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  .news-card__excerpt {
+    color: var(--ink-2);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .news-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 0.35rem;
+    transition: color var(--dur) var(--ease-out), gap var(--dur) var(--ease-out);
+  }
+
+  .news-card:hover .news-card__cta {
+    color: var(--brass);
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 640px) {
+    .news-card__link {
+      grid-template-columns: 1fr;
+    }
+    .news-card__media {
+      aspect-ratio: 16 / 9;
+    }
+  }
+</style>
