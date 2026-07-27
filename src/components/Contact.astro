@@ -60,16 +60,31 @@
           <input id="phone" name="phone" type="tel" autocomplete="tel" />
         </div>
 
-        <div class="field">
-          <label for="type">Was brauchen Sie?</label>
-          <select id="type" name="type">
-            <option value="neu">Neue Website + Hosting</option>
-            <option value="relaunch">Bestehende Website erneuern</option>
-            <option value="pflege">Zusätzlich Pflege-Paket</option>
-            <option value="logo">Zusätzlich Logo-Design</option>
-            <option value="unsicher">Bin mir noch unsicher</option>
-          </select>
-        </div>
+        <fieldset class="field field--choices">
+          <legend>Was brauchen Sie? <span class="field__optional">(Mehrfachauswahl möglich)</span></legend>
+          <div class="choices">
+            <label class="choice">
+              <input type="checkbox" name="type" value="neu" />
+              <span>Neue Website + Hosting</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="type" value="relaunch" />
+              <span>Bestehende Website erneuern</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="type" value="pflege" />
+              <span>Zusätzlich Pflege-Paket</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="type" value="logo" />
+              <span>Zusätzlich Logo-Design</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="type" value="unsicher" />
+              <span>Bin mir noch unsicher</span>
+            </label>
+          </div>
+        </fieldset>
 
         <div class="field">
           <label for="message">Kurz zum Vorhaben</label>
@@ -250,6 +265,63 @@
     letter-spacing: 0;
     font-size: 10.5px;
     margin-left: 0.4rem;
+  }
+
+  .field--choices {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .field--choices legend {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+    text-transform: uppercase;
+    padding: 0;
+    margin-bottom: 0.6rem;
+  }
+
+  .choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .choice {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--ink-2);
+    text-transform: none;
+    letter-spacing: 0;
+    border: 1px solid var(--line-strong);
+    padding: 0.5rem 0.85rem;
+    cursor: pointer;
+    transition: border-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out), background var(--dur) var(--ease-out);
+  }
+
+  .choice:hover {
+    border-color: var(--brass);
+  }
+
+  .choice input {
+    width: 13px;
+    height: 13px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--line-strong);
+    accent-color: var(--brass);
+    flex-shrink: 0;
+  }
+
+  .choice:has(input:checked) {
+    border-color: var(--brass);
+    color: var(--ink);
+    background: color-mix(in srgb, var(--paper) 40%, var(--paper-2));
   }
 
   input,
