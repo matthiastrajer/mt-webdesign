@@ -85,6 +85,36 @@ const questions = [
   },
   {
     n: '09',
+    q: 'Welche Funktionen soll Ihre Website haben?',
+    hint: 'Bitte alles anhaken, was Sie sich vorstellen können — auch „nice to have". Alles optional; ich gebe im Angebot an, was jeweils dazukommt.',
+    type: 'checkboxes-grid',
+    name: 'Gewünschte Funktionen',
+    options: [
+      'Kontaktformular',
+      'Google Maps Anbindung (Standort-Karte)',
+      'Anfahrtsbeschreibung & Öffnungszeiten',
+      'WhatsApp-Button',
+      'Rückruf-Formular',
+      'Online-Termin buchen (Kalender-System)',
+      'Preisliste / Leistungsübersicht',
+      'Team-Vorstellung / „Über uns"',
+      'Bildergalerie / Referenzen („Vorher / Nachher")',
+      'Kundenbewertungen (auch Google-Rezensionen)',
+      'Zertifikate & Auszeichnungen',
+      'Blog / News-Bereich (selbst erstellbar)',
+      'FAQ-Bereich',
+      'Video-Einbindung (z. B. YouTube)',
+      'Download-Bereich (PDFs, Formulare, Datenblätter)',
+      'Newsletter-Anmeldung',
+      'Social-Media-Feeds (Instagram, Facebook)',
+      'Mehrsprachigkeit (z. B. DE / EN)',
+      'Karriere- / Jobs-Bereich',
+      'Login-Bereich für Kunden / Mitgliederbereich',
+      'Darkmode',
+    ],
+  },
+  {
+    n: '10',
     q: 'Haben Sie schon ein Logo?',
     type: 'radios-grid',
     name: 'Logo vorhanden',
@@ -96,7 +126,7 @@ const questions = [
     ],
   },
   {
-    n: '10',
+    n: '11',
     q: 'Haben Sie Referenzfotos von erfolgreichen Arbeiten, die Sie präsentieren wollen?',
     hint: 'Referenzbilder machen die Website deutlich überzeugender.',
     type: 'radios',
@@ -107,7 +137,7 @@ const questions = [
     ],
   },
   {
-    n: '11',
+    n: '12',
     q: 'Wie soll die Website wirken? Welche Farben sollen verwendet werden?',
     hint: 'Beschreiben Sie kurz Ihre Vorstellung — Stil, Stimmung, Wunschfarben.',
     type: 'textarea',
@@ -117,7 +147,7 @@ const questions = [
     },
   },
   {
-    n: '12',
+    n: '13',
     q: 'Bis wann brauchen Sie die Website?',
     type: 'radios',
     name: 'Zeitrahmen',
@@ -129,13 +159,13 @@ const questions = [
     ],
   },
   {
-    n: '13',
+    n: '14',
     q: 'Möchten Sie sonst noch etwas mitteilen?',
-    hint: 'Was soll Ihre Website unbedingt enthalten (z. B. Fotos der Mitarbeiter, Preisliste, Öffnungszeiten, Zertifikate)? Alles, was mir hilft — kein Muss.',
+    hint: 'Alles, was mir helfen könnte — Wünsche, Beispiele, Besonderheiten. Kein Muss.',
     type: 'textarea',
     field: {
       name: 'Anmerkungen',
-      placeholder: 'z. B. Team-Fotos zeigen, Preisliste einbauen, Bewertungen von Google einbinden …',
+      placeholder: 'z. B. Beispiel-Websites, die Ihnen gefallen; besondere Anforderungen; interne Zielgruppen …',
     },
   },
 ];
@@ -184,7 +214,7 @@ const questions = [
           </div>
           <div class="brief__meta-item">
             <span class="mono brief__meta-label">Fragen</span>
-            <span class="brief__meta-value">13 Stück</span>
+            <span class="brief__meta-value">14 Stück</span>
           </div>
           <div class="brief__meta-item">
             <span class="mono brief__meta-label">Speicherung</span>
@@ -261,6 +291,20 @@ const questions = [
 
             {question.type === 'checkboxes' && question.options && (
               <div class="choices">
+                {question.options.map((opt) => (
+                  <label class="choice">
+                    <input type="checkbox" name={question.name} value={opt} />
+                    <span class="choice__label">
+                      <span class="choice__marker" aria-hidden="true"></span>
+                      <span>{opt}</span>
+                    </span>
+                  </label>
+                ))}
+              </div>
+            )}
+
+            {question.type === 'checkboxes-grid' && question.options && (
+              <div class="choices choices--grid choices--compact">
                 {question.options.map((opt) => (
                   <label class="choice">
                     <input type="checkbox" name={question.name} value={opt} />
@@ -610,6 +654,13 @@ const questions = [
     .choices--grid {
       grid-template-columns: 1fr;
     }
+  }
+
+  .choices--compact .choice__label {
+    padding: 0.7rem 0.85rem;
+    min-height: 46px;
+    font-size: 14.5px;
+    gap: 0.7rem;
   }
 
   .choice {
