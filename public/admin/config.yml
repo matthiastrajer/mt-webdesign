@@ -1,0 +1,46 @@
+backend:
+  name: github
+  repo: matthiastrajer/mt-webdesign
+  branch: master
+  # Muss auf deinen sveltia-cms-auth-Worker zeigen (Cloudflare Workers URL).
+  # Beispiel: https://sveltia-cms-auth.dein-name.workers.dev
+  # Solange hier ein Platzhalter steht, funktioniert der Login NICHT.
+  base_url: https://REPLACE-ME.workers.dev
+  auth_endpoint: oauth/authorize
+
+# Wo hochgeladene Dateien im Repo landen
+media_folder: "public/news"
+# URL-Präfix, das im Frontmatter gespeichert wird — vom Astro-Renderer normalisiert
+public_folder: "/news"
+
+# Kleines Publish-UI ohne Draft-/Review-Workflow (keine Pull Requests, direkter Commit).
+publish_mode: simple
+
+# Ansicht auf Deutsch
+locale: de
+
+# Site-URL für "Live-Vorschau"-Links im CMS
+site_url: https://mt-webdesign.at
+display_url: https://mt-webdesign.at
+
+collections:
+  - name: news
+    label: News
+    label_singular: News-Beitrag
+    description: Aktuelle Beiträge — erscheinen auf der Startseite und unter /news
+    folder: src/content/news
+    create: true
+    delete: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: frontmatter
+    identifier_field: title
+    summary: "{{title}} — {{date | date('DD.MM.YYYY')}}"
+    fields:
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Datum", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, picker_utc: false}
+      - {label: "Kurzbeschreibung (für Karten & Vorschau)", name: "excerpt", widget: "text", pattern: ['^.{20,240}$', '20 bis 240 Zeichen']}
+      - {label: "Cover-Bild", name: "cover", widget: "image", required: false, hint: "Empfohlen 800×500 px oder größer. Wird auf der Startseite als Kachel-Bild angezeigt."}
+      - {label: "Alt-Text zum Cover", name: "coverAlt", widget: "string", required: false, hint: "Kurze Beschreibung des Bildes für Screenreader und SEO."}
+      - {label: "Als Entwurf speichern (nicht veröffentlichen)", name: "draft", widget: "boolean", default: false, required: false}
+      - {label: "Inhalt", name: "body", widget: "markdown"}

@@ -40,7 +40,13 @@ const year = new Date().getFullYear();
       <div class="dim-line"></div>
       <div class="footer__row">
         <span class="mono">© {year} · MT-Webdesign · Matthias Trajer</span>
-        <span class="mono">Gebaut mit Astro · Gehostet mit Sorgfalt</span>
+        <div class="footer__row-right">
+          <span class="mono">Gebaut mit Astro · Gehostet mit Sorgfalt</span>
+          <a href={`${import.meta.env.BASE_URL}admin/`} class="mono footer__admin" rel="nofollow">
+            <span aria-hidden="true">·</span>
+            <span>Admin-Login</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -147,6 +153,25 @@ const year = new Date().getFullYear();
   .footer__row .mono {
     color: var(--ink-3);
     font-size: 11px;
+  }
+
+  .footer__row-right {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer__admin {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--ink-3);
+    font-size: 11px;
+    transition: color var(--dur) var(--ease-out);
+  }
+
+  .footer__admin:hover {
+    color: var(--brass);
   }
 
   @media (max-width: 780px) {
