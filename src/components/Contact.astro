@@ -34,7 +34,22 @@
         </div>
       </div>
 
-      <form class="contact__form reveal reveal--delay-1" method="POST" action="#" novalidate>
+      <!--
+        Formsubmit.co: einmalige Bestätigungsmail beim ersten Absenden bestätigen.
+      -->
+      <form
+        id="contactForm"
+        class="contact__form reveal reveal--delay-1"
+        method="POST"
+        action="https://formsubmit.co/hallo@mt-webdesign.at"
+        enctype="multipart/form-data"
+      >
+        <input type="hidden" name="_subject" value="Neue Kontaktanfrage — Website" />
+        <input type="hidden" name="_captcha" value="true" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="https://mt-webdesign.at/?kontakt=erfolg#kontakt" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
         <div class="form__head">
           <span class="mono form__id">FORM · 001</span>
           <span class="mono form__id">Projektanfrage</span>
@@ -114,7 +129,7 @@
           </div>
           <h3 class="form__briefing-title">Sie wissen schon, was Sie wollen?</h3>
           <p>
-            Beantworten Sie 13 kurze Fragen — ca. 5 Minuten. So kann ich
+            Beantworten Sie 15 kurze Fragen — ca. 5 Minuten. So kann ich
             Ihnen direkt ein passgenaues, unverbindliches Angebot vorbereiten.
           </p>
           <a href={`${import.meta.env.BASE_URL}briefing`} class="btn form__briefing-btn">
@@ -125,8 +140,32 @@
           </a>
         </div>
       </form>
+
+      <!-- Success-Kachel (nach Absenden per Query-Param sichtbar) -->
+      <div class="contact__success reveal reveal--delay-1" id="contactSuccess" hidden>
+        <div class="contact__success-mark">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <p class="eyebrow">Erhalten · FORM-001</p>
+        <h3>Vielen Dank — Ihre Anfrage ist angekommen.</h3>
+        <p>
+          Ich melde mich innerhalb von 24 Stunden per E-Mail bei Ihnen zurück.
+          Sollten mir Angaben fehlen, gibt es kurz eine Rückfrage.
+        </p>
+      </div>
     </div>
   </div>
+
+  <script>
+    if (new URLSearchParams(window.location.search).get('kontakt') === 'erfolg') {
+      const form = document.getElementById('contactForm');
+      const success = document.getElementById('contactSuccess');
+      if (form) (form as HTMLElement).hidden = true;
+      if (success) success.removeAttribute('hidden');
+    }
+  </script>
 </section>
 
 <style>
@@ -204,6 +243,10 @@
   }
 
   /* Form */
+  .contact__form[hidden] {
+    display: none;
+  }
+
   .contact__form {
     background: var(--paper);
     border: 1px solid var(--line);
@@ -212,6 +255,79 @@
     flex-direction: column;
     gap: 1.15rem;
     position: relative;
+  }
+
+  /* Success (nach Absenden) */
+  .contact__success[hidden] {
+    display: none;
+  }
+
+  .contact__success {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+    text-align: left;
+  }
+
+  .contact__success::before,
+  .contact__success::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: var(--brass);
+    border-style: solid;
+    border-width: 0;
+  }
+
+  .contact__success::before {
+    top: -1px;
+    left: -1px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+  }
+
+  .contact__success::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+  }
+
+  .contact__success-mark {
+    width: 46px;
+    height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brass);
+    color: var(--ink);
+    border-radius: 2px;
+    margin-bottom: 0.25rem;
+  }
+
+  .contact__success h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .contact__success p {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    text-transform: none;
+    letter-spacing: 0;
+    margin: 0;
   }
 
   .contact__form::before,
