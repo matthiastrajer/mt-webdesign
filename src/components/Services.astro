@@ -1,0 +1,284 @@
+---
+const core = [
+  {
+    id: '001',
+    icon: 'window',
+    title: 'Website-Erstellung',
+    body:
+      'Individuell gestaltete Websites — nicht aus dem Baukasten. Von der ersten Skizze bis zum Live-Gang. Responsive, schnell und mit sauberen SEO-Grundlagen, damit Sie bei Google gefunden werden.',
+    features: ['Individuelles Design', 'Bei Google auffindbar', 'Mobile-optimiert', 'DSGVO-konform'],
+  },
+  {
+    id: '002',
+    icon: 'server',
+    title: 'Hosting',
+    body:
+      'Ich kümmere mich um Server, SSL-Zertifikat, Backups und Domain — Sie brauchen keinen weiteren Anbieter. Alles aus einer Hand, mit geringen monatlichen Kosten für Server und Domain.',
+    features: ['Server & Domain', 'SSL-Zertifikat', 'Tägliche Backups', 'Geringe Monatskosten'],
+  },
+  {
+    id: '003',
+    icon: 'edit',
+    title: 'Admin-Panel',
+    body:
+      'Sie bekommen einen einfachen Zugang, mit dem Sie Ihre Website selbst pflegen können — Fotos hochladen, neue Mitarbeiter eintragen, Referenzen ergänzen, Kontaktdaten ändern. Ohne HTML, ohne Umwege.',
+    features: ['Fotos & Bilder', 'Mitarbeiter & Team', 'Referenzen ergänzen', 'Kontakt & Texte'],
+  },
+];
+
+const optional = [
+  {
+    id: 'Z-01',
+    title: 'Pflege- & Betreuungspaket',
+    body:
+      'Für alle, die auch das lieber abgeben: Ich übernehme Änderungen für Sie — Anruf oder E-Mail genügt, Umsetzung innerhalb von 48 Stunden.',
+  },
+  {
+    id: 'Z-02',
+    title: 'Logo-Design',
+    body:
+      'Kein Logo oder unzufrieden mit dem alten? Ich gestalte ein passendes, zeitloses Logo — abgestimmt auf Ihre Website und Ihre Branche.',
+  },
+];
+
+const icons = {
+  window: `<rect x="4" y="6" width="24" height="20" rx="1" stroke-width="1.4"/><line x1="4" y1="12" x2="28" y2="12" stroke-width="1.4"/><circle cx="8" cy="9" r="0.8" fill="currentColor"/><circle cx="11" cy="9" r="0.8" fill="currentColor"/>`,
+  server: `<rect x="4" y="6" width="24" height="9" rx="1" stroke-width="1.4"/><rect x="4" y="17" width="24" height="9" rx="1" stroke-width="1.4"/><line x1="8" y1="10.5" x2="8" y2="10.5" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="21.5" x2="8" y2="21.5" stroke-width="2" stroke-linecap="round"/>`,
+  edit: `<path d="M20 6l6 6-14 14H6v-6z" stroke-width="1.4" stroke-linejoin="round"/><line x1="18" y1="8" x2="24" y2="14" stroke-width="1.4"/>`,
+};
+---
+
+<section class="section services" id="leistungen">
+  <div class="container">
+    <span class="section-label">
+      <span class="section-label__id">002</span>
+      <span>Leistungen</span>
+    </span>
+
+    <header class="services__header reveal">
+      <p class="eyebrow">Was Sie bekommen</p>
+      <h2>Website, Hosting und ein einfaches Admin-Panel — aus einer Hand.</h2>
+      <p class="lead">
+        Kein Jonglieren zwischen Domain-Anbieter, Baukasten und externem
+        Entwickler. Sie bekommen eine fertige Website, den Server dazu und
+        einen Zugang, mit dem Sie selbst Änderungen vornehmen — so einfach
+        wie eine E-Mail schreiben.
+      </p>
+    </header>
+
+    <div class="services__grid">
+      {
+        core.map((service, i) => (
+          <article class={`service reveal reveal--delay-${(i % 4) + 1}`}>
+            <div class="service__head">
+              <span class="mono service__id">S · {service.id}</span>
+              <span class="service__icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" set:html={icons[service.icon as keyof typeof icons]} />
+              </span>
+            </div>
+            <h3 class="service__title">{service.title}</h3>
+            <p class="service__body">{service.body}</p>
+            <ul class="service__features">
+              {service.features.map((f) => (
+                <li>
+                  <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+                    <path d="M1 5l3 3 5-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="services__optional reveal">
+      <div class="optional__head">
+        <span class="mono optional__badge">Auf Anfrage · Zusatzleistungen</span>
+        <div class="dim-line optional__line"></div>
+      </div>
+
+      <div class="optional__grid">
+        {
+          optional.map((item) => (
+            <div class="optional__item">
+              <div class="optional__meta">
+                <span class="mono optional__id">{item.id}</span>
+                <h3 class="optional__title">{item.title}</h3>
+              </div>
+              <p class="optional__body">{item.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services__header {
+    max-width: 720px;
+    margin: 3rem 0 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Kern-Leistungen: 3-Spalten-Grid */
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  @media (max-width: 900px) {
+    .services__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .service {
+    background: var(--paper);
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: background var(--dur) var(--ease-out);
+    position: relative;
+  }
+
+  .service:hover {
+    background: color-mix(in srgb, var(--paper) 60%, var(--paper-2));
+  }
+
+  .service__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .service__id {
+    color: var(--brass);
+    letter-spacing: 0.08em;
+  }
+
+  .service__icon {
+    color: var(--ink);
+    transition: color var(--dur) var(--ease-out);
+  }
+
+  .service:hover .service__icon {
+    color: var(--brass);
+  }
+
+  .service__title {
+    font-size: 1.35rem;
+  }
+
+  .service__body {
+    color: var(--ink-2);
+    font-size: 15px;
+    line-height: 1.55;
+    flex-grow: 1;
+  }
+
+  .service__features {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--line);
+  }
+
+  .service__features li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-2);
+    letter-spacing: 0.02em;
+  }
+
+  .service__features svg {
+    color: var(--brass);
+    flex-shrink: 0;
+  }
+
+  /* Zusatzleistungen */
+  .services__optional {
+    margin-top: 3.5rem;
+  }
+
+  .optional__head {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .optional__badge {
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 10.5px;
+    white-space: nowrap;
+  }
+
+  .optional__line {
+    flex: 1;
+    margin: 0;
+  }
+
+  .optional__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 720px) {
+    .optional__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .optional__item {
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    border-left: 1px solid var(--brass);
+    background: color-mix(in srgb, var(--paper) 55%, var(--paper-2));
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .optional__meta {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+  }
+
+  .optional__id {
+    color: var(--brass);
+    letter-spacing: 0.1em;
+    font-size: 11px;
+  }
+
+  .optional__title {
+    font-size: 1.15rem;
+  }
+
+  .optional__body {
+    color: var(--ink-2);
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+</style>

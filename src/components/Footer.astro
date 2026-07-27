@@ -1,0 +1,171 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <span class="footer__mark">MT</span>
+          <span class="footer__wordmark">Webdesign</span>
+        </div>
+        <p class="footer__tag">
+          Websites für kleine &amp; mittlere Betriebe. Schnell, sauber,
+          selbst pflegbar.
+        </p>
+      </div>
+
+      <div class="footer__meta">
+        <div class="footer__col">
+          <span class="mono footer__label">Kontakt</span>
+          <a href="mailto:hallo@mt-webdesign.at">hallo@mt-webdesign.at</a>
+        </div>
+
+        <div class="footer__col">
+          <span class="mono footer__label">Rechtliches</span>
+          <a href="/impressum">Impressum</a>
+          <a href="/datenschutz">Datenschutz</a>
+        </div>
+
+        <div class="footer__col">
+          <span class="mono footer__label">Standort</span>
+          <span>Kokoschkagasse 6d</span>
+          <span>3104 St. Pölten · AT</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="dim-line"></div>
+      <div class="footer__row">
+        <span class="mono">© {year} · MT-Webdesign · Matthias Trajer</span>
+        <span class="mono">Gebaut mit Astro · Gehostet mit Sorgfalt</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--line);
+    padding: 4rem 0 2rem;
+    background: color-mix(in srgb, var(--paper) 40%, var(--paper-2));
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    padding-bottom: 3rem;
+  }
+
+  .footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 320px;
+  }
+
+  .footer__logo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .footer__mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--ink);
+    color: var(--brass);
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0;
+    align-self: center;
+  }
+
+  .footer__tag {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+
+  .footer__meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-size: 14px;
+  }
+
+  .footer__col a,
+  .footer__col span:not(.mono) {
+    color: var(--ink);
+    transition: color var(--dur) var(--ease-out);
+  }
+
+  .footer__col a:hover {
+    color: var(--brass);
+  }
+
+  .footer__label {
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 10.5px;
+    margin-bottom: 0.35rem;
+  }
+
+  .footer__bottom {
+    padding-top: 1.5rem;
+  }
+
+  .footer__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .footer__row .mono {
+    color: var(--ink-3);
+    font-size: 11px;
+  }
+
+  @media (max-width: 780px) {
+    .footer__top {
+      grid-template-columns: 1fr;
+    }
+    .footer__meta {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .footer__row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer__meta {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

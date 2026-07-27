@@ -1,0 +1,164 @@
+---
+const steps = [
+  {
+    n: '01',
+    title: 'Erstanfrage & Briefing',
+    duration: 'per E-Mail · kostenlos',
+    body:
+      'Sie schreiben mir kurz über Ihren Betrieb und was die Website leisten soll. Ich schicke Ihnen einen strukturierten Fragebogen — ca. 5 Minuten — und wir klären alle Details schriftlich, damit Sie es in Ihrem Tempo bearbeiten können.',
+  },
+  {
+    n: '02',
+    title: 'Angebot & Konzept',
+    duration: '3–5 Tage',
+    body:
+      'Sie bekommen ein festes Angebot mit klarem Preis — keine Überraschungen. Dazu einen Konzept-Entwurf: Struktur, erste Gestaltung, Textrichtung.',
+  },
+  {
+    n: '03',
+    title: 'Design & Umsetzung',
+    duration: '10–14 Tage',
+    body:
+      'Ich baue Ihre Website. Nach etwa der Hälfte der Zeit sehen Sie eine Vorschau und können Änderungen anmelden. Anschließend feilen wir gemeinsam am Detail.',
+  },
+  {
+    n: '04',
+    title: 'Live-Gang',
+    duration: 'Tag X',
+    body:
+      'Die Website geht online — auf Ihrer Domain, mit SSL, DSGVO-konform. Kleine Änderungen wie neue Fotos, Mitarbeiter oder Öffnungszeiten pflegen Sie danach selbst über das Admin-Panel. Wer das lieber abgibt, kann jederzeit das Pflege-Paket dazubuchen.',
+  },
+];
+---
+
+<section class="section process" id="ablauf">
+  <div class="container">
+    <span class="section-label">
+      <span class="section-label__id">003</span>
+      <span>Ablauf</span>
+    </span>
+
+    <header class="process__header reveal">
+      <p class="eyebrow">In vier Schritten zur Website</p>
+      <h2>Klarer Plan. Kein Kleingedrucktes.</h2>
+      <p class="lead">
+        Sie wissen von Anfang an, was passiert, was es kostet und wann Ihre
+        Website live geht. Abstimmung überwiegend schriftlich — antworten
+        Sie in Ihrem Tempo, ich melde mich zuverlässig innerhalb von 24 Stunden.
+      </p>
+    </header>
+
+    <ol class="process__list">
+      {
+        steps.map((step, i) => (
+          <li class={`step reveal reveal--delay-${(i % 4) + 1}`}>
+            <div class="step__marker">
+              <span class="step__n">{step.n}</span>
+              <span class="step__connector" aria-hidden="true" />
+            </div>
+            <div class="step__content">
+              <div class="step__meta">
+                <h3 class="step__title">{step.title}</h3>
+                <span class="mono step__duration">{step.duration}</span>
+              </div>
+              <p class="step__body">{step.body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process__header {
+    max-width: 720px;
+    margin: 3rem 0 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .process__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    padding: 2rem 0;
+    border-top: 1px solid var(--line);
+    position: relative;
+  }
+
+  .step:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .step__marker {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .step__n {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    position: relative;
+    padding-right: 0.75rem;
+    border-right: 1px solid var(--brass);
+  }
+
+  .step__connector {
+    display: none;
+  }
+
+  .step__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding-top: 0.25rem;
+  }
+
+  .step__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .step__title {
+    font-size: clamp(1.35rem, 1vw + 1rem, 1.75rem);
+  }
+
+  .step__duration {
+    color: var(--brass);
+    letter-spacing: 0.06em;
+  }
+
+  .step__body {
+    color: var(--ink-2);
+    max-width: 65ch;
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 600px) {
+    .step {
+      grid-template-columns: 64px 1fr;
+    }
+    .step__n {
+      font-size: 2rem;
+    }
+  }
+</style>

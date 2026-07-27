@@ -1,0 +1,335 @@
+---
+---
+
+<section class="section contact" id="kontakt">
+  <div class="container">
+    <span class="section-label">
+      <span class="section-label__id">005</span>
+      <span>Kontakt</span>
+    </span>
+
+    <div class="contact__grid">
+      <div class="contact__intro reveal">
+        <p class="eyebrow">Anfrage schicken</p>
+        <h2>Schreiben Sie mir. Ich melde mich zurück.</h2>
+        <p class="lead">
+          Sagen Sie mir kurz, um welchen Betrieb es geht und was Sie sich
+          vorstellen. Ich melde mich innerhalb von 24 Stunden per E-Mail
+          bei Ihnen — mit den nächsten Schritten. Kein Vertrag, keine Kosten.
+        </p>
+
+        <div class="contact__direct">
+          <a href="mailto:hallo@mt-webdesign.at" class="contact__direct-item contact__direct-item--primary">
+            <span class="mono contact__label">E-Mail · bevorzugt</span>
+            <span class="contact__value">hallo@mt-webdesign.at</span>
+          </a>
+          <div class="contact__direct-item">
+            <span class="mono contact__label">Antwortzeit</span>
+            <span class="contact__value">&lt; 24 Stunden</span>
+          </div>
+          <div class="contact__direct-item">
+            <span class="mono contact__label">Standort</span>
+            <span class="contact__value">3104 St. Pölten · AT</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact__form reveal reveal--delay-1" method="POST" action="#" novalidate>
+        <div class="form__head">
+          <span class="mono form__id">FORM · 001</span>
+          <span class="mono form__id">Projektanfrage</span>
+        </div>
+
+        <div class="field">
+          <label for="name">Name <span aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" required autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="company">Betrieb</label>
+          <input id="company" name="company" type="text" autocomplete="organization" />
+        </div>
+
+        <div class="field">
+          <label for="email">E-Mail <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" required autocomplete="email" />
+        </div>
+
+        <div class="field">
+          <label for="phone">Telefon <span class="field__optional">(optional, für Rückfragen)</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" />
+        </div>
+
+        <div class="field">
+          <label for="type">Was brauchen Sie?</label>
+          <select id="type" name="type">
+            <option value="neu">Neue Website + Hosting</option>
+            <option value="relaunch">Bestehende Website erneuern</option>
+            <option value="pflege">Zusätzlich Pflege-Paket</option>
+            <option value="logo">Zusätzlich Logo-Design</option>
+            <option value="unsicher">Bin mir noch unsicher</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Kurz zum Vorhaben</label>
+          <textarea id="message" name="message" rows="4" placeholder="Z. B. Was macht Ihr Betrieb? Haben Sie schon eine Website? Was soll besser werden?"></textarea>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" required />
+          <span>
+            Ich willige ein, dass meine Angaben zur Bearbeitung meiner Anfrage
+            gespeichert werden. Details in der
+            <a href="/datenschutz">Datenschutzerklärung</a>.
+          </span>
+        </label>
+
+        <button type="submit" class="btn form__submit">
+          <span>Anfrage abschicken</span>
+          <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  .contact__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: sticky;
+    top: 100px;
+    align-self: start;
+  }
+
+  .contact__direct {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 1.5rem;
+  }
+
+  .contact__direct-item--primary {
+    background: color-mix(in srgb, var(--paper) 40%, var(--paper-2)) !important;
+  }
+
+  .contact__direct-item--primary .contact__value {
+    color: var(--brass);
+  }
+
+  .contact__direct-item {
+    background: var(--paper);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: background var(--dur) var(--ease-out);
+  }
+
+  a.contact__direct-item:hover {
+    background: color-mix(in srgb, var(--paper) 60%, var(--paper-2));
+  }
+
+  .contact__label {
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 10.5px;
+  }
+
+  .contact__value {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+
+  a.contact__direct-item .contact__value {
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out);
+  }
+
+  a.contact__direct-item:hover .contact__value {
+    color: var(--brass);
+    border-bottom-color: var(--brass);
+  }
+
+  /* Form */
+  .contact__form {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    position: relative;
+  }
+
+  .contact__form::before,
+  .contact__form::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: var(--brass);
+    border-style: solid;
+    border-width: 0;
+  }
+
+  .contact__form::before {
+    top: -1px;
+    left: -1px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+  }
+
+  .contact__form::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+  }
+
+  .form__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--line);
+    margin-bottom: 0.5rem;
+  }
+
+  .form__id {
+    color: var(--brass);
+    letter-spacing: 0.1em;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+    text-transform: uppercase;
+  }
+
+  label span[aria-hidden] {
+    color: var(--brass);
+  }
+
+  .field__optional {
+    color: var(--ink-3);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 10.5px;
+    margin-left: 0.4rem;
+  }
+
+  input,
+  select,
+  textarea {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line-strong);
+    padding: 0.65rem 0.25rem;
+    outline: none;
+    transition: border-color var(--dur) var(--ease-out);
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234a5a73' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+    padding-right: 1.5rem;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.55;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-bottom-color: var(--brass);
+  }
+
+  .check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    text-transform: none;
+    letter-spacing: 0;
+    padding-top: 0.5rem;
+  }
+
+  .check input {
+    margin: 0.25rem 0 0;
+    padding: 0;
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--line-strong);
+    accent-color: var(--brass);
+    flex-shrink: 0;
+  }
+
+  .check a {
+    color: var(--ink);
+    border-bottom: 1px solid var(--brass);
+  }
+
+  .form__submit {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 780px) {
+    .contact__grid {
+      grid-template-columns: 1fr;
+    }
+    .contact__intro {
+      position: static;
+    }
+    .field-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

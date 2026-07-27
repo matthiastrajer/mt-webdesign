@@ -1,0 +1,127 @@
+---
+---
+
+<nav class="nav">
+  <div class="nav__inner container">
+    <a href="/" class="nav__logo" aria-label="MT-Webdesign Startseite">
+      <span class="nav__mark">MT</span>
+      <span class="nav__wordmark">Webdesign</span>
+    </a>
+
+    <ul class="nav__links">
+      <li><a href="#leistungen" class="nav__link">Leistungen</a></li>
+      <li><a href="#ablauf" class="nav__link">Ablauf</a></li>
+      <li><a href="#faq" class="nav__link">Häufig gefragt</a></li>
+    </ul>
+
+    <a href="#kontakt" class="btn nav__cta">
+      <span>Kontakt</span>
+      <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6"/>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: color-mix(in srgb, var(--paper) 82%, transparent);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    gap: 2rem;
+  }
+
+  .nav__logo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+  }
+
+  .nav__mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--ink);
+    color: var(--brass);
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+    align-self: center;
+  }
+
+  .nav__wordmark {
+    color: var(--ink);
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav__link {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-2);
+    position: relative;
+    padding: 4px 0;
+    transition: color var(--dur) var(--ease-out);
+  }
+
+  .nav__link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background: var(--brass);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur) var(--ease-out);
+  }
+
+  .nav__link:hover {
+    color: var(--ink);
+  }
+
+  .nav__link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .nav__cta {
+    padding: 0.55rem 1rem;
+    font-size: 14px;
+  }
+
+  @media (max-width: 780px) {
+    .nav__links {
+      display: none;
+    }
+    .nav__inner {
+      height: 60px;
+    }
+  }
+</style>

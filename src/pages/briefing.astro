@@ -1,0 +1,872 @@
+---
+import Base from '../layouts/Base.astro';
+import Footer from '../components/Footer.astro';
+
+// 13 Briefing-Fragen — Inhalte 1:1 aus dem bestehenden Fragebogen übernommen
+const questions = [
+  {
+    n: '01',
+    q: 'Wer sind Sie?',
+    hint: 'Ihr Name und der Name Ihres Betriebs.',
+    type: 'row-two',
+    fields: [
+      { name: 'Ihr Name', placeholder: 'Ihr Name', autocomplete: 'name', required: true },
+      { name: 'Firmenname', placeholder: 'Name Ihres Betriebs', autocomplete: 'organization', required: true },
+    ],
+  },
+  {
+    n: '02',
+    q: 'Wie erreichen wir Sie am besten?',
+    hint: 'Damit ich mich bei Ihnen zurückmelden kann.',
+    type: 'row-two',
+    fields: [
+      { name: 'Telefon', placeholder: 'Telefonnummer', type: 'tel', autocomplete: 'tel', required: true },
+      { name: 'E-Mail', placeholder: 'E-Mail-Adresse', type: 'email', autocomplete: 'email', required: true },
+    ],
+  },
+  {
+    n: '03',
+    q: 'Wo ist Ihr Betrieb?',
+    hint: 'Adresse und Ort — für Impressum und Google-Suche.',
+    type: 'input',
+    field: { name: 'Adresse und Ort', placeholder: 'z. B. Musterstraße 12, 3100 St. Pölten', required: true },
+  },
+  {
+    n: '04',
+    q: 'Um was für einen Betrieb handelt es sich?',
+    hint: 'Kurze Beschreibung Ihres Unternehmens — Branche und Tätigkeit.',
+    type: 'textarea',
+    field: {
+      name: 'Art des Betriebs',
+      placeholder: 'z. B. Malerbetrieb, Elektroinstallation, Friseursalon, Restaurant …',
+      required: true,
+    },
+  },
+  {
+    n: '05',
+    q: 'Seit wann gibt es Ihren Betrieb?',
+    hint: 'Das schafft Vertrauen bei neuen Kunden.',
+    type: 'input',
+    field: { name: 'Gegründet', placeholder: 'z. B. 1985 oder seit über 20 Jahren' },
+  },
+  {
+    n: '06',
+    q: 'Welche Arbeiten bieten Sie an?',
+    hint: 'Bitte alle Leistungen auflisten, die auf der Website erscheinen sollen.',
+    type: 'textarea',
+    field: {
+      name: 'Leistungen',
+      placeholder: 'z. B. Malerarbeiten innen und außen, Tapezieren, Lackieren, Fassadengestaltung …',
+      required: true,
+    },
+  },
+  {
+    n: '07',
+    q: 'Was macht Ihren Betrieb besonders?',
+    hint: 'Warum sollten Kunden gerade Sie beauftragen? 1–3 Stichworte reichen.',
+    type: 'textarea',
+    field: {
+      name: 'Was macht Sie besonders',
+      placeholder: 'z. B. Meisterbetrieb, immer pünktlich, sauberes Arbeiten, faire Preise …',
+    },
+  },
+  {
+    n: '08',
+    q: 'Was ist Ihnen bei der Website am wichtigsten?',
+    hint: 'Mehrere Antworten möglich — einfach anklicken.',
+    type: 'checkboxes',
+    name: 'Wichtigstes Ziel',
+    options: [
+      'Dass Kunden mich anrufen',
+      'Dass Kunden mir Anfragen schicken',
+      'Meinen Betrieb professionell zeigen',
+      'Bei Google besser gefunden werden',
+    ],
+  },
+  {
+    n: '09',
+    q: 'Haben Sie schon ein Logo?',
+    type: 'radios-grid',
+    name: 'Logo vorhanden',
+    options: [
+      'Ja, habe ich',
+      'Ja, aber es sollte erneuert werden',
+      'Nein, brauche ein neues',
+      'Weiß nicht',
+    ],
+  },
+  {
+    n: '10',
+    q: 'Haben Sie Referenzfotos von erfolgreichen Arbeiten, die Sie präsentieren wollen?',
+    hint: 'Referenzbilder machen die Website deutlich überzeugender.',
+    type: 'radios',
+    name: 'Fotos vorhanden',
+    options: [
+      'Ja (können bei Auftragserteilung nachgesendet werden)',
+      'Nein',
+    ],
+  },
+  {
+    n: '11',
+    q: 'Wie soll die Website wirken? Welche Farben sollen verwendet werden?',
+    hint: 'Beschreiben Sie kurz Ihre Vorstellung — Stil, Stimmung, Wunschfarben.',
+    type: 'textarea',
+    field: {
+      name: 'Stil und Farben',
+      placeholder: 'z. B. modern und hochwertig, mit gedeckten Blau- und Grautönen …',
+    },
+  },
+  {
+    n: '12',
+    q: 'Bis wann brauchen Sie die Website?',
+    type: 'radios',
+    name: 'Zeitrahmen',
+    options: [
+      'So schnell wie möglich',
+      'Innerhalb eines Monats',
+      'Innerhalb der nächsten 2 – 3 Monate',
+      'Kein Zeitdruck',
+    ],
+  },
+  {
+    n: '13',
+    q: 'Möchten Sie sonst noch etwas mitteilen?',
+    hint: 'Was soll Ihre Website unbedingt enthalten (z. B. Fotos der Mitarbeiter, Preisliste, Öffnungszeiten, Zertifikate)? Alles, was mir hilft — kein Muss.',
+    type: 'textarea',
+    field: {
+      name: 'Anmerkungen',
+      placeholder: 'z. B. Team-Fotos zeigen, Preisliste einbauen, Bewertungen von Google einbinden …',
+    },
+  },
+];
+---
+
+<Base
+  title="Briefing — MT-Webdesign"
+  description="Kurzer Fragebogen für Ihre neue Website. Damit ich Ihr Angebot passend vorbereiten kann."
+  noindex={true}
+>
+  <!-- Minimale Kopfzeile, keine Nav — die Kundinnen und Kunden sollen sich auf den Fragebogen konzentrieren -->
+  <header class="brief-nav">
+    <div class="container brief-nav__inner">
+      <a href="/" class="brief-nav__logo" aria-label="MT-Webdesign Startseite">
+        <span class="brief-nav__mark">MT</span>
+        <span class="brief-nav__wordmark">Webdesign</span>
+      </a>
+      <span class="mono brief-nav__label">Briefing · Formular F-001</span>
+    </div>
+  </header>
+
+  <main class="brief">
+    <div class="container">
+      <span class="section-label brief__section-label">
+        <span class="section-label__id">B01</span>
+        <span>Briefing</span>
+      </span>
+
+      <!-- Intro -->
+      <section class="brief__intro reveal">
+        <p class="eyebrow">Ihre neue Website</p>
+        <h1 class="brief__title">
+          Ein paar kurze Fragen — damit Ihr Angebot passt.
+        </h1>
+        <p class="lead">
+          Bitte füllen Sie diesen kurzen Fragebogen aus, damit ich Ihre Website
+          passend gestalten und ein verbindliches Angebot vorbereiten kann.
+          Das dauert etwa 5 Minuten — einfach durchklicken. Alle Angaben werden
+          vertraulich behandelt und ausschließlich für Ihr Projekt verwendet.
+        </p>
+
+        <div class="brief__meta">
+          <div class="brief__meta-item">
+            <span class="mono brief__meta-label">Dauer</span>
+            <span class="brief__meta-value">ca. 5 Min</span>
+          </div>
+          <div class="brief__meta-item">
+            <span class="mono brief__meta-label">Fragen</span>
+            <span class="brief__meta-value">13 Stück</span>
+          </div>
+          <div class="brief__meta-item">
+            <span class="mono brief__meta-label">Speicherung</span>
+            <span class="brief__meta-value">nur bei mir</span>
+          </div>
+          <div class="brief__meta-item">
+            <span class="mono brief__meta-label">Rückmeldung</span>
+            <span class="brief__meta-value">&lt; 3 Werktage</span>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        Formsubmit.co: einmalige Bestätigungsmail beim ersten Absenden bestätigen.
+        Vor Veröffentlichung: E-Mail-Adresse in action= durch echte ersetzen.
+      -->
+      <form
+        id="briefingForm"
+        class="brief__form"
+        action="https://formsubmit.co/hallo@mt-webdesign.at"
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="Neues Briefing — Website-Anfrage" />
+        <input type="hidden" name="_captcha" value="true" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="https://mt-webdesign.at/briefing?submitted=true" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+        {questions.map((question) => (
+          <section class="q-card reveal">
+            <div class="q-card__head">
+              <span class="mono q-card__n">F · {question.n}</span>
+              <div class="q-card__line" aria-hidden="true"></div>
+            </div>
+
+            <h2 class="q-card__q">{question.q}</h2>
+            {question.hint && <p class="q-card__hint">{question.hint}</p>}
+
+            {question.type === 'input' && question.field && (
+              <input
+                type={question.field.type ?? 'text'}
+                class="input"
+                name={question.field.name}
+                placeholder={question.field.placeholder}
+                required={question.field.required}
+                autocomplete={question.field.autocomplete}
+              />
+            )}
+
+            {question.type === 'row-two' && question.fields && (
+              <div class="row-two">
+                {question.fields.map((f) => (
+                  <input
+                    type={f.type ?? 'text'}
+                    class="input"
+                    name={f.name}
+                    placeholder={f.placeholder}
+                    required={f.required}
+                    autocomplete={f.autocomplete}
+                  />
+                ))}
+              </div>
+            )}
+
+            {question.type === 'textarea' && question.field && (
+              <textarea
+                class="textarea"
+                name={question.field.name}
+                placeholder={question.field.placeholder}
+                required={question.field.required}
+                rows="4"
+              ></textarea>
+            )}
+
+            {question.type === 'checkboxes' && question.options && (
+              <div class="choices">
+                {question.options.map((opt) => (
+                  <label class="choice">
+                    <input type="checkbox" name={question.name} value={opt} />
+                    <span class="choice__label">
+                      <span class="choice__marker" aria-hidden="true"></span>
+                      <span>{opt}</span>
+                    </span>
+                  </label>
+                ))}
+              </div>
+            )}
+
+            {question.type === 'radios' && question.options && (
+              <div class="choices">
+                {question.options.map((opt) => (
+                  <label class="choice">
+                    <input type="radio" name={question.name} value={opt} />
+                    <span class="choice__label">
+                      <span class="choice__marker choice__marker--radio" aria-hidden="true"></span>
+                      <span>{opt}</span>
+                    </span>
+                  </label>
+                ))}
+              </div>
+            )}
+
+            {question.type === 'radios-grid' && question.options && (
+              <div class="choices choices--grid">
+                {question.options.map((opt) => (
+                  <label class="choice">
+                    <input type="radio" name={question.name} value={opt} />
+                    <span class="choice__label">
+                      <span class="choice__marker choice__marker--radio" aria-hidden="true"></span>
+                      <span>{opt}</span>
+                    </span>
+                  </label>
+                ))}
+              </div>
+            )}
+          </section>
+        ))}
+
+        <!-- Submit -->
+        <section class="submit-card reveal">
+          <div class="submit-card__inner">
+            <div>
+              <p class="eyebrow submit-card__eyebrow">Fertig?</p>
+              <h2 class="submit-card__title">Abschicken — ich melde mich per E-Mail zurück.</h2>
+              <p class="submit-card__lead">
+                Nach dem Absenden bekommen Sie eine kurze Bestätigung. Ich prüfe
+                Ihr Briefing und schicke Ihnen innerhalb von 3 Werktagen ein
+                verbindliches Angebot per E-Mail zurück — mit Preis, Umfang
+                und Zeitplan.
+              </p>
+            </div>
+
+            <button type="submit" class="btn submit-card__btn">
+              <span>Briefing absenden</span>
+              <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </button>
+          </div>
+        </section>
+      </form>
+
+      <!-- Success-Screen (wird nach Absenden per Query-Param angezeigt) -->
+      <div class="success" id="successMsg" hidden>
+        <div class="success__mark">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <p class="eyebrow success__eyebrow">Erhalten · F-001</p>
+        <h2 class="success__title">Vielen Dank — Ihr Briefing ist angekommen.</h2>
+        <p class="success__body">
+          Ich prüfe Ihre Angaben und schicke Ihnen innerhalb der nächsten drei
+          Werktage ein verbindliches Angebot per E-Mail. Sollten mir noch
+          Angaben fehlen, melde ich mich kurz mit einer Rückfrage.
+        </p>
+        <a href="/" class="link success__back">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M19 12H5M11 18l-6-6 6-6"/>
+          </svg>
+          <span>Zurück zur Startseite</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script>
+    if (new URLSearchParams(window.location.search).get('submitted') === 'true') {
+      const form = document.getElementById('briefingForm');
+      const intro = document.querySelector('.brief__intro');
+      const success = document.getElementById('successMsg');
+      if (form) (form as HTMLElement).hidden = true;
+      if (intro) (intro as HTMLElement).hidden = true;
+      if (success) success.removeAttribute('hidden');
+      window.scrollTo(0, 0);
+    }
+  </script>
+</Base>
+
+<style>
+  /* ============ Minimal Header ============ */
+  .brief-nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: color-mix(in srgb, var(--paper) 82%, transparent);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brief-nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    gap: 2rem;
+  }
+
+  .brief-nav__logo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .brief-nav__mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--ink);
+    color: var(--brass);
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0;
+    align-self: center;
+  }
+
+  .brief-nav__label {
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 10.5px;
+  }
+
+  /* ============ Layout ============ */
+  .brief {
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(4rem, 8vw, 6rem);
+    position: relative;
+  }
+
+  .brief > .container {
+    max-width: 760px;
+  }
+
+  .brief__section-label {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 2.5rem;
+  }
+
+  .brief__intro {
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .brief__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2rem, 4vw + 1rem, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0.25rem 0 0.5rem;
+  }
+
+  .brief__meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 1.5rem;
+  }
+
+  .brief__meta-item {
+    background: var(--paper);
+    padding: 1rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .brief__meta-label {
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 10.5px;
+  }
+
+  .brief__meta-value {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+
+  /* ============ Form ============ */
+  .brief__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .q-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+  }
+
+  .q-card__head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .q-card__n {
+    color: var(--brass);
+    letter-spacing: 0.1em;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .q-card__line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .q-card__q {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .q-card__hint {
+    color: var(--ink-2);
+    font-size: 14.5px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Inputs */
+  .input,
+  .textarea {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    color: var(--ink);
+    background: color-mix(in srgb, var(--paper) 55%, var(--paper-2));
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    padding: 0.85rem 1rem;
+    outline: none;
+    transition: border-color var(--dur) var(--ease-out),
+      background var(--dur) var(--ease-out);
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: 0.5rem;
+  }
+
+  .textarea {
+    resize: vertical;
+    min-height: 110px;
+    line-height: 1.55;
+    font-family: var(--font-body);
+  }
+
+  .input::placeholder,
+  .textarea::placeholder {
+    color: var(--ink-3);
+  }
+
+  .input:focus,
+  .textarea:focus {
+    border-color: var(--brass);
+    background: var(--paper);
+  }
+
+  .row-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .row-two .input {
+    margin-top: 0;
+  }
+
+  @media (max-width: 560px) {
+    .row-two {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Choices */
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .choices--grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    .choices--grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .choice {
+    display: block;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .choice input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .choice__label {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    background: color-mix(in srgb, var(--paper) 55%, var(--paper-2));
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    transition: border-color var(--dur) var(--ease-out),
+      background var(--dur) var(--ease-out),
+      color var(--dur) var(--ease-out);
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--ink);
+    min-height: 52px;
+  }
+
+  .choice__marker {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--line-strong);
+    background: var(--paper);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color var(--dur) var(--ease-out),
+      background var(--dur) var(--ease-out);
+  }
+
+  .choice__marker--radio {
+    border-radius: 50%;
+  }
+
+  .choice__marker::after {
+    content: '';
+    opacity: 0;
+    width: 8px;
+    height: 4px;
+    border: solid var(--paper);
+    border-width: 0 0 1.5px 1.5px;
+    transform: rotate(-45deg) translate(1px, -1px);
+    transition: opacity var(--dur-fast) var(--ease-out);
+  }
+
+  .choice__marker--radio::after {
+    border: none;
+    background: var(--paper);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    transform: none;
+  }
+
+  .choice:hover .choice__label {
+    border-color: var(--brass);
+  }
+
+  .choice input:checked + .choice__label {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .choice input:checked + .choice__label .choice__marker {
+    background: var(--brass);
+    border-color: var(--brass);
+  }
+
+  .choice input:checked + .choice__label .choice__marker::after {
+    opacity: 1;
+  }
+
+  .choice input:focus-visible + .choice__label {
+    outline: 2px solid var(--brass);
+    outline-offset: 3px;
+  }
+
+  /* ============ Submit ============ */
+  .submit-card {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2.5rem 2rem;
+    position: relative;
+    margin-top: 1.5rem;
+  }
+
+  .submit-card::before,
+  .submit-card::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: var(--brass);
+    border-style: solid;
+    border-width: 0;
+  }
+
+  .submit-card::before {
+    top: 0;
+    left: 0;
+    border-top-width: 1px;
+    border-left-width: 1px;
+  }
+
+  .submit-card::after {
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+  }
+
+  .submit-card__inner {
+    display: grid;
+    grid-template-columns: 1.4fr auto;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .submit-card__eyebrow {
+    color: var(--brass);
+  }
+
+  .submit-card__eyebrow::before {
+    background: var(--brass);
+  }
+
+  .submit-card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 1vw + 1rem, 1.75rem);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--paper);
+    line-height: 1.2;
+    margin: 0.5rem 0 0.75rem;
+  }
+
+  .submit-card__lead {
+    color: color-mix(in srgb, var(--paper) 75%, var(--ink-2));
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 48ch;
+  }
+
+  .submit-card__btn {
+    --btn-bg: var(--brass);
+    --btn-fg: var(--ink);
+    --btn-border: var(--brass);
+    white-space: nowrap;
+  }
+
+  .submit-card__btn:hover {
+    --btn-bg: var(--paper);
+    --btn-fg: var(--ink);
+    --btn-border: var(--paper);
+  }
+
+  @media (max-width: 640px) {
+    .submit-card__inner {
+      grid-template-columns: 1fr;
+    }
+    .submit-card {
+      padding: 2rem 1.5rem;
+    }
+  }
+
+  /* ============ Success ============ */
+  .success {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem auto;
+    max-width: 640px;
+    position: relative;
+  }
+
+  .success::before,
+  .success::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: var(--brass);
+    border-style: solid;
+    border-width: 0;
+  }
+
+  .success::before {
+    top: -1px;
+    left: -1px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+  }
+
+  .success::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+  }
+
+  .success__mark {
+    width: 56px;
+    height: 56px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brass);
+    color: var(--ink);
+    border-radius: 2px;
+    margin-bottom: 0.5rem;
+  }
+
+  .success__eyebrow {
+    justify-content: center;
+  }
+
+  .success__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 1.9rem);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .success__body {
+    color: var(--ink-2);
+    max-width: 46ch;
+    line-height: 1.6;
+  }
+
+  .success__back {
+    margin-top: 1rem;
+  }
+</style>
