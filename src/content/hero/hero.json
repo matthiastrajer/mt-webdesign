@@ -1,15 +1,25 @@
 {
   "coord": "A1 · 001",
-  "dimensions": ["Konzept", "Design", "Entwicklung"],
+  "dimensions": [
+    "Konzept",
+    "Design",
+    "Entwicklung"
+  ],
   "eyebrow": "Websites für kleine & mittlere Betriebe",
   "headlineLead": "Websites,",
-  "headlineMain": "die für Sie ",
+  "headlineMain": "die für Sie",
   "headlineHighlight": "arbeiten",
   "lead": "Ich baue schnelle, moderne Websites für Handwerk, Handel, Gastronomie, Praxen und Dienstleister — sauber gebaut, bei Google auffindbar und mit einem einfachen Admin-Panel zum Selbst-Pflegen. Ohne technische Vorkenntnisse.",
-  "ctaText": "Kostenloses Angebot einholen",
+  "ctaText": "Kontaktmöglichkeiten",
   "secondaryLinkText": "Leistungen ansehen",
   "dimLeft": "◀ Website in 14 Tagen live",
   "dimRight": "Selbst pflegbar · alles aus einer Hand ▶",
   "trustLabel": "Passt für",
-  "trustList": ["Handwerksbetriebe", "Gastronomie", "Praxen", "Einzelhandel", "Dienstleister"]
+  "trustList": [
+    "Handwerksbetriebe",
+    "Gastronomie",
+    "Praxen",
+    "Einzelhandel",
+    "Dienstleister"
+  ]
 }
