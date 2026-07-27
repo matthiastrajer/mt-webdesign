@@ -1,34 +1,9 @@
 ---
-const steps = [
-  {
-    n: '01',
-    title: 'Erstanfrage & Briefing',
-    duration: 'kostenlos',
-    body:
-      'Sie können unten das Kontaktformular ausfüllen — ein kurzer Satz zu Ihrem Betrieb reicht, ich melde mich innerhalb von 24 Stunden zurück. Oder Sie holen sich über den Briefing-Fragebogen (ca. 5 Minuten, 15 kurze Fragen) direkt ein unverbindliches Angebot ein — ganz in Ihrem Tempo.',
-  },
-  {
-    n: '02',
-    title: 'Angebot & Konzept',
-    duration: '3–5 Tage',
-    body:
-      'Sie bekommen ein festes Angebot mit klarem Preis — keine Überraschungen. Dazu einen Konzept-Entwurf: Struktur, erste Gestaltung, Textrichtung.',
-  },
-  {
-    n: '03',
-    title: 'Design & Umsetzung',
-    duration: '10–14 Tage',
-    body:
-      'Ich baue Ihre Website. Nach etwa der Hälfte der Zeit sehen Sie eine Vorschau und können Änderungen anmelden. Anschließend feilen wir gemeinsam am Detail.',
-  },
-  {
-    n: '04',
-    title: 'Live-Gang',
-    duration: 'Tag X',
-    body:
-      'Die Website geht online — auf Ihrer Domain, mit SSL, DSGVO-konform. Kleine Änderungen wie neue Fotos, Mitarbeiter oder Öffnungszeiten pflegen Sie danach selbst über das Admin-Panel. Wer das lieber abgibt, kann jederzeit das Pflege-Paket dazubuchen.',
-  },
-];
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('process', 'process');
+const p = entry!.data;
+const steps = p.steps;
 ---
 
 <section class="section process" id="ablauf">
@@ -39,13 +14,9 @@ const steps = [
     </span>
 
     <header class="process__header reveal">
-      <p class="eyebrow">In vier Schritten zur Website</p>
-      <h2>Klarer Plan. Kein Kleingedrucktes.</h2>
-      <p class="lead">
-        Sie wissen von Anfang an, was passiert, was es kostet und wann Ihre
-        Website live geht. Abstimmung überwiegend schriftlich — antworten
-        Sie in Ihrem Tempo, ich melde mich zuverlässig innerhalb von 24 Stunden.
-      </p>
+      <p class="eyebrow">{p.eyebrow}</p>
+      <h2>{p.heading}</h2>
+      <p class="lead">{p.lead}</p>
     </header>
 
     <ol class="process__list">

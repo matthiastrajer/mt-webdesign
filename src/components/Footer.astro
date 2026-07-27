@@ -1,5 +1,12 @@
 ---
+import { getEntry } from 'astro:content';
+
 const year = new Date().getFullYear();
+const footerEntry = await getEntry('footer', 'footer');
+const f = footerEntry!.data;
+const settingsEntry = await getEntry('settings', 'site');
+const s = settingsEntry!.data;
+const base = import.meta.env.BASE_URL;
 ---
 
 <footer class="footer">
@@ -10,28 +17,25 @@ const year = new Date().getFullYear();
           <span class="footer__mark">MT</span>
           <span class="footer__wordmark">Webdesign</span>
         </div>
-        <p class="footer__tag">
-          Websites für kleine &amp; mittlere Betriebe. Schnell, sauber,
-          selbst pflegbar.
-        </p>
+        <p class="footer__tag">{f.tagline}</p>
       </div>
 
       <div class="footer__meta">
         <div class="footer__col">
           <span class="mono footer__label">Kontakt</span>
-          <a href="mailto:hallo@mt-webdesign.at">hallo@mt-webdesign.at</a>
+          <a href={`mailto:${s.email}`}>{s.email}</a>
         </div>
 
         <div class="footer__col">
           <span class="mono footer__label">Rechtliches</span>
-          <a href={`${import.meta.env.BASE_URL}impressum`}>Impressum</a>
-          <a href={`${import.meta.env.BASE_URL}datenschutz`}>Datenschutz</a>
+          <a href={`${base}impressum`}>Impressum</a>
+          <a href={`${base}datenschutz`}>Datenschutz</a>
         </div>
 
         <div class="footer__col">
           <span class="mono footer__label">Standort</span>
-          <span>Kokoschkagasse 6d</span>
-          <span>3104 St. Pölten · AT</span>
+          <span>{s.addressStreet}</span>
+          <span>{s.addressCity} · AT</span>
         </div>
       </div>
     </div>
@@ -39,10 +43,10 @@ const year = new Date().getFullYear();
     <div class="footer__bottom">
       <div class="dim-line"></div>
       <div class="footer__row">
-        <span class="mono">© {year} · MT-Webdesign · Matthias Trajer</span>
+        <span class="mono">© {year} · {s.company} · {s.ownerName}</span>
         <div class="footer__row-right">
-          <span class="mono">Gebaut mit Astro · Gehostet mit Sorgfalt</span>
-          <a href={`${import.meta.env.BASE_URL}admin/`} class="mono footer__admin" rel="nofollow">
+          <span class="mono">{f.creditText}</span>
+          <a href={`${base}admin/`} class="mono footer__admin" rel="nofollow">
             <span aria-hidden="true">·</span>
             <span>Admin-Login</span>
           </a>

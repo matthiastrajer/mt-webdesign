@@ -1,0 +1,18 @@
+{
+  "eyebrow": "Anfrage schicken",
+  "heading": "Schreiben Sie mir. Ich melde mich zurück.",
+  "lead": "Sagen Sie mir kurz, um welchen Betrieb es geht und was Sie sich vorstellen. Ich melde mich innerhalb von 24 Stunden per E-Mail bei Ihnen — mit den nächsten Schritten. Kein Vertrag, keine Kosten.",
+  "typeQuestion": "Was brauchen Sie?",
+  "typeOptions": [
+    {"value": "neu", "label": "Neue Website + Hosting"},
+    {"value": "relaunch", "label": "Bestehende Website erneuern"},
+    {"value": "pflege", "label": "Zusätzlich Pflege-Paket"},
+    {"value": "logo", "label": "Zusätzlich Logo-Design"},
+    {"value": "unsicher", "label": "Bin mir noch unsicher"}
+  ],
+  "briefingTitle": "Sie wissen schon, was Sie wollen?",
+  "briefingBody": "Beantworten Sie 15 kurze Fragen — ca. 5 Minuten. So kann ich Ihnen direkt ein passgenaues, unverbindliches Angebot vorbereiten.",
+  "briefingButton": "Direkt unverbindliches Angebot einholen",
+  "successHeading": "Vielen Dank — Ihre Anfrage ist angekommen.",
+  "successBody": "Ich melde mich innerhalb von 24 Stunden per E-Mail bei Ihnen zurück. Sollten mir Angaben fehlen, gibt es kurz eine Rückfrage."
+}

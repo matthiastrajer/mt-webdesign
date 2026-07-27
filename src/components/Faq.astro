@@ -1,38 +1,10 @@
 ---
-const faq = [
-  {
-    q: 'Warum kein Baukasten wie Wix oder Jimdo?',
-    a: 'Baukästen sind für den Anfang okay, aber sie werden schnell teuer, sind langsam und sehen alle gleich aus. Sie stecken darin fest — kommen Sie nicht ohne Datenverlust raus, wenn Sie wechseln wollen. Eine eigene Website läuft schneller, sieht aus wie Ihr Betrieb und gehört Ihnen.',
-  },
-  {
-    q: 'Ich habe keine Zeit für Technik — was heißt „selbst pflegen" konkret?',
-    a: 'Sie loggen sich mit Ihrer E-Mail ein und sehen eine Übersicht wie in Ihrem E-Mail-Programm. Foto tauschen: alte klicken, neue reinziehen, speichern. Mitarbeiter neu: „+" klicken, Name eintippen, Foto hochladen. Das war\'s. Wenn Sie es einmal machen, brauchen Sie kein Handbuch.',
-  },
-  {
-    q: 'Wird meine Website bei Google gefunden werden?',
-    a: 'Ja — grundlegende Suchmaschinen-Optimierung ist bei jedem meiner Projekte dabei: saubere Seitenstruktur, aussagekräftige Titel und Beschreibungen, schnelle Ladezeit, mobile-optimiert. Das sind die Punkte, die Google wirklich zählt. Für „Malerbetrieb Ihre Stadt" sind Sie damit gut aufgestellt. Aufwendige SEO-Kampagnen oder Werbe-Budget-Management biete ich bewusst nicht an — dafür gibt es Spezialisten.',
-  },
-  {
-    q: 'Was ist, wenn ich mit dem Ergebnis unzufrieden bin?',
-    a: 'Nach dem ersten Entwurf haben Sie Zeit zu prüfen und Änderungen anzumelden — bevor irgendetwas fest ist. Sollte am Ende trotzdem nicht passen, gehen wir freundlich getrennter Wege. Anzahlung behalten Sie, für den fertigen Teil zahlen Sie nur den Aufwand.',
-  },
-  {
-    q: 'Wie lange dauert es, bis meine Website online ist?',
-    a: 'Vom Auftrag bis zum Live-Gang sind es typischerweise zwei bis vier Wochen. Der genaue Zeitrahmen hängt davon ab, wie schnell Sie mir Texte und Bilder zur Verfügung stellen können. Der reine Bau meinerseits dauert etwa 10–14 Werktage.',
-  },
-  {
-    q: 'Bin ich an einen langfristigen Vertrag gebunden?',
-    a: 'Nein — mit mir schließen Sie keinen Abo-Vertrag ab. Die Erstellung Ihrer Website kostet einmalig, danach bin ich für Sie da, wenn Sie mich brauchen. Die laufenden Kosten für Hosting und Domain werden direkt mit dem Hosting-Anbieter verrechnet und können dort je nach gewähltem Paket selbst gekündigt werden. Sie sind an nichts gebunden.',
-  },
-  {
-    q: 'Was passiert, wenn ich in ein paar Jahren zu einem anderen Entwickler wechseln möchte?',
-    a: 'Dann bekommen Sie alle Dateien, die komplette Datenbank und die Domain-Zugänge — sauber übergeben. Ich baue mit gängigen Web-Standards, keine Sonderkonstruktionen, die nur ich warten kann. Ihr nächster Entwickler kann direkt weiterarbeiten.',
-  },
-  {
-    q: 'Was kostet eine Website ungefähr?',
-    a: 'Eine typische Website für einen kleinen Betrieb liegt zwischen 800 € und 2.500 €, einmalig. Dazu kommen die laufenden Kosten für Server und Domain (unter 15 € im Monat). Genaueres bekommen Sie nach dem Briefing — schriftlich, verbindlich, ohne Kleingedrucktes.',
-  },
-];
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('faq', 'faq');
+const f = entry!.data;
+const faq = f.items;
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="section faq-section" id="faq">
@@ -43,13 +15,9 @@ const faq = [
     </span>
 
     <header class="faq-header reveal">
-      <p class="eyebrow">Ehrliche Antworten</p>
-      <h2>Alles, was Sie vor der ersten Anfrage wissen wollen.</h2>
-      <p class="lead">
-        Kein Kleingedrucktes, kein Marketing-Blabla — sondern die Antworten
-        auf die Fragen, die mir Kunden am häufigsten stellen, bevor sie sich
-        entscheiden.
-      </p>
+      <p class="eyebrow">{f.eyebrow}</p>
+      <h2>{f.heading}</h2>
+      <p class="lead">{f.lead}</p>
     </header>
 
     <div class="faq__list">
@@ -74,9 +42,9 @@ const faq = [
     </div>
 
     <div class="faq__cta reveal">
-      <p class="mono faq__cta-mono">Noch eine Frage offen?</p>
-      <a href="#kontakt" class="link">
-        <span>Schreiben Sie mir kurz</span>
+      <p class="mono faq__cta-mono">{f.ctaLead}</p>
+      <a href={`${base}#kontakt`} class="link">
+        <span>{f.ctaText}</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M5 12h14M13 6l6 6-6 6"/>
         </svg>

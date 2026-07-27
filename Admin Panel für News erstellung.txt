@@ -1,0 +1,367 @@
+================================================================
+MT-WEBDESIGN — SESSION-PROTOKOLL
+Datum: 27. Juli 2026
+Repo: matthiastrajer/mt-webdesign
+Branch: master
+================================================================
+
+
+================================================================
+TEIL 1 — KONTAKTFORMULAR OPTISCH ANGEGLICHEN
+================================================================
+
+Aufgabe: Der Fragebogen-Hinweis im Kontaktformular sollte die
+gleiche visuelle Präsenz wie das Anfrage-Formular selbst haben;
+Button-Style und -Text anpassen.
+
+Was gemacht:
+- src/components/Contact.astro
+- Fragebogen-Feld bekam eigenen Kopfbereich mit "FORM · 002"-Label,
+  Überschrift ("Sie wissen schon, was Sie wollen?"), größeren
+  Padding-Wert (clamp(1.5rem, 3vw, 2.25rem)) und Brass-Ecken
+  oben-links + unten-rechts — dieselbe Formsprache wie
+  .contact__form.
+- Button-Klasse "btn--brass" entfernt, sodass er die gleiche
+  Standard-.btn-Klasse wie das Hero-CTA nutzt.
+- Buttontext bereits auf "Direkt unverbindliches Angebot einholen"
+  gesetzt (Text war schon aktuell).
+
+Commit: 8c868e1
+
+Aufgetretene Rückfrage (kein Fehler):
+- Benutzer sprach von "orange" für den Hero-CTA — technisch ist der
+  dunkel (var(--ink) = #0e1a2b) mit Brass-Hover. Interpretation:
+  einheitlicher .btn-Stil auf beiden Buttons — umgesetzt.
+
+
+================================================================
+TEIL 2 — BASE-PATH-BUG (GITHUB PAGES 404)
+================================================================
+
+Fehler: Klick auf "Direkt unverbindliches Angebot einholen"
+landete auf https://matthiastrajer.github.io/mt-webdesignbriefing
+(404). Das führende "/" zwischen "mt-webdesign" und "briefing"
+fehlte.
+
+Root Cause:
+- GitHub Pages liefert BASE_PATH als "/mt-webdesign" ohne
+  Trailing-Slash aus.
+- Astro reicht das 1:1 als import.meta.env.BASE_URL an alle
+  Komponenten.
+- Templates wie `${import.meta.env.BASE_URL}briefing` erzeugten
+  "/mt-webdesignbriefing" statt "/mt-webdesign/briefing".
+- Betraf potenziell auch Impressum und Datenschutz.
+
+Fix: astro.config.mjs
+
+    const rawBase = process.env.BASE_PATH || '/';
+    const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+
+    export default defineConfig({
+      site: 'https://mt-webdesign.at',
+      base,
+      ...
+    });
+
+Damit hat BASE_URL immer einen Trailing-Slash und die vorhandenen
+Template-Konkatenationen funktionieren.
+
+Commit: 6a2c5c7
+
+
+================================================================
+TEIL 3 — BRIEFING-FRAGEBOGEN AUSGEBAUT
+================================================================
+
+Aufgabe 3a — Neue Frage 09 mit Funktions-Checkliste
+------------------------------------------------------
+- Kundinnen/Kunden sollen anhaken können, welche Website-Funktionen
+  sie brauchen (Google Maps, Online-Termin, Preisliste, ...).
+- 21 Optionen (später 22 mit Sonstiges), Mehrfachauswahl.
+- Bestehende Fragen 09–13 auf 10–14 verschoben, Meta "13 Stück"
+  → "14 Stück".
+- Neuer Render-Zweig 'checkboxes-grid' + kompaktere
+  .choices--compact-Variante für 2-Spalten-Grid.
+
+Commit: f587dcf → gemerged in master als 8289bda-Nachfolger.
+
+Aufgabe 3b — Sonstiges, Foto-Upload F11, allgemeiner Anhang F15
+---------------------------------------------------------------
+- F09: "Sonstiges" als 22. Option + extraField (Text-Input) für
+  Freitext-Wünsche.
+- F11 ("Referenzfotos vorhanden?"): Radio-Optionen erweitert auf
+  "Ja, ich hänge sie unten direkt an" / "Ja, sende ich später
+  nach" / "Nein". extraField 'files' für direkten Upload
+  (mehrere Dateien, JPG/PNG/PDF).
+- Neue F15: Allgemeiner Datei-Upload für Logo, CI-Vorlagen,
+  Screenshots, alte Preislisten (image/*, .pdf, .doc, .docx,
+  .zip, .svg, .ai, .psd).
+- Form bekam enctype="multipart/form-data" (Voraussetzung für
+  File-Uploads via HTML-Form).
+- Meta "14 Stück" → "15 Stück".
+- Neue CSS-Klassen .extra-field, .file-field, .file-input inkl.
+  Styling für ::file-selector-button.
+
+Hinweis dokumentiert für Live-Test: FormSubmit-Free-Tier
+unterstützt Datei-Anhänge nur eingeschränkt — bei Bedarf später
+auf FormSubmit PRO oder anderes Backend (Web3Forms, PHP-Skript)
+wechseln.
+
+Commit: 8289bda
+
+Aufgabe 3c — Success-Block war permanent sichtbar
+--------------------------------------------------
+Fehler: Ganz unten auf /briefing war die "Vielen Dank"-Kachel
+dauerhaft zu sehen, obwohl das Element `hidden` attribute hatte.
+
+Root Cause: .success { display: flex; } überschreibt in modernen
+Browsern das native [hidden] { display: none } — CSS gewinnt gegen
+das HTML-Attribut ohne explizite Override.
+
+Fix: Explizite Regel VOR der .success-Definition:
+
+    .success[hidden] {
+      display: none;
+    }
+
+Commit: 19c39ca
+
+
+================================================================
+TEIL 4 — KONTAKTFORMULAR ANGEBUNDEN
+================================================================
+
+Zustand vorher: <form action="#" novalidate> — reiner Platzhalter,
+Anfragen liefen ins Leere.
+
+Zustand nachher (analog zum Briefing-Formular):
+- action="https://formsubmit.co/hallo@mt-webdesign.at"
+- enctype="multipart/form-data"
+- Hidden-Felder: _subject, _captcha=true, _template=table,
+  _next=https://mt-webdesign.at/?kontakt=erfolg#kontakt, _honey
+- Nach Absenden zeigt eine Success-Kachel (Brass-Ecken, gleiches
+  Padding wie das Formular) mit "Vielen Dank — Ihre Anfrage ist
+  angekommen." Trigger: URL-Parameter ?kontakt=erfolg
+- Kleines Inline-Script blendet dann das Formular aus und die
+  Kachel ein.
+
+Prozess-Schritt 01 ("Erstanfrage & Briefing") wurde angepasst:
+- Duration nur noch "kostenlos" (E-Mail-Hinweis raus).
+- Body erwähnt jetzt beide Anfrage-Wege (Kontaktformular oder
+  Briefing-Fragebogen mit 15 Fragen).
+- Kontakt-Hinweis-Text von "13 kurze Fragen" auf "15 kurze
+  Fragen" korrigiert.
+
+WICHTIG für den ersten Live-Test:
+- Beim allerersten Absenden schickt FormSubmit eine
+  Bestätigungsmail an hallo@mt-webdesign.at. Erst nach Klick auf
+  den Bestätigungslink werden weitere Einsendungen zugestellt.
+- Postfach hallo@mt-webdesign.at muss existieren (Hostinger o. ä.).
+
+Commit: 1c47084, 9da8a7f
+
+
+================================================================
+TEIL 5 — NEWS-FEATURE
+================================================================
+
+Struktur:
+- src/content/config.ts — Astro Content-Collection 'news' mit
+  Schema (title, date, excerpt, cover, coverAlt, draft).
+  Cover-Feld wird durch stripNewsPrefix() normalisiert, damit
+  Sveltia-Uploads ("/news/foo.jpg") und Hand-Frontmatter
+  ("foo.jpg") beide funktionieren.
+- src/pages/news/index.astro — Listing-Seite (chronologisch)
+- src/pages/news/[...slug].astro — Detailseite mit
+  Markdown-Rendering + prose-Styling
+- src/components/NewsHighlights.astro — Home-Section: neueste
+  3 News als Karten (Cover + Datum + Titel)
+- Nav-Link "News" neben "Häufig gefragt", inkl. .nav__link--active
+  auf News-Unterseiten
+- public/news/placeholder.svg — gebranded aussehendes Platzhalter-
+  Cover (800×500, dunkel + brass)
+- 3 Beispiel-Beiträge in src/content/news/
+
+Layout NewsHighlights:
+- Desktop (>900px): 3 gleich große Karten nebeneinander
+- Tablet (≤900px): 2 Spalten oben, dritte Karte darunter breit
+- Mobil (≤640px): horizontaler Scroll-Snap-Slider (echtes
+  Swipe-Verhalten ohne JS)
+
+Kleinigkeit im Nav aufgeräumt: Interne Anker-Links nutzen jetzt
+konsequent BASE_URL (z. B. ${base}#leistungen), damit sie auch
+aus /news/ zurück zur Startseite mit richtigem Hash-Anker
+funktionieren.
+
+Commit: 6898757
+
+
+================================================================
+TEIL 6 — SVELTIA CMS EINRICHTUNG
+================================================================
+
+Entscheidung Kundenauslieferung: Muster 1 (Kunde bekommt eigenen
+GitHub-Account, wird Owner/Maintainer seines Repos). Rationale:
+Kunde besitzt seine Website; rechtlich sauber; kein Vendor-Lock-in.
+
+Für Kunden ohne Technik-Bereitschaft bleibt das Pflege-Paket
+(Muster 2 — alles bei MT-Webdesign) das Fallback.
+
+Wurde als Memory gespeichert:
+  ~/.claude/projects/D--Claude-Projekte-MeinePage/memory/
+  project_customer_delivery_model.md
+
+--- Code-Setup ---
+
+- public/admin/index.html — lädt Sveltia CMS aus dem CDN
+  (unpkg.com/@sveltia/cms/dist/sveltia-cms.js)
+- public/admin/config.yml — Backend-Config + News-Schema
+  (title, date, excerpt, cover-Upload, alt, draft, markdown body)
+- Footer bekommt dezenten Admin-Login-Link ganz unten, rel="nofollow"
+- docs/CMS_SETUP.md — komplette Schritt-für-Schritt-Anleitung
+- docs/sveltia-cms-auth-worker.js — kompletter OAuth-Proxy-Worker
+  zum Copy-Paste in Cloudflare
+
+Commit: b2856cf
+
+--- OAuth-Setup / Cloudflare-Worker ---
+
+Vom User erledigt:
+1. GitHub OAuth App angelegt
+   - Name: MT-Webdesign CMS
+   - Client ID: Ov23liGAAZOru9D9Sa6C
+2. Cloudflare-Konto angelegt
+3. Worker 'sveltia-cms-auth' deployed
+   - URL: https://sveltia-cms-auth.matthias-trajer.workers.dev
+4. Environment Variables gesetzt in Cloudflare:
+   - GITHUB_CLIENT_ID (Secret)
+   - GITHUB_CLIENT_SECRET (Secret)
+   - ALLOWED_DOMAINS = mt-webdesign.at,matthiastrajer.github.io
+
+base_url in public/admin/config.yml gesetzt auf die Worker-URL.
+
+Commit: 7622075
+
+
+================================================================
+FEHLER BEIM OAUTH-SETUP + FIXES
+================================================================
+
+FEHLER A — "Origin nicht erlaubt: matthiastrajer.github.io"
+-----------------------------------------------------------
+Wann: Nach Klick auf "Sign in with GitHub" im Admin-Panel.
+Wo: OAuth-Popup blieb auf der Worker-URL stehen.
+
+Root Cause: Sveltia/Decap CMS schickt site_id an /oauth/authorize
+mal als reinen Hostnamen ("matthiastrajer.github.io"), mal als
+volle URL. Meine Prüfung nutzte new URL(siteId) — für den bare
+Hostname warf das eine Exception, isAllowedOrigin gab false zurück.
+
+Fix: Neue parseSiteId()-Helper-Funktion, die beide Formen
+verarbeitet:
+
+    function parseSiteId(siteId) {
+      if (!siteId) return null;
+      try {
+        const u = new URL(siteId);
+        return { host: u.hostname.toLowerCase(), origin: u.origin };
+      } catch {
+        const host = siteId.split('/')[0].toLowerCase();
+        if (!host) return null;
+        return { host, origin: `https://${host}` };
+      }
+    }
+
+Beide Handler (handleAuthorize + handleCallback) auf diese
+Funktion umgestellt. isAllowedOrigin durch isAllowedHost ersetzt
+(prüft nur noch den Hostnamen, nicht mehr die ganze URL).
+
+Fix im Repo: Commit 51621d9
+
+WICHTIG: Cloudflare-Worker deployen sich NICHT automatisch aus
+dem Git-Repo. Der Fix im Repo genügt nicht — der Code muss
+manuell im Cloudflare-Dashboard neu eingefügt und deployed werden.
+
+
+FEHLER B — Selbe Fehlermeldung nach vermeintlichem Redeploy
+------------------------------------------------------------
+Wann: User meldete "noch immer selber fehler" nach Fehler-A-Fix.
+
+Root Cause: Nicht eindeutig — entweder Worker-Code noch nicht
+im Cloudflare aktualisiert oder ALLOWED_DOMAINS nicht gesetzt.
+Ohne Diagnose-Möglichkeit im Worker nicht zu unterscheiden.
+
+Fix: /alive-Endpoint des Workers gibt jetzt Diagnose aus:
+
+    sveltia-cms-auth · alive
+    version: v3-2026-07-27
+    allowed_domains (2): mt-webdesign.at, matthiastrajer.github.io
+    client_id_set: yes
+    client_secret_set: yes
+
+Damit sofort erkennbar, ob (a) Code-Deploy aktuell und (b)
+Env-Vars gesetzt sind.
+
+Nach User-Test: alive-Endpoint zeigte alles OK — v3 deployed,
+alle Env-Vars gesetzt. Der ursprüngliche Origin-Bug war damit
+behoben, weiter zu Fehler C.
+
+Fix im Repo: Commit 3251812
+
+
+FEHLER C — "Invalid Redirect URI" auf github.com
+-------------------------------------------------
+Wann: Nach Klick auf Sign-in-with-GitHub, im GitHub-Popup.
+Fehler: "The redirect_uri is not associated with this application."
+
+Root Cause: In der GitHub OAuth App war die "Authorization
+callback URL" noch nicht auf die tatsächliche Worker-URL
+gesetzt (vermutlich noch REPLACE-ME-Platzhalter aus der
+initialen Anlage).
+
+Fix: In https://github.com/settings/developers → OAuth App
+"MT-Webdesign CMS" → Authorization callback URL exakt setzen auf
+
+    https://sveltia-cms-auth.matthias-trajer.workers.dev/callback
+
+Update application → erneut einloggen.
+
+(User-seitige Aufgabe, kein Code-Fix nötig.)
+
+
+================================================================
+CURRENT STATE / OFFENE PUNKTE
+================================================================
+
+Live und funktional:
+- Website unter https://matthiastrajer.github.io/mt-webdesign/
+- Kontakt- und Briefing-Formular via formsubmit.co gebunden
+  (E-Mail hallo@mt-webdesign.at muss existieren und FormSubmit-
+  Bestätigungsmail bestätigt werden)
+- News-Feature: Home-Highlights + /news + /news/<slug>
+- 3 Beispiel-News und Placeholder-Cover an Bord
+
+Sveltia CMS — halb fertig:
+- Code komplett im Repo
+- Worker deployed und diagnostisch grün
+- OAuth App angelegt, Client ID/Secret in Worker-Env
+- OFFEN: Authorization callback URL in der GitHub OAuth App
+  auf https://sveltia-cms-auth.matthias-trajer.workers.dev/callback
+  setzen — dann sollte /admin funktionieren
+
+Für Kundenprojekte (später):
+- GitHub Organization 'mt-webdesign' anlegen
+- Pro Kunde ein Repo darin, Kunde als Maintainer einladen
+- Pro Kunde: eigene OAuth App (bevorzugt im Kunden-GitHub-Konto)
+- Cloudflare-Worker entweder zentral (mit ALLOWED_DOMAINS pro
+  Kundendomain erweitern) oder pro Projekt eigener Worker
+- Alternative Hoster für Kundensites überlegen (Cloudflare Pages,
+  Netlify, Vercel) — bessere Analytics + integrierte Auth-Backends
+
+Post-Launch (nice-to-have):
+- FormSubmit-Free-Tier reicht evtl. nicht für Datei-Anhänge im
+  Briefing — bei Bedarf auf PRO wechseln oder Backend austauschen
+- Reale Cover-Bilder für die 3 Beispiel-News einsetzen (statt
+  Placeholder)
+- Bei erstem echten Kundenprojekt: gesamte Muster-1-Prozedur
+  dokumentieren

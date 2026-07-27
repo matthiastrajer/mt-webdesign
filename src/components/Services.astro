@@ -1,47 +1,10 @@
 ---
-const core = [
-  {
-    id: '001',
-    icon: 'window',
-    title: 'Website-Erstellung',
-    body:
-      'Individuell gestaltete Websites — nicht aus dem Baukasten. Von der ersten Skizze bis zum Live-Gang. Responsive, schnell und mit sauberen SEO-Grundlagen, damit Sie bei Google gefunden werden.',
-    features: ['Individuelles Design', 'Bei Google auffindbar', 'Mobile-optimiert', 'DSGVO-konform'],
-  },
-  {
-    id: '002',
-    icon: 'server',
-    title: 'Hosting',
-    body:
-      'Ich kümmere mich um Server, SSL-Zertifikat, Backups und Domain — Sie brauchen keinen weiteren Anbieter. Alles aus einer Hand, mit geringen monatlichen Kosten für Server und Domain.',
-    features: ['Server & Domain', 'SSL-Zertifikat', 'Tägliche Backups', 'Geringe Monatskosten'],
-  },
-  {
-    id: '003',
-    icon: 'edit',
-    title: 'Admin-Panel',
-    body:
-      'Sie bekommen einen einfachen Zugang, mit dem Sie Ihre Website selbst pflegen können — Fotos hochladen, neue Mitarbeiter eintragen, Referenzen ergänzen, Kontaktdaten ändern. Ohne HTML, ohne Umwege.',
-    features: ['Fotos & Bilder', 'Mitarbeiter & Team', 'Referenzen ergänzen', 'Kontakt & Texte'],
-  },
-];
+import { getEntry } from 'astro:content';
 
-const optional = [
-  {
-    id: 'Z-01',
-    title: 'Pflege- & Betreuungspaket',
-    body:
-      'Für alle, die auch das lieber abgeben: Ich übernehme Änderungen für Sie — Anruf oder E-Mail genügt, Umsetzung innerhalb von 48 Stunden.',
-  },
-  {
-    id: 'Z-02',
-    title: 'Logo-Design',
-    body:
-      'Kein Logo oder unzufrieden mit dem alten? Ich gestalte ein passendes, zeitloses Logo — abgestimmt auf Ihre Website und Ihre Branche.',
-  },
-];
+const entry = await getEntry('services', 'services');
+const s = entry!.data;
 
-const icons = {
+const icons: Record<string, string> = {
   window: `<rect x="4" y="6" width="24" height="20" rx="1" stroke-width="1.4"/><line x1="4" y1="12" x2="28" y2="12" stroke-width="1.4"/><circle cx="8" cy="9" r="0.8" fill="currentColor"/><circle cx="11" cy="9" r="0.8" fill="currentColor"/>`,
   server: `<rect x="4" y="6" width="24" height="9" rx="1" stroke-width="1.4"/><rect x="4" y="17" width="24" height="9" rx="1" stroke-width="1.4"/><line x1="8" y1="10.5" x2="8" y2="10.5" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="21.5" x2="8" y2="21.5" stroke-width="2" stroke-linecap="round"/>`,
   edit: `<path d="M20 6l6 6-14 14H6v-6z" stroke-width="1.4" stroke-linejoin="round"/><line x1="18" y1="8" x2="24" y2="14" stroke-width="1.4"/>`,
@@ -56,19 +19,14 @@ const icons = {
     </span>
 
     <header class="services__header reveal">
-      <p class="eyebrow">Was Sie bekommen</p>
-      <h2>Website, Hosting und ein einfaches Admin-Panel — aus einer Hand.</h2>
-      <p class="lead">
-        Kein Jonglieren zwischen Domain-Anbieter, Baukasten und externem
-        Entwickler. Sie bekommen eine fertige Website, den Server dazu und
-        einen Zugang, mit dem Sie selbst Änderungen vornehmen — so einfach
-        wie eine E-Mail schreiben.
-      </p>
+      <p class="eyebrow">{s.eyebrow}</p>
+      <h2>{s.heading}</h2>
+      <p class="lead">{s.lead}</p>
     </header>
 
     <div class="services__grid">
       {
-        core.map((service, i) => (
+        s.core.map((service, i) => (
           <article class={`service reveal reveal--delay-${(i % 4) + 1}`}>
             <div class="service__head">
               <span class="mono service__id">S · {service.id}</span>
@@ -95,13 +53,13 @@ const icons = {
 
     <div class="services__optional reveal">
       <div class="optional__head">
-        <span class="mono optional__badge">Auf Anfrage · Zusatzleistungen</span>
+        <span class="mono optional__badge">{s.optionalHeading ?? 'Auf Anfrage · Zusatzleistungen'}</span>
         <div class="dim-line optional__line"></div>
       </div>
 
       <div class="optional__grid">
         {
-          optional.map((item) => (
+          s.optional.map((item) => (
             <div class="optional__item">
               <div class="optional__meta">
                 <span class="mono optional__id">{item.id}</span>

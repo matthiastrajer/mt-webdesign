@@ -1,4 +1,9 @@
 ---
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('hero', 'hero');
+const h = entry!.data;
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="hero" id="main">
@@ -7,41 +12,38 @@
   <div class="container hero__inner">
     <!-- Bemaßungs-Label oben -->
     <div class="hero__topline">
-      <span class="mono hero__coord">A1 · 001</span>
+      <span class="mono hero__coord">{h.coord}</span>
       <span class="dim">
         <span class="dim__arrow">◀</span>
-        <span>Konzept</span>
-        <span class="dim__arrow">·</span>
-        <span>Design</span>
-        <span class="dim__arrow">·</span>
-        <span>Entwicklung</span>
+        {h.dimensions.map((d, i) => (
+          <>
+            <span>{d}</span>
+            {i < h.dimensions.length - 1 && <span class="dim__arrow">·</span>}
+          </>
+        ))}
         <span class="dim__arrow">▶</span>
       </span>
     </div>
 
     <div class="hero__body">
-      <p class="eyebrow load-in load-in--1">Websites für kleine &amp; mittlere Betriebe</p>
+      <p class="eyebrow load-in load-in--1">{h.eyebrow}</p>
 
       <h1 class="hero__headline">
-        <span class="load-in load-in--2">Websites,</span><br />
-        <span class="load-in load-in--3">die für Sie <em class="hero__em">arbeiten</em>.</span>
+        <span class="load-in load-in--2">{h.headlineLead}</span><br />
+        <span class="load-in load-in--3">{h.headlineMain}<em class="hero__em">{h.headlineHighlight}</em>.</span>
       </h1>
 
-      <p class="lead hero__lead load-in load-in--4">
-        Ich baue schnelle, moderne Websites für Handwerk, Handel, Gastronomie,
-        Praxen und Dienstleister — sauber gebaut, bei Google auffindbar und mit
-        einem einfachen Admin-Panel zum Selbst-Pflegen. Ohne technische Vorkenntnisse.
-      </p>
+      <p class="lead hero__lead load-in load-in--4">{h.lead}</p>
 
       <div class="hero__cta load-in load-in--5">
-        <a href="#kontakt" class="btn">
-          <span>Kostenloses Angebot einholen</span>
+        <a href={`${base}#kontakt`} class="btn">
+          <span>{h.ctaText}</span>
           <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6"/>
           </svg>
         </a>
-        <a href="#leistungen" class="link">
-          <span>Leistungen ansehen</span>
+        <a href={`${base}#leistungen`} class="link">
+          <span>{h.secondaryLinkText}</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M6 9l6 6 6-6"/>
           </svg>
@@ -53,24 +55,21 @@
     <div class="hero__dim">
       <div class="dim-line draw-line"></div>
       <div class="hero__dim-labels">
-        <span class="mono">◀ Website in 14 Tagen live</span>
-        <span class="mono">Selbst pflegbar · alles aus einer Hand ▶</span>
+        <span class="mono">{h.dimLeft}</span>
+        <span class="mono">{h.dimRight}</span>
       </div>
     </div>
 
     <!-- Passt-für-Zeile -->
     <div class="hero__trust load-in load-in--5">
-      <span class="mono">Passt für</span>
+      <span class="mono">{h.trustLabel}</span>
       <div class="hero__trust-list">
-        <span>Handwerksbetriebe</span>
-        <span aria-hidden="true">·</span>
-        <span>Gastronomie</span>
-        <span aria-hidden="true">·</span>
-        <span>Praxen</span>
-        <span aria-hidden="true">·</span>
-        <span>Einzelhandel</span>
-        <span aria-hidden="true">·</span>
-        <span>Dienstleister</span>
+        {h.trustList.map((item, i) => (
+          <>
+            <span>{item}</span>
+            {i < h.trustList.length - 1 && <span aria-hidden="true">·</span>}
+          </>
+        ))}
       </div>
     </div>
   </div>

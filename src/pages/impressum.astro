@@ -2,146 +2,37 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('pages', 'impressum');
+const { data } = entry!;
+const { Content } = await entry!.render();
+const base = import.meta.env.BASE_URL;
 ---
 
-<Base
-  title="Impressum — MT-Webdesign"
-  description="Impressum und Offenlegung von MT-Webdesign gemäß § 5 ECG und § 25 MedienG."
->
+<Base title={`${data.title} — MT-Webdesign`} description={data.metaDescription}>
   <Nav />
   <main class="legal">
     <div class="container">
       <span class="section-label">
-        <span class="section-label__id">L01</span>
-        <span>Impressum</span>
+        <span class="section-label__id">{data.labelId}</span>
+        <span>{data.label}</span>
       </span>
 
       <div class="legal__body">
-        <p class="eyebrow">Rechtliches</p>
-        <h1 class="legal__title">Impressum &amp; Offenlegung</h1>
+        {data.intro && <p class="eyebrow">{data.intro}</p>}
+        <h1 class="legal__title">{data.title}</h1>
 
-        <section>
-          <h2>Angaben gemäß § 5 ECG und § 25 Mediengesetz</h2>
-          <p>
-            Matthias Trajer<br />
-            MT-Webdesign<br />
-            Kokoschkagasse 6d<br />
-            3104 St. Pölten<br />
-            Österreich
-          </p>
-        </section>
+        <div class="legal__prose">
+          <Content />
+        </div>
 
-        <section>
-          <h2>Kontakt</h2>
-          <p>
-            Telefon: +43 000 000 00 00<br />
-            E-Mail: hallo@mt-webdesign.at
-          </p>
-        </section>
-
-        <section>
-          <h2>Unternehmensgegenstand</h2>
-          <p>
-            Dienstleistungen in der automatischen Datenverarbeitung und
-            Informationstechnik — Konzeption, Gestaltung und Umsetzung von
-            Websites, Hosting-Vermittlung sowie Betreuung und Pflege von Websites.
-          </p>
-        </section>
-
-        <section>
-          <h2>Berufsbezeichnung &amp; berufsrechtliche Regelungen</h2>
-          <p>
-            Freies Gewerbe: „Dienstleistungen in der automatischen
-            Datenverarbeitung und Informationstechnik"<br />
-            Verleihungsstaat: Österreich
-          </p>
-          <p>
-            Anwendbare Rechtsvorschriften: Gewerbeordnung (GewO)<br />
-            Einsehbar unter <a href="https://www.ris.bka.gv.at" rel="noopener noreferrer" target="_blank">www.ris.bka.gv.at</a>
-          </p>
-        </section>
-
-        <section>
-          <h2>Aufsichtsbehörde / Kammer</h2>
-          <p>
-            Bezirkshauptmannschaft St. Pölten<br />
-            Mitglied der Wirtschaftskammer Niederösterreich,
-            Fachgruppe UBIT (Unternehmensberatung, Buchhaltung und
-            Informationstechnologie)
-          </p>
-        </section>
-
-        <section>
-          <h2>UID-Nummer</h2>
-          <p>
-            ATU00000000<br />
-            <span class="mono legal__note-inline">(bei Kleinunternehmerregelung ggf. nicht anzugeben — bitte prüfen)</span>
-          </p>
-        </section>
-
-        <section>
-          <h2>Verantwortlich für den Inhalt</h2>
-          <p>
-            Matthias Trajer<br />
-            Kokoschkagasse 6d, 3104 St. Pölten
-          </p>
-        </section>
-
-        <section>
-          <h2>Online-Streitbeilegung (OS-Plattform)</h2>
-          <p>
-            Die Europäische Kommission stellt eine Plattform zur
-            Online-Streitbeilegung bereit:<br />
-            <a href="https://ec.europa.eu/consumers/odr" rel="noopener noreferrer" target="_blank">
-              https://ec.europa.eu/consumers/odr
-            </a>
-          </p>
-          <p>
-            Ich bin nicht bereit oder verpflichtet, an Streitbeilegungsverfahren
-            vor einer Verbraucherschlichtungsstelle teilzunehmen.
-          </p>
-        </section>
-
-        <section>
-          <h2>Haftung für Inhalte</h2>
-          <p>
-            Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt.
-            Für Richtigkeit, Vollständigkeit und Aktualität kann jedoch keine
-            Gewähr übernommen werden.
-          </p>
-        </section>
-
-        <section>
-          <h2>Haftung für Links</h2>
-          <p>
-            Diese Website enthält gegebenenfalls Links zu externen Websites
-            Dritter, auf deren Inhalte ich keinen Einfluss habe. Für diese
-            fremden Inhalte kann daher keine Gewähr übernommen werden. Für
-            die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter
-            oder Betreiber verantwortlich.
-          </p>
-        </section>
-
-        <section>
-          <h2>Urheberrecht</h2>
-          <p>
-            Die durch den Betreiber erstellten Inhalte und Werke auf dieser
-            Website unterliegen dem österreichischen Urheberrecht.
-            Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
-            Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der
-            schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
-          </p>
-        </section>
-
-        <p class="legal__note mono">
-          Dieser Text ist ein Entwurf und muss vor Veröffentlichung mit echten
-          Daten (Telefon, E-Mail, UID) ergänzt und idealerweise durch die WKO
-          NÖ oder einen Rechtsanwalt geprüft werden. Empfehlung: WKO-Impressum-Check
-          nutzen.
-        </p>
+        {data.warning && (
+          <p class="legal__note mono">{data.warning}</p>
+        )}
 
         <p class="legal__back">
-          <a href={import.meta.env.BASE_URL} class="link">
+          <a href={base} class="link">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M19 12H5M11 18l-6-6 6-6"/>
             </svg>
@@ -170,26 +61,43 @@ import Footer from '../components/Footer.astro';
     font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem);
     margin-top: 0.5rem;
   }
-  .legal section {
-    margin-top: 1rem;
+  .legal__prose :global(h2) {
+    font-size: 1.15rem;
+    margin: 1rem 0 0.6rem;
     padding-top: 1.25rem;
     border-top: 1px dashed var(--line);
   }
-  .legal h2 {
-    font-size: 1.15rem;
-    margin-bottom: 0.6rem;
+  .legal__prose :global(h2:first-child) {
+    padding-top: 0;
+    border-top: none;
+    margin-top: 0;
   }
-  .legal p {
+  .legal__prose :global(p) {
     color: var(--ink-2);
     line-height: 1.65;
+    margin: 0 0 1rem;
   }
-  .legal a {
+  .legal__prose :global(ul) {
+    color: var(--ink-2);
+    line-height: 1.7;
+    padding-left: 1.25rem;
+    margin: 0.5rem 0 1rem;
+  }
+  .legal__prose :global(li) {
+    margin-bottom: 0.35rem;
+  }
+  .legal__prose :global(a) {
     color: var(--ink);
     border-bottom: 1px solid var(--brass);
   }
-  .legal__note-inline {
+  .legal__prose :global(strong) {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .legal__prose :global(em) {
     color: var(--ink-3);
-    font-size: 11px;
+    font-style: normal;
+    font-size: 12px;
     letter-spacing: 0.02em;
   }
   .legal__note {
@@ -200,6 +108,8 @@ import Footer from '../components/Footer.astro';
     font-size: 12px;
     margin-top: 2rem;
     line-height: 1.6;
+    text-transform: none;
+    letter-spacing: 0;
   }
   .legal__back {
     margin-top: 2rem;

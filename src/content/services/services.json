@@ -1,0 +1,41 @@
+{
+  "eyebrow": "Was Sie bekommen",
+  "heading": "Website, Hosting und ein einfaches Admin-Panel — aus einer Hand.",
+  "lead": "Kein Jonglieren zwischen Domain-Anbieter, Baukasten und externem Entwickler. Sie bekommen eine fertige Website, den Server dazu und einen Zugang, mit dem Sie selbst Änderungen vornehmen — so einfach wie eine E-Mail schreiben.",
+  "core": [
+    {
+      "id": "001",
+      "icon": "window",
+      "title": "Website-Erstellung",
+      "body": "Individuell gestaltete Websites — nicht aus dem Baukasten. Von der ersten Skizze bis zum Live-Gang. Responsive, schnell und mit sauberen SEO-Grundlagen, damit Sie bei Google gefunden werden.",
+      "features": ["Individuelles Design", "Bei Google auffindbar", "Mobile-optimiert", "DSGVO-konform"]
+    },
+    {
+      "id": "002",
+      "icon": "server",
+      "title": "Hosting",
+      "body": "Ich kümmere mich um Server, SSL-Zertifikat, Backups und Domain — Sie brauchen keinen weiteren Anbieter. Alles aus einer Hand, mit geringen monatlichen Kosten für Server und Domain.",
+      "features": ["Server & Domain", "SSL-Zertifikat", "Tägliche Backups", "Geringe Monatskosten"]
+    },
+    {
+      "id": "003",
+      "icon": "edit",
+      "title": "Admin-Panel",
+      "body": "Sie bekommen einen einfachen Zugang, mit dem Sie Ihre Website selbst pflegen können — Fotos hochladen, neue Mitarbeiter eintragen, Referenzen ergänzen, Kontaktdaten ändern. Ohne HTML, ohne Umwege.",
+      "features": ["Fotos & Bilder", "Mitarbeiter & Team", "Referenzen ergänzen", "Kontakt & Texte"]
+    }
+  ],
+  "optionalHeading": "Zusätzlich buchbar",
+  "optional": [
+    {
+      "id": "Z-01",
+      "title": "Pflege- & Betreuungspaket",
+      "body": "Für alle, die auch das lieber abgeben: Ich übernehme Änderungen für Sie — Anruf oder E-Mail genügt, Umsetzung innerhalb von 48 Stunden."
+    },
+    {
+      "id": "Z-02",
+      "title": "Logo-Design",
+      "body": "Kein Logo oder unzufrieden mit dem alten? Ich gestalte ein passendes, zeitloses Logo — abgestimmt auf Ihre Website und Ihre Branche."
+    }
+  ]
+}

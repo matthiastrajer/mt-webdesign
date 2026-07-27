@@ -2,26 +2,25 @@ backend:
   name: github
   repo: matthiastrajer/mt-webdesign
   branch: master
-  # sveltia-cms-auth Cloudflare Worker
   base_url: https://sveltia-cms-auth.matthias-trajer.workers.dev
   auth_endpoint: oauth/authorize
 
 # Wo hochgeladene Dateien im Repo landen
 media_folder: "public/news"
-# URL-Präfix, das im Frontmatter gespeichert wird — vom Astro-Renderer normalisiert
 public_folder: "/news"
 
-# Kleines Publish-UI ohne Draft-/Review-Workflow (keine Pull Requests, direkter Commit).
+# Kleines Publish-UI ohne Draft-/Review-Workflow (direkter Commit).
 publish_mode: simple
 
-# Ansicht auf Deutsch
 locale: de
 
-# Site-URL für "Live-Vorschau"-Links im CMS
 site_url: https://mt-webdesign.at
 display_url: https://mt-webdesign.at
 
 collections:
+  # ==============================================================
+  # NEWS — Blog-Beiträge (Folder-Collection, beliebig viele)
+  # ==============================================================
   - name: news
     label: News
     label_singular: News-Beitrag
@@ -38,7 +37,169 @@ collections:
       - {label: "Titel", name: "title", widget: "string"}
       - {label: "Datum", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, picker_utc: false}
       - {label: "Kurzbeschreibung (für Karten & Vorschau)", name: "excerpt", widget: "text", pattern: ['^.{20,240}$', '20 bis 240 Zeichen']}
-      - {label: "Cover-Bild", name: "cover", widget: "image", required: false, hint: "Empfohlen 800×500 px oder größer. Wird auf der Startseite als Kachel-Bild angezeigt."}
-      - {label: "Alt-Text zum Cover", name: "coverAlt", widget: "string", required: false, hint: "Kurze Beschreibung des Bildes für Screenreader und SEO."}
+      - {label: "Cover-Bild", name: "cover", widget: "image", required: false, hint: "Empfohlen 800×500 px oder größer."}
+      - {label: "Alt-Text zum Cover", name: "coverAlt", widget: "string", required: false}
       - {label: "Als Entwurf speichern (nicht veröffentlichen)", name: "draft", widget: "boolean", default: false, required: false}
       - {label: "Inhalt", name: "body", widget: "markdown"}
+
+  # ==============================================================
+  # STARTSEITE — Alle Sektionen der Homepage
+  # ==============================================================
+  - name: sections
+    label: Startseite
+    description: Alle Textblöcke der Startseite
+    files:
+      - name: hero
+        label: "Hero (ganz oben)"
+        file: "src/content/hero/hero.json"
+        fields:
+          - {label: "Koordinate (oben links, mono)", name: "coord", widget: "string"}
+          - {label: "Prozess-Schritte (oben, mit · getrennt)", name: "dimensions", widget: "list", default: ["Konzept", "Design", "Entwicklung"]}
+          - {label: "Kleiner Text über der Überschrift", name: "eyebrow", widget: "string"}
+          - {label: "Überschrift — 1. Zeile", name: "headlineLead", widget: "string", hint: "z. B. „Websites,\""}
+          - {label: "Überschrift — 2. Zeile Anfang", name: "headlineMain", widget: "string", hint: "z. B. „die für Sie \" — hört vor dem Highlight-Wort auf"}
+          - {label: "Überschrift — Highlight-Wort (brass unterstrichen)", name: "headlineHighlight", widget: "string", hint: "z. B. „arbeiten\""}
+          - {label: "Lead-Absatz", name: "lead", widget: "text"}
+          - {label: "CTA-Button-Text", name: "ctaText", widget: "string"}
+          - {label: "Sekundärer Link-Text", name: "secondaryLinkText", widget: "string"}
+          - {label: "Bemaßung unten links", name: "dimLeft", widget: "string"}
+          - {label: "Bemaßung unten rechts", name: "dimRight", widget: "string"}
+          - {label: "„Passt für\"-Label", name: "trustLabel", widget: "string"}
+          - {label: "„Passt für\"-Liste", name: "trustList", widget: "list"}
+
+      - name: services
+        label: "Leistungen"
+        file: "src/content/services/services.json"
+        fields:
+          - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+          - {label: "Überschrift", name: "heading", widget: "string"}
+          - {label: "Lead", name: "lead", widget: "text"}
+          - label: "Kern-Leistungen"
+            name: "core"
+            widget: "list"
+            fields:
+              - {label: "ID (mono-Label auf der Karte, z. B. 001)", name: "id", widget: "string"}
+              - {label: "Icon", name: "icon", widget: "select", options: ["window", "server", "edit"]}
+              - {label: "Titel", name: "title", widget: "string"}
+              - {label: "Beschreibung", name: "body", widget: "text"}
+              - {label: "Features (Häkchen-Liste)", name: "features", widget: "list"}
+          - {label: "Überschrift für Zusatzleistungen", name: "optionalHeading", widget: "string", required: false}
+          - label: "Zusatzleistungen (kleiner darunter)"
+            name: "optional"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Titel", name: "title", widget: "string"}
+              - {label: "Beschreibung", name: "body", widget: "text"}
+
+      - name: process
+        label: "Ablauf"
+        file: "src/content/process/process.json"
+        fields:
+          - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+          - {label: "Überschrift", name: "heading", widget: "string"}
+          - {label: "Lead", name: "lead", widget: "text"}
+          - label: "Schritte"
+            name: "steps"
+            widget: "list"
+            fields:
+              - {label: "Nummer", name: "n", widget: "string", hint: "z. B. „01\""}
+              - {label: "Titel", name: "title", widget: "string"}
+              - {label: "Dauer", name: "duration", widget: "string", hint: "z. B. „3–5 Tage\" oder „kostenlos\""}
+              - {label: "Beschreibung", name: "body", widget: "text"}
+
+      - name: faq
+        label: "FAQ"
+        file: "src/content/faq/faq.json"
+        fields:
+          - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+          - {label: "Überschrift", name: "heading", widget: "string"}
+          - {label: "Lead", name: "lead", widget: "text"}
+          - {label: "CTA-Lead-Text („Noch eine Frage offen?\")", name: "ctaLead", widget: "string"}
+          - {label: "CTA-Link-Text", name: "ctaText", widget: "string"}
+          - label: "Fragen & Antworten"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.q}}"
+            fields:
+              - {label: "Frage", name: "q", widget: "string"}
+              - {label: "Antwort", name: "a", widget: "text"}
+
+      - name: contact
+        label: "Kontakt-Sektion"
+        file: "src/content/contact/contact.json"
+        fields:
+          - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+          - {label: "Überschrift", name: "heading", widget: "string"}
+          - {label: "Lead", name: "lead", widget: "text"}
+          - {label: "Formular-Frage („Was brauchen Sie?\")", name: "typeQuestion", widget: "string"}
+          - label: "Formular-Optionen (Checkboxen)"
+            name: "typeOptions"
+            widget: "list"
+            fields:
+              - {label: "Wert (technisch, nur intern — nicht ändern wenn unsicher)", name: "value", widget: "string"}
+              - {label: "Beschriftung", name: "label", widget: "string"}
+          - {label: "Briefing-Box: Überschrift", name: "briefingTitle", widget: "string"}
+          - {label: "Briefing-Box: Text", name: "briefingBody", widget: "text"}
+          - {label: "Briefing-Box: Button-Text", name: "briefingButton", widget: "string"}
+          - {label: "Danke-Seite: Überschrift", name: "successHeading", widget: "string"}
+          - {label: "Danke-Seite: Text", name: "successBody", widget: "text"}
+
+      - name: footer
+        label: "Footer"
+        file: "src/content/footer/footer.json"
+        fields:
+          - {label: "Tagline (kurzer Satz unter dem Logo)", name: "tagline", widget: "text"}
+          - {label: "Kleiner Text ganz unten rechts", name: "creditText", widget: "string"}
+
+  # ==============================================================
+  # SITE-EINSTELLUNGEN — Globale Kontaktdaten
+  # ==============================================================
+  - name: settings
+    label: Einstellungen
+    description: Zentrale Kontaktdaten. Werden überall auf der Seite verwendet (Kontaktformular-Ziel, Footer, Impressum, Datenschutz).
+    files:
+      - name: site
+        label: "Allgemein"
+        file: "src/content/settings/site.json"
+        fields:
+          - {label: "E-Mail-Adresse", name: "email", widget: "string", hint: "Diese Adresse empfängt alle Kontakt- und Briefing-Anfragen."}
+          - {label: "Telefonnummer", name: "phone", widget: "string", required: false}
+          - {label: "Firmen-/Betriebsname", name: "company", widget: "string"}
+          - {label: "Inhaber-Name", name: "ownerName", widget: "string"}
+          - {label: "Straße + Nummer", name: "addressStreet", widget: "string"}
+          - {label: "PLZ + Ort", name: "addressCity", widget: "string"}
+          - {label: "Land", name: "country", widget: "string"}
+          - {label: "Antwortzeit (steht auf der Kontakt-Seite)", name: "responseTime", widget: "string", default: "< 24 Stunden"}
+
+  # ==============================================================
+  # RECHTLICHES — Impressum & Datenschutz
+  # ACHTUNG: Rechtliche Texte, Änderungen sorgfältig prüfen!
+  # ==============================================================
+  - name: pages
+    label: Rechtliches
+    description: "⚠️ Achtung: rechtliche Texte. Änderungen können Bußgeld-Risiko auslösen — bei Unsicherheit unbedingt WKO oder Fachanwalt fragen."
+    files:
+      - name: impressum
+        label: "Impressum"
+        file: "src/content/pages/impressum.md"
+        fields:
+          - {label: "Titel (Überschrift der Seite)", name: "title", widget: "string"}
+          - {label: "Meta-Beschreibung (für Suchmaschinen)", name: "metaDescription", widget: "string", required: false}
+          - {label: "Kleiner Text über der Überschrift", name: "intro", widget: "string", required: false, default: "Rechtliches"}
+          - {label: "Label (mono, oben links)", name: "label", widget: "string", default: "Impressum"}
+          - {label: "Label-ID (mono, oben links)", name: "labelId", widget: "string", default: "L01"}
+          - {label: "Warnkasten unten (Brass-Hinweis)", name: "warning", widget: "text", required: false, hint: "Wenn leer, wird kein Warnkasten angezeigt."}
+          - {label: "Inhalt (Markdown — Überschriften mit ## davor)", name: "body", widget: "markdown"}
+
+      - name: datenschutz
+        label: "Datenschutzerklärung"
+        file: "src/content/pages/datenschutz.md"
+        fields:
+          - {label: "Titel", name: "title", widget: "string"}
+          - {label: "Meta-Beschreibung", name: "metaDescription", widget: "string", required: false}
+          - {label: "Kleiner Text über der Überschrift", name: "intro", widget: "string", required: false, default: "Rechtliches"}
+          - {label: "Label (mono, oben links)", name: "label", widget: "string", default: "Datenschutz"}
+          - {label: "Label-ID", name: "labelId", widget: "string", default: "L02"}
+          - {label: "Warnkasten unten", name: "warning", widget: "text", required: false}
+          - {label: "Inhalt (Markdown)", name: "body", widget: "markdown"}
