@@ -19,6 +19,7 @@
 const AUTHORIZATION_URL = 'https://github.com/login/oauth/authorize';
 const TOKEN_URL = 'https://github.com/login/oauth/access_token';
 const DEFAULT_SCOPE = 'repo,user';
+const WORKER_VERSION = 'v3-2026-07-27';
 
 export default {
   async fetch(request, env) {
@@ -33,7 +34,20 @@ export default {
         return handleCallback(url, env);
       }
 
-      return new Response('sveltia-cms-auth · alive', {
+      // Sichtbarer Selbstcheck: Code-Version + geladene Domain-Liste,
+      // damit Deploy- oder Env-Var-Probleme sofort auffallen.
+      const domains = (env.ALLOWED_DOMAINS || '')
+        .split(',')
+        .map((d) => d.trim())
+        .filter(Boolean);
+      const info = [
+        'sveltia-cms-auth · alive',
+        `version: ${WORKER_VERSION}`,
+        `allowed_domains (${domains.length}): ${domains.join(', ') || '(leer!)'}`,
+        `client_id_set: ${env.GITHUB_CLIENT_ID ? 'yes' : 'NO'}`,
+        `client_secret_set: ${env.GITHUB_CLIENT_SECRET ? 'yes' : 'NO'}`,
+      ].join('\n');
+      return new Response(info, {
         status: 200,
         headers: { 'content-type': 'text/plain; charset=utf-8' },
       });
