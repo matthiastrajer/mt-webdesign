@@ -2,10 +2,8 @@ backend:
   name: github
   repo: matthiastrajer/mt-webdesign
   branch: master
-  # Muss auf deinen sveltia-cms-auth-Worker zeigen (Cloudflare Workers URL).
-  # Beispiel: https://sveltia-cms-auth.dein-name.workers.dev
-  # Solange hier ein Platzhalter steht, funktioniert der Login NICHT.
-  base_url: https://REPLACE-ME.workers.dev
+  # sveltia-cms-auth Cloudflare Worker
+  base_url: https://sveltia-cms-auth.matthias-trajer.workers.dev
   auth_endpoint: oauth/authorize
 
 # Wo hochgeladene Dateien im Repo landen
