@@ -363,6 +363,18 @@ p {
   --btn-border: var(--brass);
 }
 
+.btn--brass {
+  --btn-bg: var(--brass);
+  --btn-fg: var(--ink);
+  --btn-border: var(--brass);
+}
+
+.btn--brass:hover {
+  --btn-bg: var(--brass-2);
+  --btn-fg: var(--ink);
+  --btn-border: var(--brass-2);
+}
+
 .link {
   display: inline-flex;
   align-items: center;
