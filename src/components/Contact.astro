@@ -108,11 +108,16 @@
         </button>
 
         <div class="form__briefing">
+          <div class="form__head form__briefing-head">
+            <span class="mono form__id">FORM · 002</span>
+            <span class="mono form__id">Detailliertes Briefing</span>
+          </div>
+          <h3 class="form__briefing-title">Sie wissen schon, was Sie wollen?</h3>
           <p>
-            Sie wissen bereits genau, was Sie wollen? Hier können Sie direkt
-            ein Angebot nach Ihren Wünschen anfordern.
+            Beantworten Sie 13 kurze Fragen — ca. 5 Minuten. So kann ich
+            Ihnen direkt ein passgenaues, unverbindliches Angebot vorbereiten.
           </p>
-          <a href={`${import.meta.env.BASE_URL}briefing`} class="btn btn--brass form__briefing-btn">
+          <a href={`${import.meta.env.BASE_URL}briefing`} class="btn form__briefing-btn">
             <span>Direkt unverbindliches Angebot einholen</span>
             <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6"/>
@@ -409,22 +414,62 @@
   .form__briefing {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.15rem;
     align-items: stretch;
-    margin-top: 1.5rem;
-    padding: 1.5rem 1.4rem;
+    margin-top: 2rem;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
     border: 1px solid var(--line);
-    border-left: 3px solid var(--brass);
     background: color-mix(in srgb, var(--paper) 55%, var(--paper-2));
+    position: relative;
+  }
+
+  .form__briefing::before,
+  .form__briefing::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: var(--brass);
+    border-style: solid;
+    border-width: 0;
+  }
+
+  .form__briefing::before {
+    top: -1px;
+    left: -1px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+  }
+
+  .form__briefing::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+  }
+
+  .form__briefing-head {
+    margin-bottom: 0.25rem;
+  }
+
+  .form__briefing-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.25;
   }
 
   .form__briefing p {
     font-family: var(--font-body);
-    font-size: 15px;
-    line-height: 1.55;
+    font-size: 15.5px;
+    line-height: 1.6;
     color: var(--ink-2);
     text-transform: none;
     letter-spacing: 0;
+    margin: 0;
   }
 
   .form__briefing-btn {
@@ -432,6 +477,7 @@
     justify-content: center;
     text-align: center;
     padding: 1.05rem 1.4rem;
+    margin-top: 0.5rem;
   }
 
   @media (max-width: 780px) {
