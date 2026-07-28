@@ -18,11 +18,33 @@ const base = import.meta.env.BASE_URL;
 
 const dateFmt = (d: Date) =>
   d.toLocaleDateString('de-AT', { day: '2-digit', month: 'long', year: 'numeric' });
+
+// Titel-Länge fürs meta-Tag sanft absichern (max ~60 Zeichen inkl. Brand)
+const brand = ' | MTX-Webdesign';
+const maxTitleLen = 60 - brand.length;
+const trimmedTitle = post.data.title.length > maxTitleLen
+  ? post.data.title.slice(0, maxTitleLen - 1).trimEnd() + '…'
+  : post.data.title;
+const metaTitle = `${trimmedTitle}${brand}`;
+
+// Cover-Bild absolut fürs OG-Tag; ohne Cover Fallback auf Favicon
+const ogImagePath = post.data.cover ? `/news/${post.data.cover}` : '/favicon.png';
 ---
 
 <Base
-  title={`${post.data.title} — MTX-Webdesign News`}
+  title={metaTitle}
   description={post.data.excerpt}
+  ogType="article"
+  ogImage={ogImagePath}
+  ogImageAlt={post.data.coverAlt ?? post.data.title}
+  breadcrumbs={[
+    { name: 'Startseite', url: '/' },
+    { name: 'News', url: '/news/' },
+    { name: post.data.title, url: `/news/${post.slug}/` },
+  ]}
+  article={{
+    publishedTime: post.data.date.toISOString(),
+  }}
 >
   <Nav />
 

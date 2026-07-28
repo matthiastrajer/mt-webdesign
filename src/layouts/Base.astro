@@ -11,29 +11,85 @@ import '@fontsource/inter/600.css';
 import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/jetbrains-mono/500.css';
 
+interface Breadcrumb {
+  name: string;
+  url: string;
+}
+
+interface ArticleMeta {
+  publishedTime?: string;
+  modifiedTime?: string;
+}
+
 interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
+  ogType?: 'website' | 'article';
+  ogImage?: string;
+  ogImageAlt?: string;
+  breadcrumbs?: Breadcrumb[];
+  article?: ArticleMeta;
 }
+
+const SITE_NAME = 'MTX-Webdesign';
+const AUTHOR = 'Matthias Trajer';
+const DEFAULT_DESCRIPTION =
+  'Webdesign St. Pölten & Niederösterreich: professionelle Firmenwebsites, Hosting und Admin-Panel zum Selbst-Pflegen — aus einer Hand. In 14 Tagen live.';
+const DEFAULT_OG_ALT =
+  'MTX-Webdesign — Webdesign in St. Pölten & Niederösterreich';
 
 const {
   title,
-  description = 'MTX-Webdesign — Webdesign in St. Pölten & Niederösterreich. Professionelle Websites für kleine und mittlere Betriebe: Website + Hosting + Admin-Panel zum Selbst-Pflegen, aus einer Hand.',
+  description = DEFAULT_DESCRIPTION,
   noindex = false,
+  ogType = 'website',
+  ogImage = '/favicon.png',
+  ogImageAlt = DEFAULT_OG_ALT,
+  breadcrumbs,
+  article,
 } = Astro.props;
 
-// Strukturierte Daten für lokale Google-Rankings (Schema.org LocalBusiness).
-// Signalisiert Google: „Das hier ist ein echtes lokales Unternehmen mit
-// Standort in St. Pölten, das Webdesign-Dienstleistungen anbietet."
-const localBusiness = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'MTX-Webdesign',
-  description:
-    'Webdesign-Agentur in St. Pölten und Niederösterreich. Professionelle Websites für kleine und mittlere Unternehmen.',
-  url: 'https://mtx-webdesign.at',
+// ---------------------------------------------------------------
+// Canonical: immer auf die produktive Zieldomain (mtx-webdesign.at)
+// zeigen — auch wenn die Seite gerade noch auf github.io läuft. Sobald
+// die Custom-Domain live ist, greifen alle Signale konsistent.
+// ---------------------------------------------------------------
+const rawBase = import.meta.env.BASE_URL; // z. B. "/mt-webdesign/" oder "/"
+const pathname = Astro.url.pathname.startsWith(rawBase)
+  ? '/' + Astro.url.pathname.slice(rawBase.length)
+  : Astro.url.pathname;
+const cleanPath = pathname.replace(/\/+$/, '/') || '/';
+const canonicalURL = new URL(cleanPath, Astro.site).href;
+
+const absoluteOgImage = new URL(ogImage, Astro.site).href;
+
+// ---------------------------------------------------------------
+// JSON-LD @graph — Organization + WebSite + Logo + LocalBusiness,
+// optional erweitert um BreadcrumbList (pro Seite) und Article
+// (auf News-Detail-Seiten). Single-Graph-Ansatz ist Google-empfohlen,
+// weil sich die Nodes über @id referenzieren lassen.
+// ---------------------------------------------------------------
+const siteHref = Astro.site!.href;
+
+const orgNode = {
+  '@type': 'Organization',
+  '@id': `${siteHref}#organization`,
+  name: SITE_NAME,
+  url: siteHref,
+  logo: { '@id': `${siteHref}#logo` },
+  image: { '@id': `${siteHref}#logo` },
   email: 'hallo@mtx-webdesign.at',
+  founder: { '@type': 'Person', name: AUTHOR },
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      email: 'hallo@mtx-webdesign.at',
+      contactType: 'customer service',
+      availableLanguage: ['de', 'de-AT'],
+      areaServed: 'AT',
+    },
+  ],
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Kokoschkagasse 6d',
@@ -42,45 +98,151 @@ const localBusiness = {
     addressRegion: 'Niederösterreich',
     addressCountry: 'AT',
   },
+};
+
+const websiteNode = {
+  '@type': 'WebSite',
+  '@id': `${siteHref}#website`,
+  url: siteHref,
+  name: SITE_NAME,
+  inLanguage: 'de-AT',
+  publisher: { '@id': `${siteHref}#organization` },
+};
+
+const logoNode = {
+  '@type': 'ImageObject',
+  '@id': `${siteHref}#logo`,
+  url: `${siteHref}favicon.png`,
+  contentUrl: `${siteHref}favicon.png`,
+  caption: SITE_NAME,
+  width: 1254,
+  height: 1254,
+};
+
+const localBusinessNode = {
+  '@type': 'ProfessionalService',
+  '@id': `${siteHref}#localbusiness`,
+  name: SITE_NAME,
+  description:
+    'Webdesign-Agentur in St. Pölten und Niederösterreich. Professionelle Websites für kleine und mittlere Unternehmen.',
+  url: siteHref,
+  email: 'hallo@mtx-webdesign.at',
+  image: { '@id': `${siteHref}#logo` },
+  logo: { '@id': `${siteHref}#logo` },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Kokoschkagasse 6d',
+    postalCode: '3104',
+    addressLocality: 'St. Pölten',
+    addressRegion: 'Niederösterreich',
+    addressCountry: 'AT',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 48.2047,
+    longitude: 15.6256,
+  },
   areaServed: [
     { '@type': 'City', name: 'St. Pölten' },
     { '@type': 'AdministrativeArea', name: 'Niederösterreich' },
     { '@type': 'City', name: 'Wien' },
   ],
   priceRange: '€€',
-  founder: {
-    '@type': 'Person',
-    name: 'Matthias Trajer',
-  },
+  founder: { '@type': 'Person', name: AUTHOR },
+};
+
+const graph: unknown[] = [orgNode, websiteNode, logoNode, localBusinessNode];
+
+if (breadcrumbs && breadcrumbs.length > 0) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((b, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: b.name,
+      item: b.url.startsWith('http')
+        ? b.url
+        : new URL(b.url.replace(/^\//, ''), Astro.site).href,
+    })),
+  });
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': graph,
 };
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang="de-AT">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#eef1f4" />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
-    <!-- Favicon: PNG (Brand-Logo, MTX-Marke) -->
-    <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}favicon.png`} />
-    <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}favicon.png`} />
 
-    <!-- Open Graph & Twitter Card für schönere Vorschauen bei Social Sharing -->
-    <meta property="og:type" content="website" />
+    <!-- Autorenschaft -->
+    <meta name="author" content={AUTHOR} />
+    <meta name="creator" content={AUTHOR} />
+    <meta name="publisher" content={SITE_NAME} />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+    <!-- Robots: explizit auch für erlaubte Seiten (max-image-preview:large
+         schaltet große Vorschaubilder in Google-Discover frei) -->
+    {noindex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <meta
+        name="robots"
+        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      />
+    )}
+
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon: PNG (Brand-Logo, MTX-Marke) -->
+    <link rel="icon" type="image/png" href={`${rawBase}favicon.png`} />
+    <link rel="apple-touch-icon" href={`${rawBase}favicon.png`} />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content="de_AT" />
+    <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1254" />
+    <meta property="og:image:height" content="1254" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+
+    {article?.publishedTime && (
+      <meta property="article:published_time" content={article.publishedTime} />
+    )}
+    {article?.modifiedTime && (
+      <meta property="article:modified_time" content={article.modifiedTime} />
+    )}
+    {ogType === 'article' && (
+      <meta property="article:author" content={AUTHOR} />
+    )}
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteOgImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <title>{title}</title>
 
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(localBusiness)}></script>
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(jsonLd)}
+    ></script>
 
-    <!-- Slot für zusätzliche <head>-Inhalte (z. B. seitenspezifisches JSON-LD) -->
+    <!-- Slot für seitenspezifisches JSON-LD (z. B. FAQPage auf der Home) -->
     <slot name="head" />
   </head>
   <body>

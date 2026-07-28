@@ -29,10 +29,15 @@ const faqSchema = {
 ---
 
 <Base
-  title="MTX-Webdesign — Webdesign in St. Pölten & Niederösterreich"
-  description="Professionelle Websites für Unternehmen in Niederösterreich. Ihre neue Firmenwebsite in 14 Tagen live — inklusive Hosting, Admin-Panel zum Selbst-Pflegen und persönlicher Betreuung. Für Handwerk, Gastronomie, Praxen und Dienstleister."
+  title="Webdesign St. Pölten & Niederösterreich | MTX-Webdesign"
+  description="Professionelle Firmenwebsites für Unternehmen in St. Pölten & Niederösterreich. In 14 Tagen live, inklusive Hosting und Admin-Panel zum Selbst-Pflegen."
 >
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(faqSchema)}
+    slot="head"
+  />
   <Nav />
   <main>
     <Hero />

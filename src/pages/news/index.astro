@@ -15,8 +15,12 @@ const dateFmt = (d: Date) =>
 ---
 
 <Base
-  title="News & Aktuelles — MTX-Webdesign St. Pölten"
-  description="Neuigkeiten von MTX-Webdesign: neue Funktionen, aktuelle Projekte und Hinweise rund um Webdesign für Unternehmen in Niederösterreich."
+  title="News & Aktuelles zu Webdesign | MTX-Webdesign"
+  description="Aktuelles von MTX-Webdesign: neue Funktionen, Projekte und Hinweise rund um Webdesign für Unternehmen in St. Pölten und Niederösterreich."
+  breadcrumbs={[
+    { name: 'Startseite', url: '/' },
+    { name: 'News', url: '/news/' },
+  ]}
 >
   <Nav />
 
@@ -29,10 +33,11 @@ const dateFmt = (d: Date) =>
 
       <header class="news__header">
         <p class="eyebrow">Aktuelles</p>
-        <h1 class="news__title">Was es Neues gibt.</h1>
+        <h1 class="news__title">News &amp; Aktuelles rund um Webdesign.</h1>
         <p class="lead">
           Hinweise zu neuen Funktionen, aktuellen Projekten und Themen,
-          die für kleine und mittlere Betriebe relevant sind.
+          die für kleine und mittlere Betriebe in St. Pölten und Niederösterreich
+          relevant sind.
         </p>
       </header>
 
