@@ -58,6 +58,9 @@ const isNewsPage = Astro.url.pathname.replace(/\/$/, '') === `${base}news`.repla
     height: 52px;
     width: auto;
     object-fit: contain;
+    /* Mockup-Wall via multiply teilweise ausblenden, bis wir eine saubere
+       transparente Logodatei haben */
+    mix-blend-mode: multiply;
   }
 
   .nav__links {
