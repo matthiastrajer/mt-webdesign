@@ -19,9 +19,40 @@ interface Props {
 
 const {
   title,
-  description = 'MTX-Webdesign — schnelle, moderne Websites für kleine und mittlere Betriebe. Website, Hosting und ein einfaches Admin-Panel zum Selbst-Pflegen — aus einer Hand.',
+  description = 'MTX-Webdesign — Webdesign in St. Pölten & Niederösterreich. Professionelle Websites für kleine und mittlere Betriebe: Website + Hosting + Admin-Panel zum Selbst-Pflegen, aus einer Hand.',
   noindex = false,
 } = Astro.props;
+
+// Strukturierte Daten für lokale Google-Rankings (Schema.org LocalBusiness).
+// Signalisiert Google: „Das hier ist ein echtes lokales Unternehmen mit
+// Standort in St. Pölten, das Webdesign-Dienstleistungen anbietet."
+const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'MTX-Webdesign',
+  description:
+    'Webdesign-Agentur in St. Pölten und Niederösterreich. Professionelle Websites für kleine und mittlere Unternehmen.',
+  url: 'https://mtx-webdesign.at',
+  email: 'hallo@mtx-webdesign.at',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Kokoschkagasse 6d',
+    postalCode: '3104',
+    addressLocality: 'St. Pölten',
+    addressRegion: 'Niederösterreich',
+    addressCountry: 'AT',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'St. Pölten' },
+    { '@type': 'AdministrativeArea', name: 'Niederösterreich' },
+    { '@type': 'City', name: 'Wien' },
+  ],
+  priceRange: '€€',
+  founder: {
+    '@type': 'Person',
+    name: 'Matthias Trajer',
+  },
+};
 ---
 
 <!doctype html>
@@ -36,7 +67,18 @@ const {
     <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}favicon.png`} />
     <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}favicon.png`} />
 
+    <!-- Open Graph & Twitter Card für schönere Vorschauen bei Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="de_AT" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
     <title>{title}</title>
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(localBusiness)}></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Zum Inhalt springen</a>
