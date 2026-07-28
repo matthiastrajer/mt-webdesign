@@ -4,7 +4,7 @@ metaDescription: "Datenschutzerklärung von MTX-Webdesign gemäß DSGVO und öst
 intro: "Rechtliches"
 label: "Datenschutz"
 labelId: "L02"
-warning: "Vor Live-Gang bitte prüfen: (1) Telefonnummer im Kontaktblock nachtragen. (2) Die Sections „Google Maps\" und „Google Fonts\" wurden aus einem Vorlagentext übernommen — beide Dienste sind aktuell NICHT auf der Website integriert (Fonts sind selbstgehostet, Karten sind nirgendwo eingebettet). Entweder Sections entfernen, sobald klar ist, dass sie nie kommen — oder drinlassen als Absicherung für später (dann bei tatsächlicher Aktivierung auch einen Consent-Banner ergänzen). (3) Das aktuell tatsächlich genutzte Kontaktformular-Backend (FormSubmit.co, US-Anbieter) und der Hoster (GitHub Pages) sollten idealerweise namentlich ergänzt werden. (4) Rechtstext-Änderungen immer mit WKO oder Fachanwalt prüfen lassen."
+warning: "Rechtstext — vor Live-Gang bitte durch WKO-Impressum-Check oder einen Fachanwalt prüfen lassen. Sobald Google Maps, Analytics, YouTube-Einbettungen o. ä. hinzukommen, muss diese Erklärung ergänzt und ein Cookie-Consent-Banner integriert werden."
 ---
 
 ## Erklärung zur Informationspflicht
@@ -25,35 +25,23 @@ Unsere Website verwendet so genannte Cookies. Dabei handelt es sich um kleine Te
 
 Wenn Sie dies nicht wünschen, so können Sie Ihren Browser so einrichten, dass er Sie über das Setzen von Cookies informiert und Sie dies nur im Einzelfall erlauben. Bei der Deaktivierung von Cookies kann die Funktionalität unserer Website eingeschränkt sein.
 
-## Google Maps
+## Kontaktformular-Dienstleister (FormSubmit)
 
-Unsere Website verwendet Funktionen des Webkartendienstes „Google Maps". Der Dienstanbieter dieser Funktion ist:
+Zur Verarbeitung von Anfragen aus dem Kontakt- und Briefing-Formular nutzen wir den Dienst **FormSubmit** ([formsubmit.co](https://formsubmit.co)), einen US-basierten Anbieter für die Weiterleitung von Formulareinsendungen per E-Mail.
 
-- Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. Tel: +353 1 543 1000
+Beim Absenden eines Formulars werden die von Ihnen eingegebenen Daten (Name, E-Mail-Adresse, Telefonnummer sofern angegeben, Nachrichteninhalt sowie ggf. hochgeladene Dateien) an FormSubmit übermittelt und von dort an unsere E-Mail-Adresse weitergeleitet.
 
-Im Zuge der Nutzung von Google Maps ist es notwendig Ihre IP-Adresse zu speichern und zu verarbeiten. Google überträgt in der Regel an einen Server in den USA und speichert die Daten dort. Die Verarbeitung geschieht durch den Diensteanbieter (oben genannt), der Betreiber dieser Homepage hat keinen Einfluss auf die Übertragung der Daten.
+Rechtsgrundlage der Verarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines Vertragsverhältnisses) sowie Ihre ausdrückliche Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO durch das Setzen des Zustimmungshäkchens im Formular.
 
-Die Datenverarbeitung erfolgt auf Basis der gesetzlichen Bestimmungen des § 96 Abs 3 TKG sowie des Art 6 Abs 1 lit f (berechtigtes Interesse) der DSGVO. Die Nutzung von Google Maps erhöht die Auffindbarkeit der Orte, welche auf unserer Webseite bereitgestellt werden.
+Die Datenübertragung erfolgt in die USA. Details zu Datenverarbeitung und Speicherfristen entnehmen Sie der Datenschutzerklärung des Anbieters: [https://formsubmit.co/legal/privacy-policy](https://formsubmit.co/legal/privacy-policy).
 
-Weitere Informationen über den Umgang mit Nutzerdaten des Diensteanbieters „Google" können Sie der Datenschutzerklärung entnehmen: [https://policies.google.com/privacy?hl=de](https://policies.google.com/privacy?hl=de).
+## Hosting (GitHub Pages)
 
-Google verarbeitet die Daten auch in den USA. Die Datenübermittlung ist über das **EU-US Data Privacy Framework** (Nachfolger des vom EuGH 2020 gekippten Privacy Shield, in Kraft seit Juli 2023) abgesichert: [Informationen der EU-Kommission](https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/eu-us-data-transfers_de).
+Diese Website wird über den Dienst **GitHub Pages** der GitHub, Inc. (88 Colin P Kelly Jr Street, San Francisco, CA 94107, USA) ausgeliefert. GitHub ist ein Tochterunternehmen der Microsoft Corporation.
 
-## Google Fonts
+Beim Aufruf der Website werden technisch bedingt Verbindungsdaten (siehe „Server-Log Files") an GitHub-Server übermittelt und dort im Rahmen der Bereitstellung des Hostings verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren und funktionsfähigen Bereitstellung der Website).
 
-Unsere Website verwendet Schriftarten von „Google Fonts". Der Dienstanbieter dieser Funktion ist:
-
-- Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. Tel: +353 1 543 1000
-
-Beim Aufrufen dieser Webseite lädt Ihr Browser Schriftarten und speichert diese in den Cache. Da Sie, als Besucher der Webseite, Daten des Dienstanbieters empfangen kann Google unter Umständen Cookies auf Ihrem Rechner setzen oder analysieren.
-
-Die Nutzung von „Google-Fonts" dient der Optimierung unserer Dienstleistung und der einheitlichen Darstellung von Inhalten. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.
-
-Weitere Informationen zu Google Fonts erhalten Sie unter folgendem Link: [https://developers.google.com/fonts/faq](https://developers.google.com/fonts/faq)
-
-Weitere Informationen über den Umgang mit Nutzerdaten von Google können Sie der Datenschutzerklärung entnehmen: [https://policies.google.com/privacy?hl=de](https://policies.google.com/privacy?hl=de).
-
-Google verarbeitet die Daten auch in den USA. Die Datenübermittlung ist über das **EU-US Data Privacy Framework** (Nachfolger des vom EuGH 2020 gekippten Privacy Shield, in Kraft seit Juli 2023) abgesichert: [Informationen der EU-Kommission](https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/eu-us-data-transfers_de).
+Die Datenverarbeitung kann auch in den USA erfolgen. Details entnehmen Sie der Datenschutzerklärung von GitHub: [https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement).
 
 ## Server-Log Files
 
@@ -87,7 +75,6 @@ Wenn Sie vermuten, dass im Zuge der Verarbeitung Ihrer Daten Verstöße gegen da
 ## Sie erreichen uns unter folgenden Kontaktdaten
 
 **Webseitenbetreiber:** Matthias Trajer / MTX-Webdesign
-**Telefonnummer:** +43 000 000 00 00
 **E-Mail:** [hallo@mtx-webdesign.at](mailto:hallo@mtx-webdesign.at)
 
 *Quelle: fairesrecht.at in Kooperation mit [Rechtsanwalt Wien](https://rechtsanwaltwien.com)*
