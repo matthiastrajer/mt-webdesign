@@ -1,6 +1,6 @@
 ---
 title: "Impressum & Offenlegung"
-metaDescription: "Impressum und Offenlegung von MT-Webdesign gemäß § 5 ECG und § 25 MedienG."
+metaDescription: "Impressum und Offenlegung von MTX-Webdesign gemäß § 5 ECG und § 25 MedienG."
 intro: "Rechtliches"
 label: "Impressum"
 labelId: "L01"
@@ -10,7 +10,7 @@ warning: "Dieser Text ist ein Entwurf und muss vor Veröffentlichung mit echten 
 ## Angaben gemäß § 5 ECG und § 25 Mediengesetz
 
 Matthias Trajer
-MT-Webdesign
+MTX-Webdesign
 Kokoschkagasse 6d
 3104 St. Pölten
 Österreich
@@ -18,7 +18,7 @@ Kokoschkagasse 6d
 ## Kontakt
 
 Telefon: +43 000 000 00 00
-E-Mail: hallo@mt-webdesign.at
+E-Mail: hallo@mtx-webdesign.at
 
 ## Unternehmensgegenstand
 

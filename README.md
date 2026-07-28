@@ -1,6 +1,6 @@
-# MT-Webdesign
+# MTX-Webdesign
 
-Website für MT-Webdesign — gebaut mit [Astro](https://astro.build).
+Website für MTX-Webdesign — gebaut mit [Astro](https://astro.build).
 Statische Ausgabe, keine externen Abhängigkeiten zur Laufzeit, deploybar auf jedem Webspace mit FTP (Hostinger, All-Inkl, IONOS …).
 
 ---
@@ -123,7 +123,7 @@ Anmeldung nötig. Beim ersten Absenden bekommst du eine Bestätigungsmail,
 einmal klicken, danach läuft alles automatisch.
 
 **Vor Live-Gang:** in `src/pages/briefing.astro` prüfen, ob die
-`action="https://formsubmit.co/hallo@mt-webdesign.at"` mit deiner echten
+`action="https://formsubmit.co/hallo@mtx-webdesign.at"` mit deiner echten
 E-Mail übereinstimmt.
 
 ---

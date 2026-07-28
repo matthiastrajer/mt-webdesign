@@ -1,6 +1,6 @@
 # Sveltia CMS einrichten
 
-Einmalige Einrichtung damit `/admin` auf `mt-webdesign.at` funktioniert.
+Einmalige Einrichtung damit `/admin` auf `mtx-webdesign.at` funktioniert.
 Rechne mit ca. 15 Minuten. Danach kannst du direkt im Browser News-Beiträge
 verfassen.
 
@@ -23,7 +23,7 @@ Ablauf:
 2. Cloudflare Worker mit `sveltia-cms-auth`-Code deployen (bekommt Worker-URL)
 3. OAuth-Callback-URL auf die Worker-URL setzen
 4. Worker-URL in `public/admin/config.yml` eintragen
-5. Testen: auf `mt-webdesign.at/admin/` gehen, einloggen, ersten Beitrag posten
+5. Testen: auf `mtx-webdesign.at/admin/` gehen, einloggen, ersten Beitrag posten
 
 ---
 
@@ -31,8 +31,8 @@ Ablauf:
 
 1. Öffne <https://github.com/settings/developers> → *OAuth Apps* → **New OAuth App**
 2. Ausfüllen:
-   - **Application name**: `MT-Webdesign CMS`
-   - **Homepage URL**: `https://mt-webdesign.at`
+   - **Application name**: `MTX-Webdesign CMS`
+   - **Homepage URL**: `https://mtx-webdesign.at`
      (solange die Custom-Domain noch nicht steht, nutze
      `https://matthiastrajer.github.io/mt-webdesign`)
    - **Authorization callback URL**: `https://REPLACE-ME.workers.dev/callback`
@@ -65,7 +65,7 @@ Zurück im Worker (linke Spalte → **Settings → Variables**):
 
 - **Add variable** → Name `GITHUB_CLIENT_ID`, Value = deine Client ID aus Schritt 1, ✅ *Encrypt* aktivieren
 - **Add variable** → Name `GITHUB_CLIENT_SECRET`, Value = dein Client Secret, ✅ *Encrypt* aktivieren
-- **Add variable** → Name `ALLOWED_DOMAINS`, Value = `mt-webdesign.at,matthiastrajer.github.io` (kommagetrennt, alle Domains, von denen aus der Login zulässig ist)
+- **Add variable** → Name `ALLOWED_DOMAINS`, Value = `mtx-webdesign.at,matthiastrajer.github.io` (kommagetrennt, alle Domains, von denen aus der Login zulässig ist)
 - **Save**
 
 ### Worker-URL notieren
@@ -102,7 +102,7 @@ Committen und pushen — nach 1–2 Min neu deployed.
 
 ## 5) Testen
 
-1. `https://mt-webdesign.at/admin/` öffnen (oder GitHub-Pages-URL, wenn Custom Domain noch nicht steht)
+1. `https://mtx-webdesign.at/admin/` öffnen (oder GitHub-Pages-URL, wenn Custom Domain noch nicht steht)
 2. **Sign in with GitHub** klicken
 3. Autorisieren → landet zurück in Sveltia
 4. Links **News** anklicken → **New News-Beitrag** → Formular ausfüllen, Bild hochladen → **Publish**

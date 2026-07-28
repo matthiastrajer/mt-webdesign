@@ -14,8 +14,8 @@ publish_mode: simple
 
 locale: de
 
-site_url: https://mt-webdesign.at
-display_url: https://mt-webdesign.at
+site_url: https://mtx-webdesign.at
+display_url: https://mtx-webdesign.at
 
 collections:
   # ==============================================================

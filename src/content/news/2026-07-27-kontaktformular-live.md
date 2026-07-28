@@ -7,7 +7,7 @@ coverAlt: Symbolbild Kontaktformular
 ---
 
 Ab sofort kannst du Anfragen direkt über das Kontaktformular auf
-mt-webdesign.at schicken. Ich melde mich innerhalb von 24 Stunden
+mtx-webdesign.at schicken. Ich melde mich innerhalb von 24 Stunden
 per E-Mail zurück.
 
 ## Was neu ist

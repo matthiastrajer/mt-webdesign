@@ -1,12 +1,12 @@
 ---
-title: "MT-Webdesign ist online"
+title: "MTX-Webdesign ist online"
 date: 2026-07-10
 excerpt: "Websites für kleine und mittlere Betriebe in Niederösterreich — von Konzept bis Live-Gang, aus einer Hand, ohne Baukasten."
 cover: "placeholder.svg"
 coverAlt: "Symbolbild Website-Launch"
 ---
 
-Nach ein paar Wochen Vorbereitung ist MT-Webdesign live.
+Nach ein paar Wochen Vorbereitung ist MTX-Webdesign live.
 
 Ich baue Websites für Handwerk, Handel, Gastronomie, Praxen und
 Dienstleister — schnell, sauber programmiert, DSGVO-konform und

@@ -1,6 +1,6 @@
 ---
 title: "Datenschutzerklärung"
-metaDescription: "Datenschutzerklärung von MT-Webdesign gemäß DSGVO und österreichischem Datenschutzgesetz."
+metaDescription: "Datenschutzerklärung von MTX-Webdesign gemäß DSGVO und österreichischem Datenschutzgesetz."
 intro: "Rechtliches"
 label: "Datenschutz"
 labelId: "L02"
@@ -12,11 +12,11 @@ warning: "Dieser Text ist ein Entwurf. Vor Veröffentlichung bitte auf die konkr
 Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) und des österreichischen Datenschutzgesetzes (DSG) ist:
 
 Matthias Trajer
-MT-Webdesign
+MTX-Webdesign
 Kokoschkagasse 6d
 3104 St. Pölten
 Österreich
-E-Mail: hallo@mt-webdesign.at
+E-Mail: hallo@mtx-webdesign.at
 
 ## 2. Allgemeines zur Datenverarbeitung
 
@@ -57,7 +57,7 @@ Sie haben jederzeit das Recht auf:
 - Datenübertragbarkeit (Art. 20 DSGVO)
 - Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)
 
-Zur Ausübung Ihrer Rechte genügt eine E-Mail an [hallo@mt-webdesign.at](mailto:hallo@mt-webdesign.at).
+Zur Ausübung Ihrer Rechte genügt eine E-Mail an [hallo@mtx-webdesign.at](mailto:hallo@mtx-webdesign.at).
 
 ## 9. Beschwerderecht bei der Aufsichtsbehörde
 

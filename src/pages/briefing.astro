@@ -198,15 +198,15 @@ const questions = [
 ---
 
 <Base
-  title="Briefing — MT-Webdesign"
+  title="Briefing — MTX-Webdesign"
   description="Kurzer Fragebogen für Ihre neue Website. Damit ich Ihr Angebot passend vorbereiten kann."
   noindex={true}
 >
   <!-- Minimale Kopfzeile, keine Nav — die Kundinnen und Kunden sollen sich auf den Fragebogen konzentrieren -->
   <header class="brief-nav">
     <div class="container brief-nav__inner">
-      <a href={import.meta.env.BASE_URL} class="brief-nav__logo" aria-label="MT-Webdesign Startseite">
-        <span class="brief-nav__mark">MT</span>
+      <a href={import.meta.env.BASE_URL} class="brief-nav__logo" aria-label="MTX-Webdesign Startseite">
+        <span class="brief-nav__mark">MTX</span>
         <span class="brief-nav__wordmark">Webdesign</span>
       </a>
       <span class="mono brief-nav__label">Briefing · Formular F-001</span>
@@ -260,14 +260,14 @@ const questions = [
       <form
         id="briefingForm"
         class="brief__form"
-        action="https://formsubmit.co/hallo@mt-webdesign.at"
+        action="https://formsubmit.co/hallo@mtx-webdesign.at"
         method="POST"
         enctype="multipart/form-data"
       >
         <input type="hidden" name="_subject" value="Neues Briefing — Website-Anfrage" />
         <input type="hidden" name="_captcha" value="true" />
         <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_next" value="https://mt-webdesign.at/briefing?submitted=true" />
+        <input type="hidden" name="_next" value="https://mtx-webdesign.at/briefing?submitted=true" />
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
         {questions.map((question) => (
@@ -516,14 +516,15 @@ const questions = [
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
+    padding: 0 6px;
+    min-width: 28px;
     height: 28px;
     background: var(--ink);
     color: var(--brass);
     border-radius: 2px;
     font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0;
+    letter-spacing: 0.02em;
     align-self: center;
   }
 
