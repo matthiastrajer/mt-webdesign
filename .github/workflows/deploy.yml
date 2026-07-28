@@ -1,46 +1,56 @@
-name: Deploy to GitHub Pages
+name: Deploy to Hostinger
 
+# Läuft bei jedem Push auf master (inkl. Sveltia-CMS-Edits) sowie
+# manuell über den "Run workflow"-Button im Actions-Tab.
 on:
   push:
     branches: [master]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 concurrency:
-  group: pages
+  group: hostinger-deploy
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install dependencies
-        run: npm ci
-      - uses: actions/configure-pages@v5
-        id: pages
-      - name: Build
-        run: npm run build
-        env:
-          BASE_PATH: ${{ steps.pages.outputs.base_path }}
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
+          cache: 'npm'
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Dependencies installieren
+        run: npm ci
+
+      # Kein BASE_PATH mehr — auf der Custom-Domain läuft die Seite an
+      # der Root (mtx-webdesign.at/), nicht unter /mt-webdesign/
+      - name: Astro-Build
+        run: npm run build
+
+      # SamKirkland/FTP-Deploy-Action: syncht dist/ nach public_html/,
+      # führt zwischen den Deploys eine .ftp-deploy-sync-state.json auf
+      # dem Server mit, dadurch werden nur geänderte Dateien übertragen.
+      # Erste Ausführung lädt alles hoch, spätere Deploys sind sehr schnell.
+      - name: FTP-Upload nach Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.HOSTINGER_FTP_SERVER }}
+          username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          port: 21
+          protocol: ftp
+          local-dir: ./dist/
+          server-dir: /public_html/
+          # Hostinger-eigene Dateien (SSL-Verifizierung, Log-Ordner)
+          # nicht anfassen, falls dort welche liegen
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.well-known/**
+            **/error_log
+            **/.htaccess
