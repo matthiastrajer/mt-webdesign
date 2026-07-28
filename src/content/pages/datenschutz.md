@@ -4,65 +4,90 @@ metaDescription: "Datenschutzerklärung von MTX-Webdesign gemäß DSGVO und öst
 intro: "Rechtliches"
 label: "Datenschutz"
 labelId: "L02"
-warning: "Dieser Text ist ein Entwurf. Vor Veröffentlichung bitte auf die konkret eingesetzten Dienste (insbesondere Hoster, Fonts, Kontaktformular-Provider) anpassen und rechtlich prüfen lassen — etwa über die WKO oder einen Fachanwalt."
+warning: "Vor Live-Gang bitte prüfen: (1) Telefonnummer im Kontaktblock nachtragen. (2) Die Sections „Google Maps\" und „Google Fonts\" wurden aus einem Vorlagentext übernommen — beide Dienste sind aktuell NICHT auf der Website integriert (Fonts sind selbstgehostet, Karten sind nirgendwo eingebettet). Entweder Sections entfernen, sobald klar ist, dass sie nie kommen — oder drinlassen als Absicherung für später (dann bei tatsächlicher Aktivierung auch einen Consent-Banner ergänzen). (3) Das aktuell tatsächlich genutzte Kontaktformular-Backend (FormSubmit.co, US-Anbieter) und der Hoster (GitHub Pages) sollten idealerweise namentlich ergänzt werden. (4) Rechtstext-Änderungen immer mit WKO oder Fachanwalt prüfen lassen."
 ---
 
-## 1. Verantwortlicher
+## Erklärung zur Informationspflicht
 
-Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) und des österreichischen Datenschutzgesetzes (DSG) ist:
+**Datenschutzerklärung**
 
-Matthias Trajer
-MTX-Webdesign
-Kokoschkagasse 6d
-3104 St. Pölten
-Österreich
-E-Mail: hallo@mtx-webdesign.at
+In folgender Datenschutzerklärung informieren wir Sie über die wichtigsten Aspekte der Datenverarbeitung im Rahmen unserer Webseite. Wir erheben und verarbeiten personenbezogene Daten nur auf Grundlage der gesetzlichen Bestimmungen (Datenschutzgrundverordnung, Telekommunikationsgesetz 2003).
 
-## 2. Allgemeines zur Datenverarbeitung
+Sobald Sie als Benutzer auf unsere Webseite zugreifen oder diese besuchen wird Ihre IP-Adresse, Beginn sowie Beginn und Ende der Sitzung erfasst. Dies ist technisch bedingt und stellt somit ein berechtigtes Interesse iSv Art 6 Abs 1 lit f DSGVO.
 
-Ich verarbeite personenbezogene Daten meiner Nutzer grundsätzlich nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie meiner Inhalte und Leistungen erforderlich ist. Die Verarbeitung erfolgt regelmäßig nur nach Einwilligung des Nutzers oder auf Grundlage einer gesetzlichen Erlaubnis (insbesondere Art. 6 Abs. 1 lit. a, b, f DSGVO).
+## Kontakt mit uns
 
-## 3. Bereitstellung der Website und Server-Logfiles
+Wenn Sie uns, entweder über unser Kontaktformular auf unserer Webseite, oder per E-Mail kontaktieren, dann werden die von Ihnen an uns übermittelten Daten zwecks Bearbeitung Ihrer Anfrage oder für den Fall von weiteren Anschlussfragen für sechs Monate bei uns gespeichert. Es erfolgt, ohne Ihre Einwilligung, keine Weitergabe Ihrer übermittelten Daten.
 
-Bei jedem Aufruf dieser Website erfasst der Hosting-Anbieter automatisch Daten und Informationen vom Computersystem des aufrufenden Rechners: IP-Adresse (gekürzt), Datum und Uhrzeit des Zugriffs, aufgerufene Seite, verwendeter Browser und Betriebssystem.
+## Cookies
 
-Diese Daten werden zur Sicherstellung eines störungsfreien Verbindungsaufbaus und zur technischen Sicherheit verarbeitet (Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO). Sie werden nach spätestens 30 Tagen gelöscht.
+Unsere Website verwendet so genannte Cookies. Dabei handelt es sich um kleine Textdateien, die mit Hilfe des Browsers auf Ihrem Endgerät abgelegt werden. Sie richten keinen Schaden an. Wir nutzen Cookies dazu, unser Angebot nutzerfreundlich zu gestalten. Einige Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Sie ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.
 
-## 4. Hosting
+Wenn Sie dies nicht wünschen, so können Sie Ihren Browser so einrichten, dass er Sie über das Setzen von Cookies informiert und Sie dies nur im Einzelfall erlauben. Bei der Deaktivierung von Cookies kann die Funktionalität unserer Website eingeschränkt sein.
 
-Diese Website wird bei einem externen Dienstleister gehostet (Auftragsverarbeiter im Sinne Art. 28 DSGVO). Mit dem Anbieter besteht ein Auftragsverarbeitungsvertrag, der die Einhaltung datenschutzrechtlicher Vorgaben sicherstellt. Details zum eingesetzten Hoster nenne ich Ihnen auf Anfrage.
+## Google Maps
 
-## 5. Kontaktformular und E-Mail-Kontakt
+Unsere Website verwendet Funktionen des Webkartendienstes „Google Maps". Der Dienstanbieter dieser Funktion ist:
 
-Wenn Sie mir über das Kontaktformular oder per E-Mail eine Anfrage zukommen lassen, werden Ihre Angaben (Name, Kontaktdaten, Nachricht) zur Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei mir gespeichert.
+- Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. Tel: +353 1 543 1000
 
-Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines Vertrags) bzw. Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter und lösche sie, sobald die Bearbeitung abgeschlossen ist und keine gesetzlichen Aufbewahrungsfristen entgegenstehen.
+Im Zuge der Nutzung von Google Maps ist es notwendig Ihre IP-Adresse zu speichern und zu verarbeiten. Google überträgt in der Regel an einen Server in den USA und speichert die Daten dort. Die Verarbeitung geschieht durch den Diensteanbieter (oben genannt), der Betreiber dieser Homepage hat keinen Einfluss auf die Übertragung der Daten.
 
-## 6. Cookies
+Die Datenverarbeitung erfolgt auf Basis der gesetzlichen Bestimmungen des § 96 Abs 3 TKG sowie des Art 6 Abs 1 lit f (berechtigtes Interesse) der DSGVO. Die Nutzung von Google Maps erhöht die Auffindbarkeit der Orte, welche auf unserer Webseite bereitgestellt werden.
 
-Diese Website setzt aktuell keine Cookies zu Analyse-, Tracking- oder Marketingzwecken. Sollte sich das ändern, wird vorab Ihre Einwilligung über einen Cookie-Banner eingeholt.
+Weitere Informationen über den Umgang mit Nutzerdaten des Diensteanbieters „Google" können Sie der Datenschutzerklärung entnehmen: [https://policies.google.com/privacy?hl=de](https://policies.google.com/privacy?hl=de).
 
-## 7. Schriftarten
+Google verarbeitet die Daten auch in den USA. Die Datenübermittlung ist über das **EU-US Data Privacy Framework** (Nachfolger des vom EuGH 2020 gekippten Privacy Shield, in Kraft seit Juli 2023) abgesichert: [Informationen der EU-Kommission](https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/eu-us-data-transfers_de).
 
-Zur einheitlichen Darstellung von Schriftarten kommen die Open-Source-Schriften Instrument Sans, Inter und JetBrains Mono zum Einsatz. Diese werden ausschließlich lokal von meinem eigenen Server ausgeliefert — es findet **keine Verbindung zu Google-Servern** oder anderen externen Anbietern statt.
+## Google Fonts
 
-## 8. Ihre Rechte
+Unsere Website verwendet Schriftarten von „Google Fonts". Der Dienstanbieter dieser Funktion ist:
 
-Sie haben jederzeit das Recht auf:
+- Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. Tel: +353 1 543 1000
 
-- Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO)
-- Berichtigung unrichtiger Daten (Art. 16 DSGVO)
-- Löschung Ihrer Daten (Art. 17 DSGVO)
-- Einschränkung der Verarbeitung (Art. 18 DSGVO)
-- Datenübertragbarkeit (Art. 20 DSGVO)
-- Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)
+Beim Aufrufen dieser Webseite lädt Ihr Browser Schriftarten und speichert diese in den Cache. Da Sie, als Besucher der Webseite, Daten des Dienstanbieters empfangen kann Google unter Umständen Cookies auf Ihrem Rechner setzen oder analysieren.
 
-Zur Ausübung Ihrer Rechte genügt eine E-Mail an [hallo@mtx-webdesign.at](mailto:hallo@mtx-webdesign.at).
+Die Nutzung von „Google-Fonts" dient der Optimierung unserer Dienstleistung und der einheitlichen Darstellung von Inhalten. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.
 
-## 9. Beschwerderecht bei der Aufsichtsbehörde
+Weitere Informationen zu Google Fonts erhalten Sie unter folgendem Link: [https://developers.google.com/fonts/faq](https://developers.google.com/fonts/faq)
 
-Sie haben unbeschadet anderer Rechtsbehelfe das Recht, sich bei der zuständigen Aufsichtsbehörde zu beschweren, wenn Sie der Ansicht sind, dass die Verarbeitung Sie betreffender Daten gegen die DSGVO verstößt.
+Weitere Informationen über den Umgang mit Nutzerdaten von Google können Sie der Datenschutzerklärung entnehmen: [https://policies.google.com/privacy?hl=de](https://policies.google.com/privacy?hl=de).
 
-Zuständig ist in Österreich die Datenschutzbehörde:
-Barichgasse 40–42, 1030 Wien
-[www.dsb.gv.at](https://www.dsb.gv.at)
+Google verarbeitet die Daten auch in den USA. Die Datenübermittlung ist über das **EU-US Data Privacy Framework** (Nachfolger des vom EuGH 2020 gekippten Privacy Shield, in Kraft seit Juli 2023) abgesichert: [Informationen der EU-Kommission](https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/eu-us-data-transfers_de).
+
+## Server-Log Files
+
+Diese Webseite und der damit verbundene Provider erhebt im Zuge der Webseitennutzung automatisch Informationen im Rahmen sogenannter „Server-Log Files". Dies betrifft insbesondere:
+
+- IP-Adresse oder Hostname
+- den verwendeten Browser
+- Aufenthaltsdauer auf der Webseite sowie Datum und Uhrzeit
+- aufgerufene Seiten der Webseite
+- Spracheinstellungen und Betriebssystem
+- „Leaving-Page" (auf welcher URL hat der Benutzer die Webseite verlassen)
+- ISP (Internet Service Provider)
+
+Diese erhobenen Informationen werden nicht personenbezogen verarbeitet oder mit personenbezogenen Daten in Verbindung gebracht.
+
+Der Webseitenbetreiber behält es sich vor, im Falle von Bekanntwerden rechtswidriger Tätigkeiten, diese Daten auszuwerten oder zu überprüfen.
+
+## Ihre Rechte als Betroffener
+
+Sie als Betroffener haben bezüglich Ihrer Daten, welche bei uns gespeichert sind grundsätzlich ein Recht auf:
+
+- Auskunft
+- Löschung der Daten
+- Berichtigung der Daten
+- Übertragbarkeit der Daten
+- Widerruf und Widerspruch zur Datenverarbeitung
+- Einschränkung
+
+Wenn Sie vermuten, dass im Zuge der Verarbeitung Ihrer Daten Verstöße gegen das Datenschutzrecht passiert sind, so haben Sie die Möglichkeit sich bei uns ([hallo@mtx-webdesign.at](mailto:hallo@mtx-webdesign.at)) oder der Datenschutzbehörde zu beschweren.
+
+## Sie erreichen uns unter folgenden Kontaktdaten
+
+**Webseitenbetreiber:** Matthias Trajer / MTX-Webdesign
+**Telefonnummer:** +43 000 000 00 00
+**E-Mail:** [hallo@mtx-webdesign.at](mailto:hallo@mtx-webdesign.at)
+
+*Quelle: fairesrecht.at in Kooperation mit [Rechtsanwalt Wien](https://rechtsanwaltwien.com)*
