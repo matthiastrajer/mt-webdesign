@@ -1,13 +1,13 @@
 ---
 title: "Impressum & Offenlegung"
-metaDescription: "Impressum und Offenlegung von MTX-Webdesign gemäß § 5 ECG und § 25 MedienG."
+metaDescription: "Impressum und Offenlegung von MTX-Webdesign gemäß § 5 ECG, § 63 GewO und § 25 Mediengesetz."
 intro: "Rechtliches"
 label: "Impressum"
 labelId: "L01"
-warning: "Dieser Text ist ein Entwurf und muss vor Veröffentlichung mit echten Daten (Telefon, E-Mail, UID) ergänzt und idealerweise durch die WKO NÖ oder einen Rechtsanwalt geprüft werden. Empfehlung: WKO-Impressum-Check nutzen."
+warning: "Vor Live-Gang bitte ergänzen: echte Telefonnummer, UID-Nummer bzw. Hinweis auf Kleinunternehmerregelung, tatsächlicher Verleihungsstaat der Gewerbeberechtigung. Empfehlung: WKO-Impressum-Check (firmen.wko.at → E-Commerce-Gesetz-Service) nutzen — kostenlos für Mitglieder und deckt ECG, GewO, UGB und MedienG in einem ab."
 ---
 
-## Angaben gemäß § 5 ECG und § 25 Mediengesetz
+## Medieninhaber und für den Inhalt verantwortlich
 
 Matthias Trajer
 MTX-Webdesign
@@ -18,41 +18,34 @@ Kokoschkagasse 6d
 ## Kontakt
 
 Telefon: +43 000 000 00 00
-E-Mail: hallo@mtx-webdesign.at
+E-Mail: [hallo@mtx-webdesign.at](mailto:hallo@mtx-webdesign.at)
 
 ## Unternehmensgegenstand
 
-Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik — Konzeption, Gestaltung und Umsetzung von Websites, Hosting-Vermittlung sowie Betreuung und Pflege von Websites.
-
-## Berufsbezeichnung & berufsrechtliche Regelungen
-
-Freies Gewerbe: „Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik"
-Verleihungsstaat: Österreich
-
-Anwendbare Rechtsvorschriften: Gewerbeordnung (GewO)
-Einsehbar unter [www.ris.bka.gv.at](https://www.ris.bka.gv.at)
-
-## Aufsichtsbehörde / Kammer
-
-Bezirkshauptmannschaft St. Pölten
-Mitglied der Wirtschaftskammer Niederösterreich, Fachgruppe UBIT (Unternehmensberatung, Buchhaltung und Informationstechnologie)
+Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik – Konzeption, Gestaltung und Umsetzung von Websites, Hosting-Vermittlung sowie Betreuung und Pflege von Websites.
 
 ## UID-Nummer
 
 ATU00000000
-*(bei Kleinunternehmerregelung ggf. nicht anzugeben — bitte prüfen)*
+*(bei Kleinunternehmerregelung entfällt die UID-Angabe — bitte prüfen und ggf. diesen Abschnitt entfernen.)*
 
-## Verantwortlich für den Inhalt
+## Mitgliedschaften bei der Wirtschaftskammerorganisation
 
-Matthias Trajer
-Kokoschkagasse 6d, 3104 St. Pölten
+Mitglied der Wirtschaftskammer Österreich (WKÖ) und der Wirtschaftskammer Niederösterreich (WKNÖ), Fachgruppe UBIT (Unternehmensberatung, Buchhaltung und Informationstechnologie).
 
-## Online-Streitbeilegung (OS-Plattform)
+## Anwendbare Rechtsvorschriften und Zugang dazu
 
-Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit:
-[https://ec.europa.eu/consumers/odr](https://ec.europa.eu/consumers/odr)
+Berufsrecht: Gewerbeordnung (GewO)
+Einsehbar unter [www.ris.bka.gv.at](https://www.ris.bka.gv.at)
 
-Ich bin nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+## Aufsichtsbehörde / Gewerbebehörde
+
+Bezirkshauptmannschaft St. Pölten
+
+## Berufsbezeichnung und Verleihungsstaat
+
+Freies Gewerbe: „Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik"
+Verleihungsstaat: Österreich
 
 ## Haftung für Inhalte
 
