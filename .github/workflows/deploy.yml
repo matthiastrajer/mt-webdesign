@@ -45,6 +45,15 @@ jobs:
           protocol: ftp
           local-dir: ./dist/
           server-dir: /public_html/
+          # Log-Level erhöht — sonst sieht man in GitHub Actions nicht,
+          # ob wirklich Dateien übertragen wurden oder ob der Sync-State
+          # sagt "alles schon aktuell" und heimlich nichts tut.
+          log-level: verbose
+          # Erzwingt einen kompletten Reset auf dem Server und einen
+          # frischen Full-Upload — löscht ggf. verwaisten Sync-State,
+          # der aus dem ersten (kaputten) Deploy-Versuch stammt.
+          # Nach dem nächsten erfolgreichen Deploy wieder auf false.
+          dangerous-clean-slate: true
           # Hostinger-eigene Dateien (SSL-Verifizierung, Log-Ordner)
           # nicht anfassen, falls dort welche liegen
           exclude: |
