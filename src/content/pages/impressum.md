@@ -4,7 +4,7 @@ metaDescription: "Impressum und Offenlegung von MTX-Webdesign gemäß § 5 ECG, 
 intro: "Rechtliches"
 label: "Impressum"
 labelId: "L01"
-warning: "Vor Live-Gang bitte ergänzen: echte Telefonnummer, UID-Nummer bzw. Hinweis auf Kleinunternehmerregelung, tatsächlicher Verleihungsstaat der Gewerbeberechtigung. Empfehlung: WKO-Impressum-Check (firmen.wko.at → E-Commerce-Gesetz-Service) nutzen — kostenlos für Mitglieder und deckt ECG, GewO, UGB und MedienG in einem ab."
+warning: "Vor Live-Gang bitte ergänzen: UID-Nummer eintragen oder bei Kleinunternehmerregelung diesen Block entfernen. Empfehlung: WKO-Impressum-Check (firmen.wko.at → E-Commerce-Gesetz-Service) nutzen — kostenlos für Mitglieder und deckt ECG, GewO, UGB und MedienG in einem ab."
 ---
 
 ## Medieninhaber und für den Inhalt verantwortlich
@@ -17,8 +17,8 @@ Kokoschkagasse 6d
 
 ## Kontakt
 
-Telefon: +43 000 000 00 00
 E-Mail: [hallo@mtx-webdesign.at](mailto:hallo@mtx-webdesign.at)
+Kontaktformular: [mtx-webdesign.at/#kontakt](https://mtx-webdesign.at/#kontakt)
 
 ## Unternehmensgegenstand
 
