@@ -79,6 +79,9 @@ const localBusiness = {
     <title>{title}</title>
 
     <script type="application/ld+json" is:inline set:html={JSON.stringify(localBusiness)}></script>
+
+    <!-- Slot für zusätzliche <head>-Inhalte (z. B. seitenspezifisches JSON-LD) -->
+    <slot name="head" />
   </head>
   <body>
     <a class="skip-link" href="#main">Zum Inhalt springen</a>

@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /briefing
 
-Host: https://mtx-webdesign.at
+Sitemap: https://mtx-webdesign.at/sitemap.xml
