@@ -7,8 +7,7 @@ const isNewsPage = Astro.url.pathname.replace(/\/$/, '') === `${base}news`.repla
 <nav class="nav">
   <div class="nav__inner container">
     <a href={base} class="nav__logo" aria-label="MTX-Webdesign Startseite">
-      <span class="nav__mark">MTX</span>
-      <span class="nav__wordmark">Webdesign</span>
+      <img src={`${base}brand/mtx-logo.png`} alt="MTX-Webdesign" class="nav__logo-img" />
     </a>
 
     <ul class="nav__links">
@@ -50,32 +49,15 @@ const isNewsPage = Astro.url.pathname.replace(/\/$/, '') === `${base}news`.repla
 
   .nav__logo {
     display: inline-flex;
-    align-items: baseline;
-    gap: 0.55rem;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 17px;
-    letter-spacing: -0.02em;
-  }
-
-  .nav__mark {
-    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 0 6px;
-    min-width: 28px;
-    height: 28px;
-    background: var(--ink);
-    color: var(--brass);
-    border-radius: 2px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    align-self: center;
+    gap: 0.55rem;
   }
 
-  .nav__wordmark {
-    color: var(--ink);
+  .nav__logo-img {
+    display: block;
+    height: 34px;
+    width: auto;
+    object-fit: contain;
   }
 
   .nav__links {

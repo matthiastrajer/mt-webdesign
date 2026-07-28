@@ -32,7 +32,10 @@ const {
     <meta name="description" content={description} />
     <meta name="theme-color" content="#eef1f4" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <!-- Favicon: PNG (Brand-Logo, MTX-Marke) mit SVG-Fallback -->
+    <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}favicon.png`} />
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}favicon.png`} />
 
     <title>{title}</title>
   </head>
