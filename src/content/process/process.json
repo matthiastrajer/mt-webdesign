@@ -1,13 +1,13 @@
 {
   "eyebrow": "In vier Schritten zu Ihrer neuen Firmenwebsite",
   "heading": "Klarer Plan. Kein Kleingedrucktes.",
-  "lead": "Sie wissen von Anfang an, was passiert, was es kostet und wann Ihre Homepage live geht. Abstimmung überwiegend schriftlich — antworten Sie in Ihrem Tempo, ich melde mich zuverlässig innerhalb von 24 Stunden.",
+  "lead": "Sie wissen von Anfang an, was passiert, was es kostet und wann Ihre Homepage live geht. Antworten Sie in Ihrem Tempo — ich melde mich zuverlässig innerhalb von 24 Stunden.",
   "steps": [
     {
       "n": "01",
       "title": "Erstanfrage & Briefing",
       "duration": "kostenlos",
-      "body": "Sie können unten das Kontaktformular ausfüllen — ein kurzer Satz zu Ihrem Betrieb reicht, ich melde mich innerhalb von 24 Stunden zurück. Oder Sie holen sich über den Briefing-Fragebogen (ca. 5 Minuten, 15 kurze Fragen) direkt ein unverbindliches Angebot ein — ganz in Ihrem Tempo."
+      "body": "Sie können unten das Kontaktformular ausfüllen — ein kurzer Satz zu Ihrem Betrieb reicht, ich melde mich innerhalb von 24 Stunden zurück. Oder Sie holen sich direkt über den <a href=\"/briefing/\" class=\"step__link\">Briefing-Fragebogen</a> (ca. 5 Minuten, 15 kurze Fragen) ein unverbindliches Angebot ein — ganz in Ihrem Tempo."
     },
     {
       "n": "02",
@@ -25,7 +25,7 @@
       "n": "04",
       "title": "Live-Gang",
       "duration": "Tag X",
-      "body": "Die Website geht online — auf Ihrer Domain, mit SSL, DSGVO-konform. Kleine Änderungen wie neue Fotos, Mitarbeiter oder Öffnungszeiten pflegen Sie danach selbst über das Admin-Panel. Wer das lieber abgibt, kann jederzeit das Pflege-Paket dazubuchen."
+      "body": "Die Website geht online — auf Ihrer Domain, mit SSL, DSGVO-konform. Kleine Änderungen wie neue Fotos, Mitarbeiter oder Öffnungszeiten pflegen Sie danach selbst über das Admin-Panel. Wer das und die laufende technische Wartung lieber abgibt, kann jederzeit das Pflege- & Betreuungspaket dazubuchen."
     }
   ]
 }

@@ -34,7 +34,7 @@ const base = import.meta.env.BASE_URL;
               </span>
             </summary>
             <div class="faq__answer">
-              <p>{item.a}</p>
+              <p set:html={item.a}></p>
             </div>
           </details>
         ))
@@ -145,6 +145,17 @@ const base = import.meta.env.BASE_URL;
     color: var(--ink-2);
     line-height: 1.65;
     font-size: 15.5px;
+  }
+
+  .faq__answer :global(.faq__link) {
+    color: var(--brass);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--brass) 40%, transparent);
+    transition: border-color var(--dur) var(--ease-out);
+  }
+
+  .faq__answer :global(.faq__link:hover) {
+    border-bottom-color: var(--brass);
   }
 
   .faq__cta {

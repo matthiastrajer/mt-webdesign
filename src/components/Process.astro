@@ -32,7 +32,7 @@ const steps = p.steps;
                 <h3 class="step__title">{step.title}</h3>
                 <span class="mono step__duration">{step.duration}</span>
               </div>
-              <p class="step__body">{step.body}</p>
+              <p class="step__body" set:html={step.body}></p>
             </div>
           </li>
         ))
@@ -122,6 +122,17 @@ const steps = p.steps;
     max-width: 65ch;
     font-size: 15.5px;
     line-height: 1.6;
+  }
+
+  .step__body :global(.step__link) {
+    color: var(--brass);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--brass) 40%, transparent);
+    transition: border-color var(--dur) var(--ease-out);
+  }
+
+  .step__body :global(.step__link:hover) {
+    border-bottom-color: var(--brass);
   }
 
   @media (max-width: 600px) {
