@@ -113,7 +113,7 @@ const steps = p.steps;
   }
 
   .step__duration {
-    color: var(--brass);
+    color: var(--brass-text);
     letter-spacing: 0.06em;
   }
 
@@ -125,14 +125,14 @@ const steps = p.steps;
   }
 
   .step__body :global(.step__link) {
-    color: var(--brass);
+    color: var(--brass-text);
     text-decoration: none;
     border-bottom: 1px solid color-mix(in srgb, var(--brass) 40%, transparent);
     transition: border-color var(--dur) var(--ease-out);
   }
 
   .step__body :global(.step__link:hover) {
-    border-bottom-color: var(--brass);
+    border-bottom-color: var(--brass-text);
   }
 
   @media (max-width: 600px) {

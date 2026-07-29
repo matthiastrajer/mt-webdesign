@@ -7,7 +7,10 @@ const isNewsPage = Astro.url.pathname.replace(/\/$/, '') === `${base}news`.repla
 <nav class="nav">
   <div class="nav__inner container">
     <a href={base} class="nav__logo" aria-label="MTX-Webdesign Startseite">
-      <img src={`${base}brand/mtx-logo.png`} alt="MTX-Webdesign" class="nav__logo-img" width="164" height="52" />
+      <picture>
+        <source srcset={`${base}brand/mtx-logo.webp`} type="image/webp" />
+        <img src={`${base}brand/mtx-logo.png`} alt="MTX-Webdesign" class="nav__logo-img" width="164" height="52" fetchpriority="high" />
+      </picture>
     </a>
 
     <!-- Burger-Toggle: nur unter 780 px sichtbar, steuert das Mobile-Menü -->
@@ -186,7 +189,7 @@ const isNewsPage = Astro.url.pathname.replace(/\/$/, '') === `${base}news`.repla
 
     .nav__burger:hover,
     .nav__burger:focus-visible {
-      border-color: var(--brass);
+      border-color: var(--brass-text);
       outline: none;
     }
 

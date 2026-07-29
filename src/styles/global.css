@@ -12,9 +12,10 @@
   --line-strong: #a9b5c4;
   --ink: #0e1a2b;
   --ink-2: #4a5a73;
-  --ink-3: #6e7e95;
-  --brass: #c7913f;
+  --ink-3: #586780;      /* AA-konform (5.05:1) für kleinen Text / Sekundär-Info */
+  --brass: #c7913f;      /* Deko, Icons, große Highlights */
   --brass-2: #b07f31;
+  --brass-text: #8f5f22; /* AA-konform (4.84:1) für kleinen brass-farbenen Text */
   --brass-tint: rgba(199, 145, 63, 0.12);
 
   /* Typografie */
@@ -107,7 +108,7 @@ button {
 
 ::selection {
   background: var(--brass);
-  color: var(--paper);
+  color: var(--ink);
 }
 
 /* Fokus */
@@ -234,7 +235,7 @@ p {
 }
 
 .section-label__id {
-  color: var(--brass);
+  color: var(--brass-text);
   font-weight: 500;
 }
 
@@ -280,7 +281,7 @@ p {
 }
 
 .dim__arrow {
-  color: var(--brass);
+  color: var(--brass-text);
 }
 
 .dim-line {

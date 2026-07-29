@@ -75,14 +75,25 @@ const articlePath = `/news/${post.slug}/`;
 
       {post.data.cover && (
         <figure class="article__cover">
-          <img
-            src={`${base}news/${post.data.cover}`}
-            alt={post.data.coverAlt ?? post.data.title}
-            width="1200"
-            height="675"
-            loading="eager"
-            fetchpriority="high"
-          />
+          <picture>
+            {/* WebP-Fallback nur, wenn Cover als .png/.jpg vorliegt und
+                eine gleichnamige .webp-Version daneben existiert (siehe
+                public/news/). Bei bereits webp-Cover ist source überflüssig. */}
+            {(post.data.cover.endsWith('.png') || post.data.cover.endsWith('.jpg')) && (
+              <source
+                srcset={`${base}news/${post.data.cover.replace(/\.(png|jpg)$/, '.webp')}`}
+                type="image/webp"
+              />
+            )}
+            <img
+              src={`${base}news/${post.data.cover}`}
+              alt={post.data.coverAlt ?? post.data.title}
+              width="1200"
+              height="750"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </picture>
         </figure>
       )}
 
@@ -138,7 +149,7 @@ const articlePath = `/news/${post.slug}/`;
 
   .article__date,
   .article__author {
-    color: var(--brass);
+    color: var(--brass-text);
     letter-spacing: 0.1em;
     font-size: 11px;
     text-transform: uppercase;
@@ -224,7 +235,7 @@ const articlePath = `/news/${post.slug}/`;
   }
 
   .prose :global(a:hover) {
-    color: var(--brass);
+    color: var(--brass-text);
   }
 
   .prose :global(blockquote) {
