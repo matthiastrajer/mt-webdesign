@@ -4,7 +4,7 @@ metaDescription: "Datenschutzerklärung von MTX-Webdesign gemäß DSGVO und öst
 intro: "Rechtliches"
 label: "Datenschutz"
 labelId: "L02"
-warning: "Rechtstext — vor Live-Gang bitte durch WKO-Impressum-Check oder einen Fachanwalt prüfen lassen. Sobald Google Maps, Analytics, YouTube-Einbettungen o. ä. hinzukommen, muss diese Erklärung ergänzt und ein Cookie-Consent-Banner integriert werden."
+warning: "Rechtstext — vor Live-Gang bitte durch WKO-Impressum-Check oder einen Fachanwalt prüfen lassen. Sobald weitere Drittanbieter (Google Maps, YouTube-Einbettungen, Social-Media-Widgets o. ä.) hinzukommen, muss diese Erklärung entsprechend ergänzt werden."
 ---
 
 ## Erklärung zur Informationspflicht
@@ -35,13 +35,35 @@ Rechtsgrundlage der Verarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines
 
 Die Datenübertragung erfolgt in die USA. Details zu Datenverarbeitung und Speicherfristen entnehmen Sie der Datenschutzerklärung des Anbieters: [https://formsubmit.co/legal/privacy-policy](https://formsubmit.co/legal/privacy-policy).
 
-## Hosting (GitHub Pages)
+## Hosting (Hostinger)
 
-Diese Website wird über den Dienst **GitHub Pages** der GitHub, Inc. (88 Colin P Kelly Jr Street, San Francisco, CA 94107, USA) ausgeliefert. GitHub ist ein Tochterunternehmen der Microsoft Corporation.
+Diese Website wird über den Dienst **Hostinger** der Hostinger International Ltd. (61 Lordou Vironos Street, 6023 Larnaca, Zypern) ausgeliefert. Die Datenverarbeitung erfolgt auf Servern innerhalb der Europäischen Union.
 
-Beim Aufruf der Website werden technisch bedingt Verbindungsdaten (siehe „Server-Log Files") an GitHub-Server übermittelt und dort im Rahmen der Bereitstellung des Hostings verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren und funktionsfähigen Bereitstellung der Website).
+Beim Aufruf der Website werden technisch bedingt Verbindungsdaten (siehe „Server-Log Files") an Hostinger-Server übermittelt und dort im Rahmen der Bereitstellung des Hostings verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren und funktionsfähigen Bereitstellung der Website).
 
-Die Datenverarbeitung kann auch in den USA erfolgen. Details entnehmen Sie der Datenschutzerklärung von GitHub: [https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement).
+Details entnehmen Sie der Datenschutzerklärung von Hostinger: [https://www.hostinger.de/rechtsdokumente/datenschutzrichtlinie](https://www.hostinger.de/rechtsdokumente/datenschutzrichtlinie).
+
+## Google Analytics
+
+Diese Website verwendet — nach ausdrücklicher Einwilligung durch Sie über unseren Cookie-Banner — den Analysedienst **Google Analytics 4** der Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Irland), Mutterkonzern: Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA).
+
+**Zweck der Verarbeitung:** anonymisierte Reichweitenmessung und statistische Auswertung des Nutzerverhaltens zur Verbesserung des Angebots. Erfasst werden u. a. aufgerufene Seiten, Verweildauer, ungefähre Herkunft (auf Stadt-/Regionsebene), verwendeter Browser und das Betriebssystem.
+
+**IP-Anonymisierung:** Wir haben `anonymize_ip` aktiviert, wodurch Ihre IP-Adresse vor der Speicherung um das letzte Oktett gekürzt wird. Eine Personenzuordnung ist damit ausgeschlossen.
+
+**Cookies:** Google Analytics setzt Cookies auf Ihrem Endgerät (typischerweise `_ga`, `_ga_*`) mit einer Speicherdauer von bis zu 24 Monaten.
+
+**Rechtsgrundlage:** Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung), erteilt durch Klick auf „Akzeptieren" im Cookie-Banner beim ersten Besuch.
+
+**Datenübertragung in Drittländer:** Google kann Daten in die USA übermitteln. Google ist unter dem EU-US Data Privacy Framework zertifiziert; als zusätzliche Absicherung bestehen Standardvertragsklauseln. Details: [https://policies.google.com/privacy](https://policies.google.com/privacy)
+
+**Speicherdauer:** Ihre pseudonymen Nutzungsdaten werden bei Google standardmäßig 14 Monate gespeichert.
+
+**Widerruf:** Sie können Ihre Einwilligung jederzeit widerrufen. Der Widerruf wirkt für die Zukunft und lässt die Rechtmäßigkeit der bis dahin erfolgten Verarbeitung unberührt.
+
+<button type="button" onclick="if(window.__mtxRevokeConsent){window.__mtxRevokeConsent();}else{alert('Widerruf-Funktion nicht verfügbar — Seite bitte neu laden.');}" style="display:inline-block;font:inherit;font-size:14px;padding:0.55rem 1.15rem;margin:0.5rem 0;background:#1a1a1a;color:#fdfcf9;border:none;border-radius:2px;cursor:pointer;">Einwilligung zu Google Analytics widerrufen</button>
+
+Zusätzlich können Sie die Erhebung durch Google Analytics browserweit über das offizielle Browser-Add-on deaktivieren: [https://tools.google.com/dlpage/gaoptout](https://tools.google.com/dlpage/gaoptout).
 
 ## Server-Log Files
 
