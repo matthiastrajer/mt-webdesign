@@ -44,7 +44,11 @@ jobs:
           port: 21
           protocol: ftp
           local-dir: ./dist/
-          server-dir: /public_html/
+          # Doc-Root der Domain liegt bei Hostinger NICHT unter ~/public_html/,
+          # sondern unter ~/domains/mtx-webdesign.at/public_html/. Uploads
+          # nach ~/public_html/ zeigen sich zwar im Konto-Dateimanager, sind
+          # aber für die Domain unerreichbar → 403 Forbidden.
+          server-dir: /domains/mtx-webdesign.at/public_html/
           # Log-Level erhöht — sonst sieht man in GitHub Actions nicht,
           # ob wirklich Dateien übertragen wurden oder ob der Sync-State
           # sagt "alles schon aktuell" und heimlich nichts tut.
