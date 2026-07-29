@@ -139,6 +139,14 @@ Repo ist Solo — direkt auf `master` pushen, keine Feature-Branches / PRs
 für normale Änderungen. **Ausnahme:** der User bittet explizit um einen
 PR (dann Feature-Branch, `gh pr create`).
 
+**Sonderfall Claude-Code-on-the-Web:** In Web-Sessions ist ein
+Feature-Branch (`claude/*`) vom Harness vorgeschrieben, direktes Pushen
+auf `master` ist dort gesperrt. In dem Fall den kompletten Cycle
+selbstständig fahren: Branch pushen → `mcp__github__create_pull_request`
+→ `mcp__github__merge_pull_request` (Merge-Method `merge`). Der Deploy
+läuft dann automatisch bei dem entstehenden Master-Commit. User nicht
+extra zum Mergen im Browser schicken.
+
 ### Commits
 
 - Aussagekräftige deutsche Commit-Messages, Betreffzeile prägnant, im
