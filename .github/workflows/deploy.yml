@@ -58,12 +58,12 @@ jobs:
           # der aus dem ersten (kaputten) Deploy-Versuch stammt.
           # Nach dem nächsten erfolgreichen Deploy wieder auf false.
           dangerous-clean-slate: true
-          # Hostinger-eigene Dateien (SSL-Verifizierung, Log-Ordner)
-          # nicht anfassen, falls dort welche liegen
+          # Nur Hostinger-eigene Dateien schonen: SSL-Verifizierungspfad,
+          # Server-Log, evtl. vorhandene .htaccess. Alles andere darf
+          # dangerous-clean-slate ruhig wegräumen — insbesondere alte
+          # .git/-Ordner aus manuellen Uploads (sonst wären Repo-Interna
+          # unter mtx-webdesign.at/.git/config öffentlich abrufbar).
           exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
             **/.well-known/**
             **/error_log
             **/.htaccess
