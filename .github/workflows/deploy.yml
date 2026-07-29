@@ -53,17 +53,21 @@ jobs:
           # ob wirklich Dateien übertragen wurden oder ob der Sync-State
           # sagt "alles schon aktuell" und heimlich nichts tut.
           log-level: verbose
-          # Erzwingt einen kompletten Reset auf dem Server und einen
-          # frischen Full-Upload — löscht ggf. verwaisten Sync-State,
-          # der aus dem ersten (kaputten) Deploy-Versuch stammt.
-          # Nach dem nächsten erfolgreichen Deploy wieder auf false.
-          dangerous-clean-slate: true
-          # Nur Hostinger-eigene Dateien schonen: SSL-Verifizierungspfad,
-          # Server-Log, evtl. vorhandene .htaccess. Alles andere darf
-          # dangerous-clean-slate ruhig wegräumen — insbesondere alte
-          # .git/-Ordner aus manuellen Uploads (sonst wären Repo-Interna
-          # unter mtx-webdesign.at/.git/config öffentlich abrufbar).
+          # Clean-slate war einmalig für die Aufräumaktion nötig (alte
+          # manuelle Repo-Uploads in domains/mtx-webdesign.at/public_html/).
+          # Jetzt aus: sonst wird bei jedem Deploy der Doc-Root ~90 Sek.
+          # komplett geleert (Downtime → 403), UND riskiert Hostingers
+          # auto-generierte .htaccess mitzureißen, wenn das Exclude-Muster
+          # die Root-Datei nicht sauber matcht.
+          dangerous-clean-slate: false
+          # Nur Hostinger-eigene Dateien schonen. Muster mit UND ohne **/
+          # notiert, da minimatch je nach Kontext eine leere Präfix-Match
+          # von `**/` bei Dateien direkt an der server-dir-Wurzel nicht
+          # zuverlässig zulässt.
           exclude: |
-            **/.well-known/**
-            **/error_log
+            .htaccess
             **/.htaccess
+            error_log
+            **/error_log
+            .well-known/**
+            **/.well-known/**
