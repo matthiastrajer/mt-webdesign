@@ -289,6 +289,9 @@ const questions = [
     fieldHint: 'Beliebiges Format · mehrere Dateien auf einmal möglich',
   },
 ];
+
+// Success-Ziel-URL dynamisch aus Astro.site — nicht hardcoden
+const briefingSuccessUrl = new URL('briefing/?submitted=true', Astro.site).href;
 ---
 
 <Base
@@ -372,7 +375,7 @@ const questions = [
         <input type="hidden" name="_subject" value="Neues Briefing — Website-Anfrage" />
         <input type="hidden" name="_captcha" value="true" />
         <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_next" value="https://mtx-webdesign.at/briefing?submitted=true" />
+        <input type="hidden" name="_next" value={briefingSuccessUrl} />
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
         {questions.map((question) => (

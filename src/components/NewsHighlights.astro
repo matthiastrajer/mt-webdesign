@@ -35,7 +35,7 @@ const dateFmt = (d: Date) =>
       <ol class="news-slides reveal reveal--delay-1">
         {posts.map((post) => (
           <li class="news-slide">
-            <a href={`${base}news/${post.slug}`} class="news-slide__link">
+            <a href={`${base}news/${post.slug}/`} class="news-slide__link">
               <div class="news-slide__media">
                 {post.data.cover ? (
                   <img

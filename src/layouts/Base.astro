@@ -19,6 +19,10 @@ interface Breadcrumb {
 interface ArticleMeta {
   publishedTime?: string;
   modifiedTime?: string;
+  // Für NewsArticle-JSON-LD auf Detailseiten
+  headline?: string;
+  imageUrl?: string;
+  articleUrl?: string;
 }
 
 interface Props {
@@ -51,15 +55,13 @@ const {
 } = Astro.props;
 
 // ---------------------------------------------------------------
-// Canonical: immer auf die produktive Zieldomain (mtx-webdesign.at)
-// zeigen — auch wenn die Seite gerade noch auf github.io läuft. Sobald
-// die Custom-Domain live ist, greifen alle Signale konsistent.
+// Canonical: immer über Astro.site auflösen — hält die URL konsistent
+// mit trailingSlash:'always' und ist unabhängig vom Live-Hostnamen.
 // ---------------------------------------------------------------
-const rawBase = import.meta.env.BASE_URL; // z. B. "/mt-webdesign/" oder "/"
-const pathname = Astro.url.pathname.startsWith(rawBase)
-  ? '/' + Astro.url.pathname.slice(rawBase.length)
-  : Astro.url.pathname;
-const cleanPath = pathname.replace(/\/+$/, '/') || '/';
+const rawBase = import.meta.env.BASE_URL; // heute immer "/"
+const cleanPath = Astro.url.pathname.endsWith('/')
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
 const canonicalURL = new URL(cleanPath, Astro.site).href;
 
 const absoluteOgImage = new URL(ogImage, Astro.site).href;
@@ -164,6 +166,35 @@ if (breadcrumbs && breadcrumbs.length > 0) {
         ? b.url
         : new URL(b.url.replace(/^\//, ''), Astro.site).href,
     })),
+  });
+}
+
+// NewsArticle-Schema für News-Detailseiten. Google nutzt das für News-
+// Rich-Results (mit Bild, Datum, Autor). Ohne dieses Schema landet der
+// Artikel im generischen Web-Ergebnis, nicht im News-Karussell.
+if (ogType === 'article' && article?.headline && article?.articleUrl) {
+  const articleImageUrl = article.imageUrl
+    ? new URL(article.imageUrl, Astro.site).href
+    : absoluteOgImage;
+  graph.push({
+    '@type': 'NewsArticle',
+    '@id': `${new URL(article.articleUrl, Astro.site).href}#article`,
+    headline: article.headline,
+    description,
+    image: [articleImageUrl],
+    datePublished: article.publishedTime,
+    dateModified: article.modifiedTime ?? article.publishedTime,
+    author: {
+      '@type': 'Person',
+      name: AUTHOR,
+      url: siteHref,
+    },
+    publisher: { '@id': `${siteHref}#organization` },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': new URL(article.articleUrl, Astro.site).href,
+    },
+    inLanguage: 'de-AT',
   });
 }
 

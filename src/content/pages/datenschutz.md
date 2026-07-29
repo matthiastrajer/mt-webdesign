@@ -21,9 +21,11 @@ Wenn Sie uns, entweder über unser Kontaktformular auf unserer Webseite, oder pe
 
 ## Cookies
 
-Unsere Website verwendet so genannte Cookies. Dabei handelt es sich um kleine Textdateien, die mit Hilfe des Browsers auf Ihrem Endgerät abgelegt werden. Sie richten keinen Schaden an. Wir nutzen Cookies dazu, unser Angebot nutzerfreundlich zu gestalten. Einige Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Sie ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.
+Diese Website selbst setzt **keine eigenen Cookies**. Zur Speicherung Ihrer Cookie-Entscheidung (Zustimmung oder Ablehnung zu Google Analytics) wird lediglich ein Eintrag im lokalen Browser-Speicher (`localStorage`) unter dem Schlüssel `mtx-consent-v1` gespeichert. Dieser Eintrag verlässt Ihr Gerät nicht.
 
-Wenn Sie dies nicht wünschen, so können Sie Ihren Browser so einrichten, dass er Sie über das Setzen von Cookies informiert und Sie dies nur im Einzelfall erlauben. Bei der Deaktivierung von Cookies kann die Funktionalität unserer Website eingeschränkt sein.
+Wenn Sie im Cookie-Banner „Akzeptieren" wählen, wird zusätzlich Google Analytics geladen und setzt eigene Cookies (siehe eigener Abschnitt weiter unten). Bei „Ablehnen" werden **keine** Cookies gesetzt.
+
+Sie können die Speicherung von Cookies grundsätzlich in Ihren Browsereinstellungen konfigurieren, einschränken oder vollständig deaktivieren.
 
 ## Kontaktformular-Dienstleister (FormSubmit)
 

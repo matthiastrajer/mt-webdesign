@@ -1,6 +1,11 @@
 User-agent: *
 Allow: /
+
+# /admin/ ist das Sveltia-CMS und muss nicht in Suchergebnissen landen.
 Disallow: /admin/
-Disallow: /briefing
+
+# /briefing/ ist ein noindex-Formular. Kein Disallow — der Crawler darf
+# die Seite besuchen (damit er das noindex-Meta lesen kann), soll sie
+# aber nicht indexieren. Das noindex im Head übernimmt die Führung.
 
 Sitemap: https://mtx-webdesign.at/sitemap.xml
