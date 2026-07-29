@@ -50,13 +50,21 @@ const dateFmt = (d: Date) =>
               <a href={`${base}news/${post.slug}/`} class="news-card__link">
                 <div class="news-card__media">
                   {post.data.cover ? (
-                    <img
-                      src={`${base}news/${post.data.cover}`}
-                      alt={post.data.coverAlt ?? post.data.title}
-                      loading="lazy"
-                      width="520"
-                      height="390"
-                    />
+                    <picture>
+                      {(post.data.cover.endsWith('.png') || post.data.cover.endsWith('.jpg')) && (
+                        <source
+                          srcset={`${base}news/${post.data.cover.replace(/\.(png|jpg)$/, '.webp')}`}
+                          type="image/webp"
+                        />
+                      )}
+                      <img
+                        src={`${base}news/${post.data.cover}`}
+                        alt={post.data.coverAlt ?? post.data.title}
+                        loading="lazy"
+                        width="520"
+                        height="390"
+                      />
+                    </picture>
                   ) : (
                     <div class="news-card__media-fallback" aria-hidden="true">
                       <span class="mono">MT · N</span>
@@ -138,7 +146,7 @@ const dateFmt = (d: Date) =>
   }
 
   .news-card:hover {
-    border-color: var(--brass);
+    border-color: var(--brass-text);
     transform: translateY(-2px);
   }
 
@@ -168,7 +176,7 @@ const dateFmt = (d: Date) =>
     align-items: center;
     justify-content: center;
     background: var(--ink);
-    color: var(--brass);
+    color: var(--brass-text);
     font-size: 12px;
     letter-spacing: 0.15em;
   }
@@ -181,7 +189,7 @@ const dateFmt = (d: Date) =>
   }
 
   .news-card__date {
-    color: var(--brass);
+    color: var(--brass-text);
     letter-spacing: 0.08em;
     font-size: 11px;
     text-transform: uppercase;
@@ -217,7 +225,7 @@ const dateFmt = (d: Date) =>
   }
 
   .news-card:hover .news-card__cta {
-    color: var(--brass);
+    color: var(--brass-text);
     gap: 0.75rem;
   }
 

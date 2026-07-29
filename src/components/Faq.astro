@@ -98,11 +98,11 @@ const base = import.meta.env.BASE_URL;
   }
 
   .faq__question:hover {
-    color: var(--brass);
+    color: var(--brass-text);
   }
 
   .faq__n {
-    color: var(--brass);
+    color: var(--brass-text);
     letter-spacing: 0.1em;
     font-size: 11px;
     min-width: 44px;
@@ -130,7 +130,7 @@ const base = import.meta.env.BASE_URL;
 
   .faq__item[open] .faq__icon {
     transform: rotate(45deg);
-    border-color: var(--brass);
+    border-color: var(--brass-text);
     background: var(--brass);
     color: var(--paper);
   }
@@ -148,14 +148,14 @@ const base = import.meta.env.BASE_URL;
   }
 
   .faq__answer :global(.faq__link) {
-    color: var(--brass);
+    color: var(--brass-text);
     text-decoration: none;
     border-bottom: 1px solid color-mix(in srgb, var(--brass) 40%, transparent);
     transition: border-color var(--dur) var(--ease-out);
   }
 
   .faq__answer :global(.faq__link:hover) {
-    border-bottom-color: var(--brass);
+    border-bottom-color: var(--brass-text);
   }
 
   .faq__cta {

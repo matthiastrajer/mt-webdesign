@@ -38,11 +38,21 @@ const dateFmt = (d: Date) =>
             <a href={`${base}news/${post.slug}/`} class="news-slide__link">
               <div class="news-slide__media">
                 {post.data.cover ? (
-                  <img
-                    src={`${base}news/${post.data.cover}`}
-                    alt={post.data.coverAlt ?? ''}
-                    loading="lazy"
-                  />
+                  <picture>
+                    {(post.data.cover.endsWith('.png') || post.data.cover.endsWith('.jpg')) && (
+                      <source
+                        srcset={`${base}news/${post.data.cover.replace(/\.(png|jpg)$/, '.webp')}`}
+                        type="image/webp"
+                      />
+                    )}
+                    <img
+                      src={`${base}news/${post.data.cover}`}
+                      alt={post.data.coverAlt ?? post.data.title}
+                      loading="lazy"
+                      width="520"
+                      height="390"
+                    />
+                  </picture>
                 ) : (
                   <div class="news-slide__media-fallback" aria-hidden="true">
                     <span class="mono">MT · N</span>
@@ -129,13 +139,13 @@ const dateFmt = (d: Date) =>
   }
 
   .news-slide:hover {
-    border-color: var(--brass);
+    border-color: var(--brass-text);
     transform: translateY(-3px);
   }
 
   .news-slide:hover::before {
-    border-top-color: var(--brass);
-    border-left-color: var(--brass);
+    border-top-color: var(--brass-text);
+    border-left-color: var(--brass-text);
   }
 
   .news-slide__link {
@@ -170,7 +180,7 @@ const dateFmt = (d: Date) =>
     align-items: center;
     justify-content: center;
     background: var(--ink);
-    color: var(--brass);
+    color: var(--brass-text);
     font-size: 12px;
     letter-spacing: 0.15em;
   }
@@ -184,7 +194,7 @@ const dateFmt = (d: Date) =>
   }
 
   .news-slide__date {
-    color: var(--brass);
+    color: var(--brass-text);
     letter-spacing: 0.08em;
     font-size: 11px;
     text-transform: uppercase;

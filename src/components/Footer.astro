@@ -14,7 +14,10 @@ const base = import.meta.env.BASE_URL;
     <div class="footer__top">
       <div class="footer__brand">
         <a href={base} class="footer__logo" aria-label="MTX-Webdesign Startseite">
-          <img src={`${base}brand/mtx-logo.png`} alt="MTX-Webdesign" class="footer__logo-img" />
+          <picture>
+            <source srcset={`${base}brand/mtx-logo.webp`} type="image/webp" />
+            <img src={`${base}brand/mtx-logo.png`} alt="MTX-Webdesign" class="footer__logo-img" width="200" height="92" loading="lazy" />
+          </picture>
         </a>
         <p class="footer__tag">{f.tagline}</p>
       </div>
@@ -117,7 +120,7 @@ const base = import.meta.env.BASE_URL;
   }
 
   .footer__col a:hover {
-    color: var(--brass);
+    color: var(--brass-text);
   }
 
   .footer__label {
@@ -161,7 +164,7 @@ const base = import.meta.env.BASE_URL;
   }
 
   .footer__admin:hover {
-    color: var(--brass);
+    color: var(--brass-text);
   }
 
   @media (max-width: 780px) {
