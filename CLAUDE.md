@@ -1,9 +1,11 @@
 # MTX-Webdesign — Claude-Kontext
 
-Astro-basierte Business-Website für MTX-Webdesign, gehostet auf GitHub Pages.
-Owner: Matthias Trajer. Repo: `matthiastrajer/mt-webdesign` (Repo-Name stammt
-noch aus der Zeit vor dem Rebrand auf MTX-Webdesign — Umbenennung möglich,
-aber nicht kritisch, siehe [Verwaltung des Brand-Rename](#brand-mtx-webdesign)).
+Astro-basierte Business-Website für MTX-Webdesign, gehostet bei Hostinger
+(Single-Plan) unter der Custom-Domain `mtx-webdesign.at`. Deploy per FTP
+aus GitHub Actions bei jedem Push auf `master`. Owner: Matthias Trajer.
+Repo: `matthiastrajer/mt-webdesign` (Repo-Name stammt noch aus der Zeit vor
+dem Rebrand auf MTX-Webdesign — Umbenennung möglich, aber nicht kritisch,
+siehe [Verwaltung des Brand-Rename](#brand-mtx-webdesign)).
 
 Diese Datei wird bei jeder neuen Session automatisch geladen. Bitte lesen und
 befolgen, damit die Zusammenarbeit ohne Wiederholungen weiterläuft.
@@ -60,17 +62,28 @@ Renderer in der Komponente passen — sonst schlägt der Build fehl.
 ### Deployment
 
 GitHub Actions (`.github/workflows/deploy.yml`) baut bei jedem Push auf
-`master` und deployed auf GitHub Pages.
+`master` und synchronisiert `dist/` per FTP nach Hostinger.
 
-- **Live-URL (GH Pages):** https://matthiastrajer.github.io/mt-webdesign/
-- **Geplante Custom-Domain:** https://mtx-webdesign.at
+- **Live-URL:** https://mtx-webdesign.at
+- **Hosting:** Hostinger Single-Plan, Account `u363105884`
+- **FTP-Ziel (Doc-Root der Domain):** `/domains/mtx-webdesign.at/public_html/`
+  — **nicht** `/public_html/`. Der Konto-Root-`public_html/` gehört auf
+  diesem Plan zu keiner Domain; ein Upload dorthin ist von außen 403.
 
-**Wichtig:** `BASE_URL` wird in `astro.config.mjs` auf trailing-slash
-normalisiert. Ohne diesen Fix brechen interne Links unter dem
-`/mt-webdesign/`-Basepfad von GH Pages (Kombinationen wie
-`${BASE_URL}briefing` würden zu `/mt-webdesignbriefing` — 404). Beim
-Schreiben interner Links immer `${import.meta.env.BASE_URL}pfad` (ohne
-führenden Slash im Pfad) verwenden.
+Repo-Secrets für den Deploy: `HOSTINGER_FTP_SERVER`, `HOSTINGER_FTP_USERNAME`,
+`HOSTINGER_FTP_PASSWORD` (Settings → Secrets and variables → Actions).
+
+**Zur Astro-Base-Config:** Da die Seite an der Root der Custom-Domain läuft
+(nicht mehr unter `/mt-webdesign/` wie damals auf GH Pages), muss beim Build
+kein `BASE_PATH` mehr gesetzt werden — `astro.config.mjs` fällt automatisch
+auf `base: '/'` zurück. Der bereits vorhandene Umgang mit
+`${import.meta.env.BASE_URL}` in Komponenten funktioniert weiterhin (er
+liefert dann einfach `/`) und muss beim Schreiben neuer interner Links nicht
+extra beachtet werden.
+
+Wenn der Deploy einmal grün ist aber die Seite trotzdem 403 liefert, ist die
+FTP-Ziel-Pfad-Frage die erste Verdächtige: prüfen, ob die Domain in Hostinger
+noch immer denselben Doc-Root hat (Website → Erweitert → Website-Root).
 
 ### Formulare
 
