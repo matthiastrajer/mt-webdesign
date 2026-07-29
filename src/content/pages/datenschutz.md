@@ -1,10 +1,10 @@
 ---
-title: "Datenschutzerklärung"
-metaDescription: "Datenschutzerklärung von MTX-Webdesign gemäß DSGVO und österreichischem Datenschutzgesetz."
-intro: "Rechtliches"
-label: "Datenschutz"
-labelId: "L02"
-warning: "Rechtstext — vor Live-Gang bitte durch WKO-Impressum-Check oder einen Fachanwalt prüfen lassen. Sobald weitere Drittanbieter (Google Maps, YouTube-Einbettungen, Social-Media-Widgets o. ä.) hinzukommen, muss diese Erklärung entsprechend ergänzt werden."
+title: Datenschutzerklärung
+metaDescription: Datenschutzerklärung von MTX-Webdesign gemäß DSGVO und österreichischem Datenschutzgesetz.
+intro: Rechtliches
+label: Datenschutz
+labelId: L02
+warning: ''
 ---
 
 ## Erklärung zur Informationspflicht
@@ -99,4 +99,4 @@ Wenn Sie vermuten, dass im Zuge der Verarbeitung Ihrer Daten Verstöße gegen da
 **Webseitenbetreiber:** Matthias Trajer / MTX-Webdesign
 **E-Mail:** [hallo@mtx-webdesign.at](mailto:hallo@mtx-webdesign.at)
 
-*Quelle: fairesrecht.at in Kooperation mit [Rechtsanwalt Wien](https://rechtsanwaltwien.com)*
+_Quelle: fairesrecht.at in Kooperation mit_ [_Rechtsanwalt Wien_](https://rechtsanwaltwien.com)
