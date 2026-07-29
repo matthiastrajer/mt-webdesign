@@ -1,9 +1,9 @@
 ---
-title: "Was kostet eine Website in Österreich? Preise 2026"
+title: Was kostet eine Website in Österreich? Preise 2026
 date: 2026-07-28
-excerpt: "Ehrliche Preisübersicht 2026: von Onepager bis Firmenwebsite. Was Sie in Österreich zahlen, was Sie bekommen — und wo die typischen Preisfallen liegen."
-cover: "placeholder.svg"
-coverAlt: "Preisübersicht Website Österreich 2026"
+excerpt: 'Ehrliche Preisübersicht 2026: von Onepager bis Firmenwebsite. Was Sie in Österreich zahlen, was Sie bekommen — und wo die typischen Preisfallen liegen.'
+cover: /news/ChatGPT Image 29. Juli 2026, 09_25_14.png
+coverAlt: Preisübersicht Website Österreich 2026
 draft: false
 ---
 
@@ -70,7 +70,7 @@ Konkret sind es diese acht Punkte:
 
 **7. Google-Optimierung.** Grund-SEO (Meta-Tags, saubere Struktur, Ladezeit) sollte bei jedem seriösen Anbieter im Grundpreis enthalten sein. Erweiterte SEO (Keyword-Recherche, Content-Strategie) kostet 500–3.000 € einmalig oder monatlich als Betreuung.
 
-**8. Rechtliches.** Impressum und Datenschutz sind meist inklusive oder ~100 € Aufpreis. Bei komplexen Fällen (Shop, umfangreiche Datenverarbeitung) sollten Sie zusätzlich einen Anwalt fragen — 200–500 € einmalig.
+**8. Rechtliches.** Impressum und Datenschutz sind meist inklusive oder \~100 € Aufpreis. Bei komplexen Fällen (Shop, umfangreiche Datenverarbeitung) sollten Sie zusätzlich einen Anwalt fragen — 200–500 € einmalig.
 
 ## Onepager oder Firmenwebsite — was ist besser?
 
@@ -133,7 +133,7 @@ Sie zahlen einmalig für die Erstellung — 800 bis 5.000 € — plus geringe m
 Das vergessen viele beim Vergleich. Die Erstellung ist einmalig, aber danach läuft's weiter:
 
 | Position | Typische Kosten | Wer zahlt |
-|----------|-----------------|-----------|
+| --- | --- | --- |
 | Hosting | 3–10 €/Monat | Sie oder Ihr Anbieter |
 | Domain (.at, .com) | 10–20 €/Jahr | Sie direkt |
 | SSL-Zertifikat | oft kostenlos | inklusive im Hosting |
@@ -144,7 +144,7 @@ Das vergessen viele beim Vergleich. Die Erstellung ist einmalig, aber danach lä
 **Realistisches Beispiel für eine kleine Firmenwebsite:**
 
 - Hosting + Domain: 15 €/Monat = 180 €/Jahr
-- Kleine Änderungen einmal im Jahr: ~100 €
+- Kleine Änderungen einmal im Jahr: \~100 €
 - **Gesamt: rund 280 €/Jahr laufend**
 
 Mit Pflege-Paket (unbegrenzt kleine Änderungen inklusive):
@@ -158,7 +158,7 @@ Mit Pflege-Paket (unbegrenzt kleine Änderungen inklusive):
 Die ehrlichste Übersicht, die man geben kann — basierend auf österreichischen Marktpreisen 2026:
 
 | Website-Typ | Umfang | Einmalig | Laufend/Jahr |
-|-------------|--------|----------|--------------|
+| --- | --- | --- | --- |
 | **Onepager** | 1 lange Seite + Kontaktformular | 800–1.200 € | 180–300 € |
 | **Kleine Firmenwebsite** | 4–5 Seiten, Formular, Karte | 1.200–2.000 € | 200–400 € |
 | **Mittlere Website** | 6–10 Seiten, Team, Referenzen, Blog | 2.000–3.500 € | 300–600 € |
@@ -176,48 +176,52 @@ Konkrete Fälle machen es greifbarer. Das hier sind typische Kalkulationen:
 Peter ist Elektriker mit einem Mitarbeiter. Er bietet Notdienste und kleinere Installationen. Wichtig ist ihm: schnell erreichbar sein, Telefonnummer prominent, Notdienst-Info klar.
 
 **Beste Wahl:** Onepager
+
 - 1 Seite mit: kurze Vorstellung, 4–5 Leistungen, Kontaktformular, Google Maps, Notdienst-Nummer
 - Einmalig: ca. 900 €
-- Laufend: ~200 €/Jahr
+- Laufend: \~200 €/Jahr
 
-*Warum nicht mehr?* Peters Kunden googeln „Elektriker Notdienst 3100". Die finden ihn auch mit einem Onepager auf der ersten Seite. Eine große Website würde für ihn nichts bringen.
+_Warum nicht mehr?_ Peters Kunden googeln „Elektriker Notdienst 3100". Die finden ihn auch mit einem Onepager auf der ersten Seite. Eine große Website würde für ihn nichts bringen.
 
 ### 2. Der Friseursalon in einer Kleinstadt
 
 Sarah führt einen Salon mit vier Mitarbeiterinnen. Kunden wollen Öffnungszeiten sehen, Preise vergleichen und online Termine buchen können.
 
 **Beste Wahl:** Mittlere Firmenwebsite mit Terminbuchung
+
 - 6 Seiten: Start, Über uns, Team, Preise, Galerie, Kontakt
 - Online-Terminbuchung (Cal.com Integration)
 - Einmalig: ca. 2.200 €
-- Laufend: ~350 €/Jahr
+- Laufend: \~350 €/Jahr
 
-*Warum nicht Baukasten?* Sarah wäre 30 Stunden mit dem Aufbau beschäftigt — Zeit, in der sie Kundinnen frisieren könnte. Der Verlust: locker 3.000 € entgangenes Einkommen. Die Terminbuchung will sie zudem funktionierend haben, nicht selbst zusammenbauen.
+_Warum nicht Baukasten?_ Sarah wäre 30 Stunden mit dem Aufbau beschäftigt — Zeit, in der sie Kundinnen frisieren könnte. Der Verlust: locker 3.000 € entgangenes Einkommen. Die Terminbuchung will sie zudem funktionierend haben, nicht selbst zusammenbauen.
 
 ### 3. Das Restaurant mit Terrasse
 
 Familie Huber hat ein kleines Wirtshaus mit 40 Sitzplätzen. Sie wollen Speisekarte, Öffnungszeiten, Reservierungsformular und Fotos zeigen.
 
 **Beste Wahl:** Kleine Firmenwebsite
+
 - 5 Seiten: Start, Speisekarte, Über uns, Reservierung, Kontakt
 - Google Maps eingebunden (mit Consent-Banner, weil Cookies)
 - Speisekarte als Text auf der Seite (nicht nur als PDF — Google indexiert PDFs schlecht)
 - Einmalig: ca. 1.800 €
-- Laufend: ~350 €/Jahr
+- Laufend: \~350 €/Jahr
 
-*Was hier oft schiefgeht:* Viele Restaurants haben eine schöne Website, aber die Speisekarte ist NUR ein PDF. Wer nach „Wiener Schnitzel Melk" sucht, findet dann die Konkurrenz statt Hubers.
+_Was hier oft schiefgeht:_ Viele Restaurants haben eine schöne Website, aber die Speisekarte ist NUR ein PDF. Wer nach „Wiener Schnitzel Melk" sucht, findet dann die Konkurrenz statt Hubers.
 
 ### 4. Der Installateurmeister mit fünf Mitarbeitern
 
 Michael führt einen wachsenden Installations- und Heizungsbetrieb. Er will neben Privatkunden auch Bauträger und Immobilienverwaltungen ansprechen. Braucht Referenzenseite, Team-Bereich, mehrere Leistungsseiten.
 
 **Beste Wahl:** Mittlere Website mit strukturiertem Aufbau
+
 - 10 Seiten: Start, Leistungen (Übersicht + 4 Unterseiten), Team, Referenzen, Karriere, Notdienst, Kontakt
 - Bildergalerie „Vorher/Nachher"
 - Einmalig: ca. 3.200 €
-- Laufend: ~500 €/Jahr
+- Laufend: \~500 €/Jahr
 
-*Was Michaels Website wertvoll macht:* Die klaren Leistungsseiten ranken bei Google für jede einzelne Suche — „Heizungsservice Krems", „Neue Badinstallation Niederösterreich", „Notdienst Installateur St. Pölten". Statt einer Seite hat er zehn Türen, durch die Kunden reinkommen.
+_Was Michaels Website wertvoll macht:_ Die klaren Leistungsseiten ranken bei Google für jede einzelne Suche — „Heizungsservice Krems", „Neue Badinstallation Niederösterreich", „Notdienst Installateur St. Pölten". Statt einer Seite hat er zehn Türen, durch die Kunden reinkommen.
 
 ## Für wen reicht eine günstige Website?
 
@@ -301,9 +305,9 @@ Das Wichtigste vor der Auftragserteilung:
 
 Und noch etwas: Die günstigste Website ist nicht immer die beste. Aber die teuerste auch nicht. Am wichtigsten ist, dass sie zu Ihrem Betrieb passt — und dass sie den Besucher aus einem Interessenten in einen Anrufer verwandelt.
 
----
+***
 
-Wenn Sie wissen möchten, was eine Website für Ihren Betrieb konkret kosten würde, erstellen wir Ihnen gerne kostenlos und unverbindlich ein individuelles Angebot. Ein kurzer Satz zu Ihrem Betrieb reicht — Antwort kommt innerhalb von 24 Stunden. [Zum Kontaktformular](/#kontakt) oder direkt zum [ausführlichen Briefing-Fragebogen](/briefing/) mit 15 Fragen (~5 Minuten), wenn Sie schon konkrete Vorstellungen haben.
+Wenn Sie wissen möchten, was eine Website für Ihren Betrieb konkret kosten würde, erstellen wir Ihnen gerne kostenlos und unverbindlich ein individuelles Angebot. Ein kurzer Satz zu Ihrem Betrieb reicht — Antwort kommt innerhalb von 24 Stunden. [Zum Kontaktformular](/#kontakt) oder direkt zum [ausführlichen Briefing-Fragebogen](/briefing/) mit 15 Fragen (\~5 Minuten), wenn Sie schon konkrete Vorstellungen haben.
 
 ## Häufig gestellte Fragen
 
