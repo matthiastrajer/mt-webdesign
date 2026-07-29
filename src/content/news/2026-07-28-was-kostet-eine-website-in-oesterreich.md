@@ -2,8 +2,8 @@
 title: Was kostet eine Website in Österreich? Preise 2026
 date: 2026-07-28
 excerpt: 'Ehrliche Preisübersicht 2026: von Onepager bis Firmenwebsite. Was Sie in Österreich zahlen, was Sie bekommen — und wo die typischen Preisfallen liegen.'
-cover: /news/ChatGPT Image 29. Juli 2026, 09_25_14.png
-coverAlt: Preisübersicht Website Österreich 2026
+cover: /news/was-kostet-eine-website-in-oesterreich.png
+coverAlt: Preisübersicht für Firmen-Websites in Österreich — Beispielhafte Preise 2026
 draft: false
 ---
 

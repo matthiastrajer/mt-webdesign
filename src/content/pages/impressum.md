@@ -26,10 +26,9 @@ Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik 
 
 ## UID-Nummer
 
+Entfällt aufgrund Anwendung der Kleinunternehmerregelung gem. § 6 Abs. 1 Z 27 UStG.
 
-_Entfällt aufgrund Kleinunternehmerregelung_ 
-
-Mitgliedschaften bei der Wirtschaftskammerorganisation
+## Mitgliedschaften bei der Wirtschaftskammerorganisation
 
 Mitglied der Wirtschaftskammer Österreich (WKÖ) und der Wirtschaftskammer Niederösterreich (WKNÖ), Fachgruppe UBIT (Unternehmensberatung, Buchhaltung und Informationstechnologie).
 

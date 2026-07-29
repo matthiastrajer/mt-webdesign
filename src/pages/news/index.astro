@@ -47,13 +47,15 @@ const dateFmt = (d: Date) =>
         <ol class="news__list">
           {posts.map((post) => (
             <li class="news-card">
-              <a href={`${base}news/${post.slug}`} class="news-card__link">
+              <a href={`${base}news/${post.slug}/`} class="news-card__link">
                 <div class="news-card__media">
                   {post.data.cover ? (
                     <img
                       src={`${base}news/${post.data.cover}`}
-                      alt={post.data.coverAlt ?? ''}
+                      alt={post.data.coverAlt ?? post.data.title}
                       loading="lazy"
+                      width="520"
+                      height="390"
                     />
                   ) : (
                     <div class="news-card__media-fallback" aria-hidden="true">

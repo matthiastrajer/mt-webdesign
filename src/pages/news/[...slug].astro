@@ -29,6 +29,7 @@ const metaTitle = `${trimmedTitle}${brand}`;
 
 // Cover-Bild absolut fürs OG-Tag; ohne Cover Fallback auf Favicon
 const ogImagePath = post.data.cover ? `/news/${post.data.cover}` : '/favicon.png';
+const articlePath = `/news/${post.slug}/`;
 ---
 
 <Base
@@ -40,10 +41,13 @@ const ogImagePath = post.data.cover ? `/news/${post.data.cover}` : '/favicon.png
   breadcrumbs={[
     { name: 'Startseite', url: '/' },
     { name: 'News', url: '/news/' },
-    { name: post.data.title, url: `/news/${post.slug}/` },
+    { name: post.data.title, url: articlePath },
   ]}
   article={{
     publishedTime: post.data.date.toISOString(),
+    headline: post.data.title,
+    imageUrl: ogImagePath,
+    articleUrl: articlePath,
   }}
 >
   <Nav />
@@ -58,9 +62,13 @@ const ogImagePath = post.data.cover ? `/news/${post.data.cover}` : '/favicon.png
       </a>
 
       <header class="article__header">
-        <time class="mono article__date" datetime={post.data.date.toISOString()}>
-          {dateFmt(post.data.date)}
-        </time>
+        <div class="article__meta">
+          <time class="mono article__date" datetime={post.data.date.toISOString()}>
+            {dateFmt(post.data.date)}
+          </time>
+          <span class="mono article__meta-sep" aria-hidden="true">·</span>
+          <span class="mono article__author">von Matthias Trajer</span>
+        </div>
         <h1 class="article__title">{post.data.title}</h1>
         <p class="lead article__lead">{post.data.excerpt}</p>
       </header>
@@ -69,7 +77,11 @@ const ogImagePath = post.data.cover ? `/news/${post.data.cover}` : '/favicon.png
         <figure class="article__cover">
           <img
             src={`${base}news/${post.data.cover}`}
-            alt={post.data.coverAlt ?? ''}
+            alt={post.data.coverAlt ?? post.data.title}
+            width="1200"
+            height="675"
+            loading="eager"
+            fetchpriority="high"
           />
         </figure>
       )}
@@ -117,11 +129,24 @@ const ogImagePath = post.data.cover ? `/news/${post.data.cover}` : '/favicon.png
     border-bottom: 1px solid var(--line);
   }
 
-  .article__date {
+  .article__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .article__date,
+  .article__author {
     color: var(--brass);
     letter-spacing: 0.1em;
     font-size: 11px;
     text-transform: uppercase;
+  }
+
+  .article__meta-sep {
+    color: var(--line-strong);
+    font-size: 11px;
   }
 
   .article__title {

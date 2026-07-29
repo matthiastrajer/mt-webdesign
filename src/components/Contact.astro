@@ -6,6 +6,9 @@ const c = contactEntry!.data;
 const settingsEntry = await getEntry('settings', 'site');
 const s = settingsEntry!.data;
 const base = import.meta.env.BASE_URL;
+// Redirect-Ziel dynamisch aus Astro.site — vermeidet Hardcoding einer
+// Domain in einer Content-Datei, funktioniert auch nach Domain-Wechsel.
+const successUrl = new URL(`${base}?kontakt=erfolg#kontakt`, Astro.site).href;
 ---
 
 <section class="section contact" id="kontakt">
@@ -46,7 +49,7 @@ const base = import.meta.env.BASE_URL;
           </div>
           <h3 class="form__briefing-title">{c.briefingTitle}</h3>
           <p>{c.briefingBody}</p>
-          <a href={`${base}briefing`} class="btn form__briefing-btn">
+          <a href={`${base}briefing/`} class="btn form__briefing-btn">
             <span>{c.briefingButton}</span>
             <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6"/>
@@ -67,7 +70,7 @@ const base = import.meta.env.BASE_URL;
         <input type="hidden" name="_subject" value="Neue Kontaktanfrage — Website" />
         <input type="hidden" name="_captcha" value="true" />
         <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_next" value="https://mtx-webdesign.at/?kontakt=erfolg#kontakt" />
+        <input type="hidden" name="_next" value={successUrl} />
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
         <div class="form__head">
@@ -122,7 +125,7 @@ const base = import.meta.env.BASE_URL;
             <span>
               Ich willige ein, dass meine Angaben zur Bearbeitung meiner Anfrage
               gespeichert werden. Details in der
-              <a href={`${base}datenschutz`}>Datenschutzerklärung</a>.
+              <a href={`${base}datenschutz/`}>Datenschutzerklärung</a>.
             </span>
           </span>
         </label>
