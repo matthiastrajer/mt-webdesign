@@ -1,10 +1,10 @@
 ---
-title: "Impressum & Offenlegung"
-metaDescription: "Impressum und Offenlegung von MTX-Webdesign gemäß § 5 ECG, § 63 GewO und § 25 Mediengesetz."
-intro: "Rechtliches"
-label: "Impressum"
-labelId: "L01"
-warning: "Vor Live-Gang bitte ergänzen: UID-Nummer eintragen oder bei Kleinunternehmerregelung diesen Block entfernen. Empfehlung: WKO-Impressum-Check (firmen.wko.at → E-Commerce-Gesetz-Service) nutzen — kostenlos für Mitglieder und deckt ECG, GewO, UGB und MedienG in einem ab."
+title: Impressum & Offenlegung
+metaDescription: Impressum und Offenlegung von MTX-Webdesign gemäß § 5 ECG, § 63 GewO und § 25 Mediengesetz.
+intro: Rechtliches
+label: Impressum
+labelId: L01
+warning: ''
 ---
 
 ## Medieninhaber und für den Inhalt verantwortlich
@@ -26,10 +26,10 @@ Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik 
 
 ## UID-Nummer
 
-ATU00000000
-*(bei Kleinunternehmerregelung entfällt die UID-Angabe — bitte prüfen und ggf. diesen Abschnitt entfernen.)*
 
-## Mitgliedschaften bei der Wirtschaftskammerorganisation
+_Entfällt aufgrund Kleinunternehmerregelung_ 
+
+Mitgliedschaften bei der Wirtschaftskammerorganisation
 
 Mitglied der Wirtschaftskammer Österreich (WKÖ) und der Wirtschaftskammer Niederösterreich (WKNÖ), Fachgruppe UBIT (Unternehmensberatung, Buchhaltung und Informationstechnologie).
 
