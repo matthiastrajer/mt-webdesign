@@ -86,32 +86,126 @@ const questions = [
   {
     n: '09',
     q: 'Welche Funktionen soll Ihre Website haben?',
-    hint: 'Bitte alles anhaken, was Sie sich vorstellen können — auch „nice to have". Alles optional; ich gebe im Angebot an, was jeweils dazukommt.',
-    type: 'checkboxes-grid',
+    hint: 'Bitte alles anhaken, was Sie sich vorstellen können — auch „nice to have". Für Details zu jedem Punkt auf das ⓘ tippen. Alles optional; ich gebe im Angebot an, was jeweils dazukommt.',
+    type: 'checkboxes-info',
     name: 'Gewünschte Funktionen',
     options: [
-      'Kontaktformular',
-      'Google Maps Anbindung (Standort-Karte)',
-      'Anfahrtsbeschreibung & Öffnungszeiten',
-      'WhatsApp-Button',
-      'Rückruf-Formular',
-      'Online-Termin buchen (Kalender-System)',
-      'Preisliste / Leistungsübersicht',
-      'Team-Vorstellung / „Über uns"',
-      'Bildergalerie / Referenzen („Vorher / Nachher")',
-      'Kundenbewertungen (auch Google-Rezensionen)',
-      'Zertifikate & Auszeichnungen',
-      'Blog / News-Bereich (selbst erstellbar)',
-      'FAQ-Bereich',
-      'Video-Einbindung (z. B. YouTube)',
-      'Download-Bereich (PDFs, Formulare, Datenblätter)',
-      'Newsletter-Anmeldung',
-      'Social-Media-Feeds (Instagram, Facebook)',
-      'Mehrsprachigkeit (z. B. DE / EN)',
-      'Karriere- / Jobs-Bereich',
-      'Login-Bereich für Kunden / Mitgliederbereich',
-      'Darkmode',
-      'Sonstiges (bitte unten beschreiben)',
+      {
+        label: 'Grundwebsite (Standardpaket)',
+        locked: true,
+        description:
+          'Komplette Firmenwebsite aus einer Hand — immer enthalten. Startseite und drei Unterseiten (Über uns, Leistungen, Kontakt), individuelles Design ohne Baukasten, responsive Darstellung für Mobil, Tablet und Desktop, einfaches Kontaktformular mit E-Mail-Weiterleitung, Admin-Panel zum eigenständigen Pflegen der Inhalte, SSL-Zertifikat, Impressum- und Datenschutz-Grundgerüst, SEO-Grundoptimierung, Support bis zum Live-Gang.',
+      },
+      {
+        label: 'WhatsApp-Button',
+        description:
+          'Direkt-Kontakt-Button, der beim Klick eine WhatsApp-Konversation mit Ihrer hinterlegten Telefonnummer öffnet. Statischer Link ohne externes Widget, damit DSGVO-neutral.',
+      },
+      {
+        label: 'Anfahrtsbeschreibung & Öffnungszeiten',
+        description:
+          'Öffnungszeiten und Anfahrtstexte als eigener Bereich, strukturiert für Google (Schema.org), im Admin-Panel selbst pflegbar.',
+      },
+      {
+        label: 'Rückruf-Formular',
+        description:
+          'Zusätzliches Formular speziell für Rückruf-Wünsche (Name, Telefon, Wunsch-Zeitraum). Landet in derselben E-Mail-Weiterleitung wie das Kontaktformular.',
+      },
+      {
+        label: 'FAQ-Bereich',
+        description:
+          'Aufklappbare Fragen-Antworten-Sektion (Accordion), im Admin-Panel selbst um weitere Fragen erweiterbar. Wird zusätzlich für Google als Rich-Snippet ausgezeichnet — höhere Sichtbarkeit in den Suchergebnissen.',
+      },
+      {
+        label: 'Video-Einbindung',
+        description:
+          'YouTube-Video-Einbindung im datenschutzfreundlichen Modus (nocookie-Domain, Klick-um-zu-laden), damit keine Google-Cookies vor Ihrer Einwilligung gesetzt werden.',
+      },
+      {
+        label: 'Download-Bereich',
+        description:
+          'Öffentlicher Download-Bereich für PDF-Dokumente (Preislisten, Datenblätter, Formulare). Neue Dateien können Sie jederzeit selbst im Admin-Panel hochladen.',
+      },
+      {
+        label: 'Zertifikate & Auszeichnungen',
+        description:
+          'Logo-Grid mit Namen und optionaler Beschreibung für Meisterbrief, Innungs-Mitgliedschaft, Zertifikate und Auszeichnungen. Im Admin-Panel selbst erweiterbar.',
+      },
+      {
+        label: 'Google Maps mit Consent-Overlay',
+        description:
+          'Interaktive Google-Maps-Karte mit Standort-Marker, DSGVO-konform mit Klick-Freigabe eingebettet (Karte wird erst nach Zustimmung geladen). Setzt einen aktiven Cookie-Consent-Banner voraus.',
+      },
+      {
+        label: 'Preisliste / Leistungsübersicht',
+        description:
+          'Strukturierte Preis- oder Leistungstabelle mit Kategorien und Erklärungen, im Admin-Panel selbst pflegbar.',
+      },
+      {
+        label: 'Team-Vorstellung',
+        description:
+          'Vorstellung Ihres Teams mit Foto, Name, Funktion und Kurzbeschreibung. Im Admin-Panel selbst erweiterbar — neue Mitarbeiter einfach nachtragen.',
+      },
+      {
+        label: 'Bildergalerie / Referenzprojekte',
+        description:
+          'Galerie zur Präsentation Ihrer Referenzarbeiten mit Vorschau- und Detailansicht. Bilder inklusive Beschreibung im Admin-Panel selbst pflegbar.',
+      },
+      {
+        label: 'Newsletter-Anmeldung',
+        description:
+          'Anmelde-Formular für Ihren Newsletter-Versand mit Anbindung an Brevo oder Mailchimp. Sie benötigen einen eigenen Newsletter-Account (Brevo und Mailchimp bieten kostenfreie Einstiegs-Tarife).',
+      },
+      {
+        label: 'Kundenbewertungen (Google-Rezensionen)',
+        description:
+          'Automatische Einbindung Ihrer aktuellen Google-Bewertungen. Sie stellen dazu Google-Business-Profil und API-Zugang zur Verfügung.',
+      },
+      {
+        label: 'Cookie-Consent-Banner',
+        description:
+          'DSGVO-konformer Cookie-Zustimmungs-Banner auf allen Seiten. Wird zwingend nötig, sobald externe Dienste wie Google Maps, Google Analytics, YouTube-Einbettungen oder Social-Media-Widgets zum Einsatz kommen.',
+      },
+      {
+        label: 'Social-Media-Feeds',
+        description:
+          'Einbindung Ihres aktuellen Instagram- oder Facebook-Feeds auf der Website. Setzt einen aktiven Cookie-Consent-Banner voraus, da diese Widgets typischerweise Cookies setzen.',
+      },
+      {
+        label: 'News- und Blog-Bereich',
+        description:
+          'Vollwertiger Blog-Bereich mit Übersichtsseite, Detailseiten pro Beitrag, Highlight-Kacheln auf der Startseite und voller Admin-Panel-Integration. Ideal für regelmäßige News, Fachartikel oder saisonale Aktionen.',
+      },
+      {
+        label: 'Karriere- / Jobs-Bereich',
+        description:
+          'Übersichtsseite offener Stellen mit Detailseiten pro Position, im Admin-Panel selbst pflegbar. Bewerbungen laufen über ein integriertes Bewerbungsformular.',
+      },
+      {
+        label: 'Darkmode',
+        description:
+          'Umschaltbarer Farbmodus zwischen hell und dunkel. Alle Farben, Kontraste und Bild-Overlays werden entsprechend angepasst; der Modus wird pro Nutzer gespeichert.',
+      },
+      {
+        label: 'Online-Terminbuchung',
+        description:
+          'Direkte Terminbuchung durch Kunden auf der Website via Cal.com- oder Calendly-Integration. Sie brauchen ein eigenes Cal.com-/Calendly-Konto (beide bieten kostenfreie Einstiegs-Tarife).',
+      },
+      {
+        label: 'Erweiterte SEO-Optimierung',
+        description:
+          'Über die Grundoptimierung im Standardpaket hinaus: vollständige Schema.org-Auszeichnung, gezielte lokale SEO-Maßnahmen (Google-Business-Verknüpfung, lokale Keywords), erweiterte Rich-Snippets und Anbindung an die Google Search Console mit erster Auswertung.',
+      },
+      {
+        label: 'Mehrsprachigkeit (DE + EN)',
+        description:
+          'Vollständig zweisprachige Website (Deutsch und Englisch) mit Sprachumschalter, übersetzten URLs und mehrsprachiger Verwaltung im Admin-Panel. Weitere Sprachen jederzeit ergänzbar.',
+      },
+      {
+        label: 'Vorher-/Nachher-Slider für Referenzen',
+        description:
+          'Interaktiver Bild-Vergleich: Zwei Bilder übereinander mit Schieberegler zum Freilegen — ideal zur Präsentation von Umbauten, Renovierungen oder Reinigungen.',
+      },
     ],
     extraField: {
       kind: 'input',
@@ -355,6 +449,60 @@ const questions = [
               </div>
             )}
 
+            {question.type === 'checkboxes-info' && question.options && (
+              <div class="choices choices--grid choices--compact">
+                {question.options.map((opt, i) => {
+                  const item = typeof opt === 'string' ? { label: opt } : opt;
+                  const descId = `qdesc-${question.n}-${i}`;
+                  return (
+                    <div class={`choice-wrap ${item.locked ? 'choice-wrap--locked' : ''}`}>
+                      <label class="choice">
+                        <input
+                          type="checkbox"
+                          name={question.name}
+                          value={item.label}
+                          checked={!!item.locked}
+                          disabled={!!item.locked}
+                        />
+                        <span class="choice__label">
+                          <span class="choice__marker" aria-hidden="true"></span>
+                          <span>
+                            {item.label}
+                            {item.locked && <span class="choice__badge">immer inklusive</span>}
+                          </span>
+                        </span>
+                      </label>
+                      {/* Damit gelockte Optionen trotzdem im FormData landen: */}
+                      {item.locked && (
+                        <input type="hidden" name={question.name} value={item.label} />
+                      )}
+                      {item.description && (
+                        <>
+                          <button
+                            type="button"
+                            class="choice-info__btn"
+                            aria-expanded="false"
+                            aria-controls={descId}
+                            aria-label={`Details zu „${item.label}" anzeigen`}
+                            data-info-toggle
+                          >
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                              <circle cx="12" cy="12" r="10" />
+                              <line x1="12" y1="16" x2="12" y2="12" />
+                              <line x1="12" y1="8" x2="12.01" y2="8" />
+                            </svg>
+                          </button>
+                          <div class="choice-info__panel" id={descId} role="region" hidden>
+                            <p>{item.description}</p>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
             {question.type === 'radios' && question.options && (
               <div class="choices">
                 {question.options.map((opt) => (
@@ -502,6 +650,50 @@ const questions = [
     }, true);
     form?.addEventListener('submit', () => {
       form.classList.add('was-submitted');
+    });
+
+    // 3) Info-Popover für Funktions-Checkboxen (F09).
+    //    Klick auf ⓘ toggelt das Beschreibungs-Kästchen; ein weiterer Klick,
+    //    ein Klick außerhalb oder Escape schließt das aktuell offene Panel.
+    const infoToggles = document.querySelectorAll<HTMLButtonElement>('[data-info-toggle]');
+    let openPanel: HTMLElement | null = null;
+    let openBtn: HTMLButtonElement | null = null;
+
+    function closeOpenPanel() {
+      if (openPanel) openPanel.hidden = true;
+      if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+      openPanel = null;
+      openBtn = null;
+    }
+
+    infoToggles.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const targetId = btn.getAttribute('aria-controls');
+        if (!targetId) return;
+        const panel = document.getElementById(targetId);
+        if (!panel) return;
+        const wasOpen = panel === openPanel;
+        closeOpenPanel();
+        if (!wasOpen) {
+          panel.hidden = false;
+          btn.setAttribute('aria-expanded', 'true');
+          openPanel = panel;
+          openBtn = btn;
+        }
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!openPanel) return;
+      const target = e.target as Node;
+      if (!openPanel.contains(target) && openBtn && !openBtn.contains(target)) {
+        closeOpenPanel();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeOpenPanel();
     });
   </script>
 </Base>
@@ -745,6 +937,126 @@ const questions = [
     line-height: 1.35;
     gap: 0.75rem;
     align-items: center;
+  }
+
+  /* ============ Choice mit Info-Popover (F09) ============ */
+  .choice-wrap {
+    position: relative;
+  }
+
+  .choice-wrap .choice {
+    display: block;
+  }
+
+  .choice-wrap .choice__label {
+    /* rechts Platz für den Info-Button */
+    padding-right: 2.75rem;
+  }
+
+  .choice-info__btn {
+    position: absolute;
+    top: 50%;
+    right: 0.55rem;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    color: var(--ink-3);
+    cursor: pointer;
+    padding: 0;
+    transition: color var(--dur) var(--ease-out),
+      background var(--dur) var(--ease-out),
+      border-color var(--dur) var(--ease-out);
+    z-index: 2;
+  }
+
+  .choice-info__btn:hover,
+  .choice-info__btn:focus-visible {
+    color: var(--brass);
+    background: color-mix(in srgb, var(--brass) 8%, transparent);
+    border-color: color-mix(in srgb, var(--brass) 25%, transparent);
+    outline: none;
+  }
+
+  .choice-info__btn[aria-expanded='true'] {
+    color: var(--paper);
+    background: var(--brass);
+    border-color: var(--brass);
+  }
+
+  .choice-info__panel {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background: var(--paper);
+    border: 1px solid var(--line-strong);
+    border-left: 3px solid var(--brass);
+    padding: 0.9rem 1rem;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.10);
+    border-radius: 2px;
+    animation: choice-info-in 0.18s ease-out;
+  }
+
+  .choice-info__panel[hidden] {
+    display: none;
+  }
+
+  .choice-info__panel p {
+    margin: 0;
+  }
+
+  @keyframes choice-info-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Locked-Zustand: Standard-Paket, das nicht entfernt werden kann */
+  .choice-wrap--locked .choice {
+    cursor: default;
+  }
+
+  .choice-wrap--locked .choice__label {
+    background: color-mix(in srgb, var(--brass) 6%, var(--paper));
+    border-color: color-mix(in srgb, var(--brass) 35%, var(--line-strong));
+  }
+
+  /* Disabled-Checkbox weiterhin als „checked" darstellen (Browser-Default
+     würde ausgegraut sein — wir wollen die selbe Marker-Optik wie bei
+     einer normal angeklickten Option). */
+  .choice-wrap--locked .choice input:disabled + .choice__label .choice__marker {
+    border-color: var(--brass);
+    background: var(--brass);
+  }
+
+  .choice-wrap--locked .choice input:disabled + .choice__label .choice__marker::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .choice__badge {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.12rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--brass);
+    color: var(--paper);
+    border-radius: 2px;
+    vertical-align: middle;
+    white-space: nowrap;
   }
 
   /* ============ Extra & File Field ============ */
