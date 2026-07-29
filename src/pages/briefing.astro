@@ -489,20 +489,19 @@ const questions = [
     }
 
     // 2) Client-seitige Validierung: leere Pflichtfelder rot markieren.
-    //    Browser-Default zeigt nur einen kleinen Tooltip am ersten fehlenden
-    //    Feld — Kunden übersehen das oft. Mit .was-submitted-Klasse greifen
-    //    die :invalid-Stile, so leuchten alle offenen Felder gleichzeitig.
+    //    WICHTIG: das submit-Event feuert NICHT, wenn Pflichtfelder leer
+    //    sind — der Browser blockt das Absenden vorher. Deshalb wird die
+    //    was-submitted-Klasse am 'invalid'-Event gehängt (capture=true,
+    //    weil invalid nicht bubbelt). Sobald irgendein Feld beim Absenden
+    //    invalid ist, greift :invalid in CSS und alles Rote leuchtet auf.
+    //    Bei einem erfolgreichen Absende-Versuch (alles valide) fängt der
+    //    submit-Listener das mit — damit die Klasse auch dann persistiert.
     const form = document.getElementById('briefingForm') as HTMLFormElement | null;
-    form?.addEventListener('submit', (e) => {
+    form?.addEventListener('invalid', () => {
       form.classList.add('was-submitted');
-      if (!form.checkValidity()) {
-        e.preventDefault();
-        const firstInvalid = form.querySelector<HTMLElement>(':invalid');
-        if (firstInvalid) {
-          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          setTimeout(() => firstInvalid.focus({ preventScroll: true }), 300);
-        }
-      }
+    }, true);
+    form?.addEventListener('submit', () => {
+      form.classList.add('was-submitted');
     });
   </script>
 </Base>
