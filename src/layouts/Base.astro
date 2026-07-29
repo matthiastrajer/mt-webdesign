@@ -249,6 +249,72 @@ const jsonLd = {
     <a class="skip-link" href="#main">Zum Inhalt springen</a>
     <slot />
 
+    <!-- ============ Cookie-/Consent-Banner ============
+         Google Analytics ist DSGVO-relevant und darf nur nach ausdrücklicher
+         Einwilligung geladen werden. Der Banner erscheint solange keine
+         Entscheidung im localStorage steht; auf „Akzeptieren" wird gtag
+         dynamisch nachgeladen, auf „Ablehnen" passiert nichts. Der
+         Datenschutz-Seite liegt ein Widerruf-Button bei. -->
+    <div id="consent-banner" class="consent-banner" hidden aria-live="polite" aria-label="Cookie-Hinweis">
+      <div class="consent-banner__inner">
+        <p class="consent-banner__text">
+          Diese Website nutzt <strong>Google Analytics</strong> zur anonymen
+          Reichweitenmessung, damit ich die Seite verbessern kann. Es werden
+          Cookies gesetzt und Daten an Google übertragen (auch in die USA).
+          Details in der <a href={`${rawBase}datenschutz/`} class="consent-banner__link">Datenschutzerklärung</a>.
+        </p>
+        <div class="consent-banner__actions">
+          <button type="button" class="consent-btn consent-btn--secondary" data-consent="denied">Ablehnen</button>
+          <button type="button" class="consent-btn consent-btn--primary" data-consent="granted">Akzeptieren</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const GA_ID = 'G-R2YSDT5ZJY';
+        const KEY = 'mtx-consent-v1';
+        const banner = document.getElementById('consent-banner');
+
+        function loadGA() {
+          if ((window as any).gtag) return;
+          const s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+          document.head.appendChild(s);
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).gtag = function () { (window as any).dataLayer.push(arguments); };
+          (window as any).gtag('js', new Date());
+          (window as any).gtag('config', GA_ID, { anonymize_ip: true });
+        }
+
+        function setConsent(state: string) {
+          try { localStorage.setItem(KEY, state); } catch {}
+          if (banner) (banner as HTMLElement).hidden = true;
+          if (state === 'granted') loadGA();
+        }
+
+        let current: string | null = null;
+        try { current = localStorage.getItem(KEY); } catch {}
+
+        if (current === 'granted') {
+          loadGA();
+        } else if (current !== 'denied' && banner) {
+          (banner as HTMLElement).hidden = false;
+        }
+
+        banner?.querySelectorAll<HTMLButtonElement>('[data-consent]').forEach((btn) => {
+          btn.addEventListener('click', () => setConsent(btn.dataset.consent || 'denied'));
+        });
+
+        // Global Widerruf-Funktion — von der Datenschutz-Seite aus aufrufbar
+        (window as any).__mtxRevokeConsent = function () {
+          try { localStorage.removeItem(KEY); } catch {}
+          location.reload();
+        };
+      })();
+    </script>
+
     <script>
       // Scroll-Reveal: leichtgewichtig, respektiert reduced-motion
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -284,6 +350,110 @@ const jsonLd = {
       }
       .skip-link:focus {
         left: 0;
+      }
+
+      /* ============ Cookie-Consent-Banner ============ */
+      .consent-banner {
+        position: fixed;
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 90;
+        background: var(--paper, #fdfcf9);
+        border: 1px solid var(--line-strong, #b8b3a9);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+        max-width: 720px;
+        margin: 0 auto;
+        animation: consent-slide-up 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      @keyframes consent-slide-up {
+        from { transform: translateY(24px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+
+      .consent-banner[hidden] {
+        display: none;
+      }
+
+      .consent-banner__inner {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        padding: 1rem 1.25rem;
+      }
+
+      .consent-banner__text {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--ink-2, #4a4a4a);
+        flex: 1;
+      }
+
+      .consent-banner__text strong {
+        color: var(--ink, #1a1a1a);
+        font-weight: 600;
+      }
+
+      .consent-banner__link {
+        color: var(--brass, #c7913f);
+        text-decoration: underline;
+        text-decoration-color: color-mix(in srgb, var(--brass, #c7913f) 40%, transparent);
+        text-underline-offset: 2px;
+      }
+
+      .consent-banner__link:hover {
+        text-decoration-color: var(--brass, #c7913f);
+      }
+
+      .consent-banner__actions {
+        display: flex;
+        gap: 0.5rem;
+        flex-shrink: 0;
+      }
+
+      .consent-btn {
+        font-family: var(--font-display, inherit);
+        font-size: 14px;
+        font-weight: 500;
+        padding: 0.55rem 1.15rem;
+        border-radius: 2px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      }
+
+      .consent-btn--primary {
+        background: var(--ink, #1a1a1a);
+        color: var(--paper, #fdfcf9);
+      }
+
+      .consent-btn--primary:hover {
+        background: var(--brass, #c7913f);
+      }
+
+      .consent-btn--secondary {
+        background: transparent;
+        border-color: var(--line-strong, #b8b3a9);
+        color: var(--ink-2, #4a4a4a);
+      }
+
+      .consent-btn--secondary:hover {
+        border-color: var(--ink, #1a1a1a);
+        color: var(--ink, #1a1a1a);
+      }
+
+      @media (max-width: 620px) {
+        .consent-banner__inner {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0.85rem;
+        }
+        .consent-banner__actions {
+          justify-content: flex-end;
+        }
       }
     </style>
   </body>
