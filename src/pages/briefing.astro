@@ -486,11 +486,7 @@ const questions = [
                             aria-label={`Details zu „${item.label}" anzeigen`}
                             data-info-toggle
                           >
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                              <circle cx="12" cy="12" r="10" />
-                              <line x1="12" y1="16" x2="12" y2="12" />
-                              <line x1="12" y1="8" x2="12.01" y2="8" />
-                            </svg>
+                            <span class="choice-info__glyph" aria-hidden="true">i</span>
                           </button>
                           <div class="choice-info__panel" id={descId} role="region" hidden>
                             <p>{item.description}</p>
@@ -956,37 +952,63 @@ const questions = [
   .choice-info__btn {
     position: absolute;
     top: 50%;
-    right: 0.55rem;
+    right: 0.6rem;
     transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    border: 1px solid transparent;
+    background: var(--brass);
+    border: none;
     border-radius: 50%;
-    color: var(--ink-3);
+    color: var(--paper);
     cursor: pointer;
     padding: 0;
-    transition: color var(--dur) var(--ease-out),
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+    transition: transform var(--dur) var(--ease-out),
       background var(--dur) var(--ease-out),
-      border-color var(--dur) var(--ease-out);
+      box-shadow var(--dur) var(--ease-out);
     z-index: 2;
   }
 
   .choice-info__btn:hover,
   .choice-info__btn:focus-visible {
-    color: var(--brass);
-    background: color-mix(in srgb, var(--brass) 8%, transparent);
-    border-color: color-mix(in srgb, var(--brass) 25%, transparent);
+    background: var(--ink);
+    transform: translateY(-50%) scale(1.08);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
     outline: none;
   }
 
   .choice-info__btn[aria-expanded='true'] {
-    color: var(--paper);
+    background: var(--ink);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--brass) 35%, transparent);
+  }
+
+  .choice-info__glyph {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    /* optische Zentrierung — Serifen-„i" wirkt sonst leicht zu tief */
+    transform: translateY(-1px);
+    user-select: none;
+  }
+
+  /* Auf dem dunklen Standardpaket-Feld: heller Kreis mit brass „i", damit
+     der Button gegen den fast-schwarzen Hintergrund abhebt statt zu
+     verschmelzen. */
+  .choice-wrap--locked .choice-info__btn {
+    background: var(--paper);
+    color: var(--brass);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--brass) 45%, transparent);
+  }
+
+  .choice-wrap--locked .choice-info__btn:hover,
+  .choice-wrap--locked .choice-info__btn:focus-visible {
     background: var(--brass);
-    border-color: var(--brass);
+    color: var(--paper);
   }
 
   .choice-info__panel {
