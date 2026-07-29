@@ -99,6 +99,46 @@ E-Mail in `src/content/settings/site.json`.
 - `enctype="multipart/form-data"` ist beim Briefing-Formular gesetzt, da
   Datei-Uploads unterstützt werden.
 
+### Google Analytics + Consent-Banner
+
+GA4 (Property `G-R2YSDT5ZJY`) läuft **strikt einwilligungsbasiert**. Der
+gtag-Snippet ist **nicht** statisch im `<head>` — er wird zur Laufzeit von
+`src/layouts/Base.astro` dynamisch nachgeladen, ausschließlich nachdem der
+Nutzer im Consent-Banner auf „Akzeptieren" geklickt hat. Bei „Ablehnen"
+passiert null Request an Google.
+
+- **Consent-State:** `localStorage['mtx-consent-v1']` = `'granted'` |
+  `'denied'`. Solange der Key fehlt, erscheint der Banner beim Seitenaufruf.
+- **IP-Anonymisierung:** `anonymize_ip: true` ist im `gtag('config', …)`
+  fest gesetzt — nicht ohne Grund entfernen.
+- **Widerruf:** globale Funktion `window.__mtxRevokeConsent()` löscht den
+  Key und lädt die Seite neu; ein Button auf `/datenschutz/` triggert das.
+- **Google-Tester lügt:** die Google-„Einfügung testen"-Prüfung ruft die
+  Seite crawlermäßig ab und klickt kein „Akzeptieren" — sie meldet den
+  Tag deshalb dauerhaft als „nicht eingerichtet". Kein Fehler, sondern der
+  Preis der DSGVO-Konformität. Verifikation muss manuell in Inkognito
+  laufen: Site öffnen → Accept → GA Realtime muss den Hit zeigen.
+
+Bei Änderung des Consent-Modells (weitere Tracker, Kategorien wie
+„Marketing / Statistik / Notwendig") den Datenschutz-Abschnitt in
+`src/content/pages/datenschutz.md` unbedingt mitziehen — der Text
+beschreibt derzeit exakt das oben genannte Setup.
+
+### Briefing-Formular: Success ohne Flash + Rot-Markierung
+
+`src/pages/briefing.astro` hat zwei Muster, die man beim Refactor leicht
+kaputtmacht:
+
+- **Inline-Script vor `<main>`** setzt `data-submitted="true"` auf `<html>`,
+  bevor der Body-Content rendert. CSS-Regeln `:root[data-submitted]`
+  blenden Intro, Section-Label und Formular per `display:none !important`
+  aus und den Success-Screen ein — synchron zum Erst-Paint, kein Flash.
+  Wenn man diesen Inline-Script nach unten verschiebt, blitzt wieder das
+  leere Formular auf.
+- **Validierung:** die Klasse `.was-submitted` wird erst beim ersten
+  Submit-Klick an die Form gehängt — davor wäre `:invalid` schon beim
+  Erstbesuch aktiv und alle Pflichtfelder wären beim Öffnen rot.
+
 ---
 
 ## Durable Entscheidungen
