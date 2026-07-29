@@ -4,15 +4,30 @@
   "lead": "Sagen Sie mir kurz, um welchen Betrieb es geht und was Sie sich für Ihre neue Firmenwebsite vorstellen. Ich melde mich per E-Mail bei Ihnen zurück — mit den nächsten Schritten und einer ersten Preis-Einschätzung. Kein Vertrag, keine Kosten, keine Verpflichtung. Servicegebiet: St. Pölten, ganz Niederösterreich und Wien-Umgebung — die Zusammenarbeit läuft komplett online, ein Termin vor Ort ist nicht nötig.",
   "typeQuestion": "Was brauchen Sie?",
   "typeOptions": [
-    {"value": "neu", "label": "Neue Website + Hosting"},
-    {"value": "relaunch", "label": "Bestehende Website erneuern"},
-    {"value": "pflege", "label": "Zusätzlich Pflege-Paket"},
-    {"value": "logo", "label": "Zusätzlich Logo-Design"},
-    {"value": "unsicher", "label": "Bin mir noch unsicher"}
+    {
+      "value": "neu",
+      "label": "Neue Website + Hosting"
+    },
+    {
+      "value": "relaunch",
+      "label": "Bestehende Website erneuern"
+    },
+    {
+      "value": "pflege",
+      "label": "Zusätzlich Pflege-Paket"
+    },
+    {
+      "value": "logo",
+      "label": "Zusätzlich Logo-Design"
+    },
+    {
+      "value": "unsicher",
+      "label": "Bin mir noch unsicher"
+    }
   ],
   "briefingTitle": "Sie wissen schon konkret, was Sie brauchen?",
-  "briefingBody": "Beantworten Sie 15 kurze Fragen — ca. 5 Minuten. Sie bekommen dann innerhalb von 3 Werktagen ein verbindliches Angebot mit Fixpreis, Umfang und Zeitplan.",
-  "briefingButton": "Verbindliches Angebot in 5 Minuten",
+  "briefingBody": "Beantworten Sie 15 kurze Fragen — ca. 5 Minuten. Sie bekommen dann innerhalb von 3 Werktagen ein Angebot mit Fixpreis, Umfang und Zeitplan. Ohne Verpflichtung und 100% kostenlos.",
+  "briefingButton": "Gratis Angebot in 5 Minuten",
   "successHeading": "Vielen Dank — Ihre Anfrage ist angekommen.",
   "successBody": "Ich melde mich innerhalb von 24 Stunden per E-Mail bei Ihnen zurück. Sollten mir Angaben fehlen, gibt es kurz eine Rückfrage."
 }
