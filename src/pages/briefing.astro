@@ -212,6 +212,18 @@ const questions = [
     </div>
   </header>
 
+  <!--
+    Vor der Seiten-Rendering-Phase erkennen, ob wir gerade vom FormSubmit-
+    Redirect zurückkommen. Setzt data-submitted auf <html>, bevor der Body
+    weitergerendert wird — dadurch greifen die CSS-Regeln (Formular
+    ausblenden, Success zeigen) SOFORT, es blitzt kein leeres Formular auf.
+  -->
+  <script is:inline>
+    if (new URLSearchParams(location.search).get('submitted') === 'true') {
+      document.documentElement.setAttribute('data-submitted', 'true');
+    }
+  </script>
+
   <main class="brief">
     <div class="container">
       <span class="section-label brief__section-label">
@@ -441,8 +453,8 @@ const questions = [
         </section>
       </form>
 
-      <!-- Success-Screen (wird nach Absenden per Query-Param angezeigt) -->
-      <div class="success" id="successMsg" hidden>
+      <!-- Success-Screen — CSS blendet ihn aus, außer [data-submitted] ist gesetzt -->
+      <div class="success" id="successMsg">
         <div class="success__mark">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polyline points="20 6 9 17 4 12"/>
@@ -468,15 +480,30 @@ const questions = [
   <Footer />
 
   <script>
+    // 1) Nach dem Success-Redirect: garantiert an den Seitenanfang scrollen.
+    //    Das Ausblenden des Formulars und Einblenden des Success-Screens
+    //    passiert bereits per CSS über das [data-submitted]-Attribut, das
+    //    der Inline-Script vor dem Body-Render setzt — kein Flash mehr.
     if (new URLSearchParams(window.location.search).get('submitted') === 'true') {
-      const form = document.getElementById('briefingForm');
-      const intro = document.querySelector('.brief__intro');
-      const success = document.getElementById('successMsg');
-      if (form) (form as HTMLElement).hidden = true;
-      if (intro) (intro as HTMLElement).hidden = true;
-      if (success) success.removeAttribute('hidden');
       window.scrollTo(0, 0);
     }
+
+    // 2) Client-seitige Validierung: leere Pflichtfelder rot markieren.
+    //    Browser-Default zeigt nur einen kleinen Tooltip am ersten fehlenden
+    //    Feld — Kunden übersehen das oft. Mit .was-submitted-Klasse greifen
+    //    die :invalid-Stile, so leuchten alle offenen Felder gleichzeitig.
+    const form = document.getElementById('briefingForm') as HTMLFormElement | null;
+    form?.addEventListener('submit', (e) => {
+      form.classList.add('was-submitted');
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        const firstInvalid = form.querySelector<HTMLElement>(':invalid');
+        if (firstInvalid) {
+          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(() => firstInvalid.focus({ preventScroll: true }), 300);
+        }
+      }
+    });
   </script>
 </Base>
 
@@ -991,23 +1018,58 @@ const questions = [
     }
   }
 
-  /* ============ Success ============ */
-  .success[hidden] {
-    display: none;
+  /* ============ Validierung ============
+     Erst wenn der Nutzer einmal auf Absenden geklickt hat (=> .was-submitted
+     an der Form), leuchten leere Pflichtfelder rot. Davor wäre :invalid
+     schon beim Erstbesuch aktiv und würde alles rot einfärben. */
+  .brief__form.was-submitted .input:invalid,
+  .brief__form.was-submitted .textarea:invalid {
+    border-color: #dc2626;
+    background: color-mix(in srgb, #dc2626 5%, var(--paper));
   }
 
+  .brief__form.was-submitted .input:invalid:focus,
+  .brief__form.was-submitted .textarea:invalid:focus {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px color-mix(in srgb, #dc2626 22%, transparent);
+    background: var(--paper);
+  }
+
+  /* Die Fragen-Karte, in der ein Pflichtfeld fehlt, bekommt einen roten
+     Rand-Akzent links — Kunden erkennen sofort, wo sie hinscrollen müssen. */
+  .brief__form.was-submitted .q-card:has(:invalid) {
+    border-left: 3px solid #dc2626;
+    padding-left: calc(1.75rem - 2px);
+  }
+
+  /* ============ Submitted-State (nach erfolgreichem Absenden) ============
+     Der Inline-Script im Body setzt data-submitted="true" auf <html>,
+     bevor der restliche Body gerendert wird. Dadurch greifen diese
+     Regeln SOFORT — kein Flash von leerem Formular. */
+  :root[data-submitted] .brief__intro,
+  :root[data-submitted] .brief__section-label,
+  :root[data-submitted] .brief__form {
+    display: none !important;
+  }
+
+  /* ============ Success ============
+     Per Default versteckt, erscheint nur nach Absenden via [data-submitted]. */
   .success {
     background: var(--paper);
     border: 1px solid var(--line);
     padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
     text-align: center;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     margin: 3rem auto;
     max-width: 640px;
     position: relative;
+  }
+
+  :root[data-submitted] .success {
+    display: flex;
   }
 
   .success::before,
