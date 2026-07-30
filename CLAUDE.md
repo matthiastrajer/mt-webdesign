@@ -205,6 +205,18 @@ Site-Audit (Mobile-Nav, WCAG-Kontrast, Schema-Aufbau über mehrere
 Dateien) gelaufen ist. Im Zweifel mit Sonnet anfangen, bei Bedarf
 hochschalten — nicht umgekehrt.
 
+### MCP-Server: 21st („Magic")
+
+`.mcp.json` im Repo-Root registriert den 21st-MCP-Server (UI-Komponenten-
+Generierung, https://21st.dev/mcp) projektweit für Claude Code. Der
+API-Key steht **nicht** im Repo — die Config referenziert ihn nur als
+`${TWENTY_FIRST_API_KEY}`. Damit der Server tatsächlich verbindet, muss
+diese Umgebungsvariable dort gesetzt sein, wo die jeweilige Claude-Code-
+Session läuft (lokale Shell-Config oder Environment-Secrets der
+jeweiligen Remote-Umgebung) — Key selbst gibt's unter 21st.dev/mcp.
+Ohne gesetzten Key bleibt der Eintrag in `claude mcp list` als
+„missing variable"-Warnung sichtbar, bricht aber nichts anderes.
+
 ---
 
 ## Umgebung
