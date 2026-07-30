@@ -43,6 +43,16 @@ const DEFAULT_DESCRIPTION =
 const DEFAULT_OG_ALT =
   'MTX-Webdesign — Webdesign in St. Pölten & Niederösterreich';
 
+// sameAs-Profile für die Entity-Verknüpfung im Schema. Google nutzt das,
+// um Website und Google-Business-Profil als dieselbe Entität zu erkennen —
+// wichtig für lokale Rankings und den Knowledge-Panel.
+// Hinweis: der share.google-Link ist ein Google-Shortener. Sobald das
+// Profil öffentlich sichtbar ist, gegen die stabile Maps-URL im Format
+// https://www.google.com/maps?cid=… tauschen (ändert sich nie mehr).
+const SAME_AS = [
+  'https://share.google/zl8t5A5MAJxyykA1M',
+];
+
 const {
   title,
   description = DEFAULT_DESCRIPTION,
@@ -83,6 +93,7 @@ const orgNode = {
   image: { '@id': `${siteHref}#logo` },
   email: 'hallo@mtx-webdesign.at',
   founder: { '@type': 'Person', name: AUTHOR },
+  sameAs: SAME_AS,
   contactPoint: [
     {
       '@type': 'ContactPoint',
@@ -151,6 +162,8 @@ const localBusinessNode = {
   ],
   priceRange: '€€',
   founder: { '@type': 'Person', name: AUTHOR },
+  sameAs: SAME_AS,
+  parentOrganization: { '@id': `${siteHref}#organization` },
 };
 
 const graph: unknown[] = [orgNode, websiteNode, logoNode, localBusinessNode];
