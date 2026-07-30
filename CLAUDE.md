@@ -194,6 +194,17 @@ extra zum Mergen im Browser schicken.
 - Keine `Co-Authored-By`-Zeilen anhängen.
 - Bei Refactorings die Motivation dokumentieren, nicht den Ablauf.
 
+### Modell-Wahl
+
+Für Standard-Edits (Content-Änderungen in `src/content/*.json`,
+kleine CSS-/Copy-Anpassungen, einzelne Komponenten-Fixes,
+Bug-Reproduktion mit klarer Ursache) reicht **Sonnet** — kein Opus
+nötig. Opus lohnt sich für komplexe Refactorings, mehrstufige
+Architektur-Entscheidungen oder die Art von Vollaudit, wie er im
+Site-Audit (Mobile-Nav, WCAG-Kontrast, Schema-Aufbau über mehrere
+Dateien) gelaufen ist. Im Zweifel mit Sonnet anfangen, bei Bedarf
+hochschalten — nicht umgekehrt.
+
 ---
 
 ## Umgebung
