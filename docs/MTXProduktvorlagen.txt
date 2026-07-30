@@ -1,0 +1,533 @@
+MTX-WEBDESIGN — PRODUKTVORLAGEN FÜR RECHNUNGSPROGRAMM
+========================================================
+Stand: 2026-07-30 · basiert auf Preisliste_intern.txt
+
+Anwendung:
+- Jeder Block unten ist ein Produkt für die Maske "Neues Produkt erstellen"
+- Felder von oben nach unten kopieren
+- USt.: 0 % (Kleinunternehmer-Regelung gem. § 6 Abs. 1 Z 27 UStG)
+- Netto = Brutto (kein USt-Aufschlag)
+- Auf der Rechnung an den Kunden muss ein Hinweis stehen, z. B.:
+  "Umsatzsteuerbefreit — Kleinunternehmer gem. § 6 Abs. 1 Z 27 UStG"
+- Bei Preis-Ranges (Login-Bereich, Webshop) steht der Einstiegspreis;
+  final immer per Angebot individualisieren
+- Nummern-Systematik:
+    100      Standardpaket
+    200-299  Kleine Zusatzfeatures
+    300-399  Mittlere Zusatzfeatures
+    400-499  Größere Features
+    500-599  Custom / große Baustellen
+    600-699  Zusatzleistungen (nicht Web-Entwicklung)
+    700-799  Laufende Leistungen
+
+
+════════════════════════════════════════════════════════
+BASISPAKET
+════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────
+Nr.:           100
+Name:          Grundwebsite (Standardpaket)
+Einheit:       Stück
+Preis netto:   1.200,00 €
+USt.:          0 %
+Preis brutto:  1.200,00 €
+
+Beschreibung:
+Komplette Firmenwebsite aus einer Hand. Enthalten sind:
+Startseite und fünf Unterseiten (Über uns, Leistungen,
+Kontakt), individuelles Design ohne Baukasten passend zur
+Branche, responsive Darstellung für Mobil, Tablet und
+Desktop, einfaches Kontaktformular mit E-Mail-Weiterleitung,
+Admin-Panel zum eigenständigen Pflegen der Inhalte
+(Sveltia CMS), Einrichtung des Code-Repositories und der
+Hosting-Umgebung auf Kunden-Account, SSL-Zertifikat,
+Impressum- und Datenschutz-Grundgerüst nach WKO-Muster,
+SEO-Grundoptimierung (Meta-Tags, Sitemap, Ladezeit),
+Support bis zum Live-Gang. Fixpreis, keine versteckten
+Kosten.
+────────────────────────────────────────────────────────
+
+
+════════════════════════════════════════════════════════
+ZUSATZFEATURES — KLEIN (€80–150)
+════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────
+Nr.:           201
+Name:          WhatsApp-Button
+Einheit:       Stück
+Preis netto:   80,00 €
+USt.:          0 %
+Preis brutto:  80,00 €
+
+Beschreibung:
+Direkt-Kontakt-Button, der beim Klick eine WhatsApp-
+Konversation mit der hinterlegten Telefonnummer öffnet.
+Statischer Link ohne externes Widget, damit DSGVO-neutral.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           202
+Name:          Anfahrtsbeschreibung & Öffnungszeiten
+Einheit:       Stück
+Preis netto:   100,00 €
+USt.:          0 %
+Preis brutto:  100,00 €
+
+Beschreibung:
+Öffnungszeiten und Anfahrtstexte als eigener Bereich,
+strukturiert für Google (Schema.org), im Admin-Panel
+selbst pflegbar.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           203
+Name:          Rückruf-Formular
+Einheit:       Stück
+Preis netto:   100,00 €
+USt.:          0 %
+Preis brutto:  100,00 €
+
+Beschreibung:
+Zusätzliches Formular speziell für Rückruf-Wünsche
+(Name, Telefon, Wunsch-Zeitraum). Landet in derselben
+E-Mail-Weiterleitung wie das Kontaktformular.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           204
+Name:          FAQ-Bereich
+Einheit:       Stück
+Preis netto:   150,00 €
+USt.:          0 %
+Preis brutto:  150,00 €
+
+Beschreibung:
+Aufklappbare Fragen-Antworten-Sektion (Accordion), im
+Admin-Panel selbst um weitere Fragen erweiterbar. Wird
+zusätzlich für Google als Rich-Snippet ausgezeichnet
+(höhere Sichtbarkeit in Suchergebnissen).
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           205
+Name:          Video-Einbindung
+Einheit:       Stück
+Preis netto:   120,00 €
+USt.:          0 %
+Preis brutto:  120,00 €
+
+Beschreibung:
+YouTube-Video-Einbindung im datenschutzfreundlichen
+Modus (nocookie-Domain, Klick-um-zu-laden), damit keine
+Google-Cookies vor Nutzer-Einwilligung gesetzt werden.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           206
+Name:          Download-Bereich
+Einheit:       Stück
+Preis netto:   150,00 €
+USt.:          0 %
+Preis brutto:  150,00 €
+
+Beschreibung:
+Öffentlicher Download-Bereich für PDF-Dokumente
+(Preislisten, Datenblätter, Formulare). Neue Dateien
+können jederzeit selbst im Admin-Panel hochgeladen und
+in die Liste aufgenommen werden.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           207
+Name:          Zertifikate & Auszeichnungen
+Einheit:       Stück
+Preis netto:   120,00 €
+USt.:          0 %
+Preis brutto:  120,00 €
+
+Beschreibung:
+Logo-Grid mit Namen und optionaler Beschreibung für
+Meisterbrief, Innungs-Mitgliedschaft, Zertifikate und
+Auszeichnungen. Im Admin-Panel selbst erweiterbar.
+────────────────────────────────────────────────────────
+
+
+════════════════════════════════════════════════════════
+ZUSATZFEATURES — MITTEL (€200–400)
+════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────
+Nr.:           301
+Name:          Google Maps mit Consent-Overlay
+Einheit:       Stück
+Preis netto:   200,00 €
+USt.:          0 %
+Preis brutto:  200,00 €
+
+Beschreibung:
+Interaktive Google-Maps-Karte mit Standort-Marker,
+eingebettet DSGVO-konform mit Klick-Freigabe (Karte wird
+erst nach Zustimmung geladen). Setzt einen aktiven
+Cookie-Consent-Banner voraus (siehe Nr. 307).
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           302
+Name:          Preisliste / Leistungsübersicht
+Einheit:       Stück
+Preis netto:   200,00 €
+USt.:          0 %
+Preis brutto:  200,00 €
+
+Beschreibung:
+Strukturierte Preis- oder Leistungstabelle mit Kategorien
+und Erklärungen, im Admin-Panel selbst pflegbar.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           303
+Name:          Team-Vorstellung
+Einheit:       Stück
+Preis netto:   250,00 €
+USt.:          0 %
+Preis brutto:  250,00 €
+
+Beschreibung:
+Vorstellung des Teams mit Foto, Name, Funktion und
+Kurzbeschreibung. Preis für bis zu fünf Personen; ab
+der sechsten Person zusätzlich 30 € pro Person. Im
+Admin-Panel selbst erweiterbar.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           304
+Name:          Bildergalerie / Referenzprojekte
+Einheit:       Stück
+Preis netto:   300,00 €
+USt.:          0 %
+Preis brutto:  300,00 €
+
+Beschreibung:
+Galerie zur Präsentation von Referenzarbeiten mit
+Vorschau- und Detailansicht. Bilder inkl. Beschreibung
+im Admin-Panel selbst pflegbar.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           305
+Name:          Newsletter-Anmeldung
+Einheit:       Stück
+Preis netto:   280,00 €
+USt.:          0 %
+Preis brutto:  280,00 €
+
+Beschreibung:
+Anmelde-Formular für den Newsletter-Versand mit
+Anbindung an Brevo oder Mailchimp. Kunde benötigt
+eigenen Newsletter-Account (Brevo und Mailchimp bieten
+kostenfreie Einstiegs-Tarife).
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           306
+Name:          Kundenbewertungen (Google-Rezensionen)
+Einheit:       Stück
+Preis netto:   350,00 €
+USt.:          0 %
+Preis brutto:  350,00 €
+
+Beschreibung:
+Automatische Einbindung der aktuellen Google-Bewertungen
+über die Google-API. Kunde stellt Google-Business-Profil
+und API-Zugang zur Verfügung.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           307
+Name:          Cookie-Consent-Banner
+Einheit:       Stück
+Preis netto:   280,00 €
+USt.:          0 %
+Preis brutto:  280,00 €
+
+Beschreibung:
+DSGVO-konformer Cookie-Zustimmungs-Banner auf allen
+Seiten. Wird zwingend nötig, sobald externe Dienste wie
+Google Maps, Google Analytics, YouTube-Einbettungen oder
+Social-Media-Widgets zum Einsatz kommen.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           308
+Name:          Social-Media-Feeds
+Einheit:       Stück
+Preis netto:   320,00 €
+USt.:          0 %
+Preis brutto:  320,00 €
+
+Beschreibung:
+Einbindung des aktuellen Instagram- oder Facebook-Feeds
+auf der Website. Setzt einen aktiven Cookie-Consent-
+Banner voraus (siehe Nr. 307), da diese Widgets
+typischerweise Cookies setzen.
+────────────────────────────────────────────────────────
+
+
+════════════════════════════════════════════════════════
+GRÖSSERE FEATURES (€400–800)
+════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────
+Nr.:           401
+Name:          News- und Blog-Bereich
+Einheit:       Stück
+Preis netto:   600,00 €
+USt.:          0 %
+Preis brutto:  600,00 €
+
+Beschreibung:
+Vollwertiger Blog-Bereich mit Übersichtsseite, Detail-
+seiten pro Beitrag, Highlight-Kacheln auf der Startseite
+und voller Integration ins Admin-Panel — neue Beiträge
+werden dort samt Bild, Zusammenfassung und Datum
+angelegt. Ideal für regelmäßige News, Fachartikel oder
+saisonale Aktionen.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           402
+Name:          Karriere- / Jobs-Bereich
+Einheit:       Stück
+Preis netto:   500,00 €
+USt.:          0 %
+Preis brutto:  500,00 €
+
+Beschreibung:
+Übersichtsseite offener Stellen mit Detailseiten pro
+Position, im Admin-Panel selbst pflegbar. Bewerbungen
+laufen über ein integriertes Bewerbungsformular.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           403
+Name:          Darkmode
+Einheit:       Stück
+Preis netto:   600,00 €
+USt.:          0 %
+Preis brutto:  600,00 €
+
+Beschreibung:
+Umschaltbarer Farbmodus zwischen hell und dunkel. Alle
+Farben, Kontraste und Bild-Overlays werden entsprechend
+angepasst; der Modus wird pro Nutzer gespeichert.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           404
+Name:          Online-Terminbuchung
+Einheit:       Stück
+Preis netto:   450,00 €
+USt.:          0 %
+Preis brutto:  450,00 €
+
+Beschreibung:
+Direkte Terminbuchung durch Kunden auf der Website via
+Cal.com- oder Calendly-Integration. Kunde stellt eigenes
+Cal.com-/Calendly-Konto bereit (beide bieten
+kostenfreie Einstiegs-Tarife).
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           405
+Name:          Erweiterte SEO-Optimierung
+Einheit:       Stück
+Preis netto:   500,00 €
+USt.:          0 %
+Preis brutto:  500,00 €
+
+Beschreibung:
+Über die Grundoptimierung im Standardpaket hinaus:
+vollständige Schema.org-Auszeichnung, gezielte lokale
+SEO-Maßnahmen (Google-Business-Verknüpfung, lokale
+Keywords), erweiterte Rich-Snippets und Anbindung an
+Google Search Console mit erster Auswertung.
+────────────────────────────────────────────────────────
+
+
+════════════════════════════════════════════════════════
+CUSTOM / GROSSE BAUSTELLEN
+════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────
+Nr.:           501
+Name:          Mehrsprachigkeit (DE + EN)
+Einheit:       Stück
+Preis netto:   900,00 €
+USt.:          0 %
+Preis brutto:  900,00 €
+
+Beschreibung:
+Vollständig zweisprachige Website (Deutsch und Englisch)
+mit Sprachumschalter, übersetzten URLs und mehrsprachiger
+Verwaltung im Admin-Panel. Jede weitere Sprache
+zusätzlich 400 €.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           502
+Name:          Vorher-/Nachher-Slider für Referenzen
+Einheit:       Stück
+Preis netto:   400,00 €
+USt.:          0 %
+Preis brutto:  400,00 €
+
+Beschreibung:
+Interaktiver Bild-Vergleich: Zwei Bilder übereinander
+mit Schieberegler zum Freilegen — ideal für
+Handwerksbetriebe zur Präsentation von Umbauten,
+Renovierungen oder Reinigungen.
+────────────────────────────────────────────────────────
+
+
+════════════════════════════════════════════════════════
+ZUSATZLEISTUNGEN (NICHT WEB-ENTWICKLUNG)
+════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────
+Nr.:           601
+Name:          Logo-Design
+Einheit:       Stück
+Preis netto:   300,00 €
+USt.:          0 %
+Preis brutto:  300,00 €
+
+Beschreibung:
+Individuelles Logo-Design mit drei ersten Entwürfen und
+zwei Revisionsrunden bis zum finalen Logo. Lieferung in
+allen relevanten Dateiformaten (SVG, PNG, PDF).
+
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           602
+Name:          Content-Erstellung / Textschreiben
+Einheit:       Stunde(n)
+Preis netto:   50,00 €
+USt.:          0 %
+Preis brutto:  50,00 €
+
+Beschreibung:
+Erstellung, Überarbeitung oder Übersetzung von Texten
+für die Website (Startseite, Über-uns, Leistungen).
+Abrechnung nach aufgewendetem Aufwand, Stundenaufzeichnung
+wird mit der Rechnung mitgeliefert.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           603
+Name:          Foto-Session vor Ort (Wien / Niederösterreich)
+Einheit:       Stück
+Preis netto:   300,00 €
+USt.:          0 %
+Preis brutto:  300,00 €
+
+Beschreibung:
+Foto-Aufnahmen des Betriebs, des Teams und der
+Räumlichkeiten für die Website (Halbtags-Termin,
+ca. 4 Stunden vor Ort). EINSTIEGSPREIS für einfache
+Locations; komplexere Termine (mehrere Standorte, Studio-
+Setup, aufwändige Nachbearbeitung) bis 600 €.
+Fahrtkosten im Einzugsgebiet Wien/NÖ inbegriffen.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           604
+Name:          Umbau bestehender Website auf MTX-System
+Einheit:       Stück
+Preis netto:   800,00 €
+USt.:          0 %
+Preis brutto:  800,00 €
+
+Beschreibung:
+Migration einer bestehenden Website (WordPress,
+Baukasten, HTML) auf das MTX-Setup mit Admin-Panel.
+EINSTIEGSPREIS bei kleinen Seiten; wird nach Sichtung
+des Bestands individuell kalkuliert.
+────────────────────────────────────────────────────────
+
+────────────────────────────────────────────────────────
+Nr.:           605
+Name:          Beratung / SEO-Audit
+Einheit:       Stunde(n)
+Preis netto:   80,00 €
+USt.:          0 %
+Preis brutto:  80,00 €
+
+Beschreibung:
+Beratungsgespräche, Website-Analyse, SEO-Audit oder
+Zweitmeinung zu bestehenden Angeboten. Abrechnung nach
+aufgewendetem Aufwand.
+────────────────────────────────────────────────────────
+
+
+════════════════════════════════════════════════════════
+LAUFENDE LEISTUNGEN
+════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────
+Nr.:           701
+Name:          Pflege- & Betreuungspaket
+Einheit:       Monat(e)
+Preis netto:   25,00 €
+USt.:          0 %
+Preis brutto:  25,00 €
+
+Beschreibung:
+Monatliches Rundum-sorglos-Paket für Betriebe, die ihre
+Website nicht selbst pflegen möchten. Enthalten sind:
+unbegrenzte kleine Text- und Bild-Änderungen (Umsetzung
+innerhalb von 48 Stunden), regelmäßige Software-Updates,
+geprüfte Backups, quartalsweise Leistungs-Checks
+(Ladezeit, Erreichbarkeit, SEO-Basics). Monatlich
+kündbar, keine Bindungsfrist. Bei Jahres-Vorauszahlung
+275 € statt 300 € (ein Monat gratis).
+────────────────────────────────────────────────────────
+
+
+════════════════════════════════════════════════════════
+HINWEISE ZUR ANWENDUNG
+════════════════════════════════════════════════════════
+
+Kleinunternehmer-Hinweis auf jeder Rechnung:
+Auf jeder Rechnung muss ein Vermerk stehen, z. B.:
+"Kein Ausweis der Umsatzsteuer aufgrund Anwendung
+der Kleinunternehmer-Regelung gem. § 6 Abs. 1 Z 27 UStG."
+(In den meisten Rechnungsprogrammen als Standard-
+Fußzeile einstellbar.)
+
+Anzahlungs-/Rechnungs-Modell (aus Preisliste):
+- 30 % bei Auftragsbestätigung
+- 40 % bei Design-Freigabe
+- 30 % bei Live-Gang
+- Zahlungsziel 14 Tage netto
+
+Rabatt-Positionen (nicht als eigene Produkte, sondern als
+Minus-Position auf der Rechnung erfassen):
+- Erstkunden-Rabatt (Portfolio-Aufbau): -20 % auf
+  Standardpaket (Nr. 100), keine Zusatzfeatures
+- Bündelrabatt bei 3+ Zusatzfeatures: -10 % auf die
+  Zusatzfeatures
+- Empfehlungsrabatt: -10 % gesamt bei Empfehlung durch
+  bestehenden MTX-Kunden
+
+Untergrenze niemals unter 800 € für ein Standardpaket
+(Kosten-Deckung, siehe Preisliste).
+
+Wichtig bei Umsatz-Nähe zur Kleinunternehmer-Grenze
+(35.000 € Jahresumsatz):
+Sobald die Grenze überschritten wird, unterliegen alle
+Leistungen ab dem ersten Cent des überschreitenden
+Betrags der Umsatzsteuer. Rechnungen entsprechend
+anpassen und ggf. mit Steuerberater abstimmen.
