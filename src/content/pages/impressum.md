@@ -9,7 +9,9 @@ warning: ''
 
 ## Medieninhaber und für den Inhalt verantwortlich
 
-Matthias Trajer
+Inhaber: Matthias Trajer
+
+
 MTX-Webdesign
 Kokoschkagasse 6d
 3104 St. Pölten
@@ -27,7 +29,7 @@ Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik 
 
 ## UID-Nummer
 
-Entfällt aufgrund Anwendung der Kleinunternehmerregelung gem. § 6 Abs. 1 Z 27 UStG.
+UID-Nummer: Derzeit keine UID-Nummer vorhanden, da die Kleinunternehmerregelung gemäß § 6 Abs. 1 Z 27 UStG in Anspruch genommen wird.
 
 ## Mitgliedschaften bei der Wirtschaftskammerorganisation
 
@@ -40,7 +42,7 @@ Einsehbar unter [www.ris.bka.gv.at](https://www.ris.bka.gv.at)
 
 ## Aufsichtsbehörde / Gewerbebehörde
 
-Bezirkshauptmannschaft St. Pölten
+Magistrat der Stadt St. Pölten
 
 ## Berufsbezeichnung und Verleihungsstaat
 
@@ -58,3 +60,7 @@ Diese Website enthält gegebenenfalls Links zu externen Websites Dritter, auf de
 ## Urheberrecht
 
 Die durch den Betreiber erstellten Inhalte und Werke auf dieser Website unterliegen dem österreichischen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+
+### Blattlinie
+
+Diese Website dient der Präsentation der Dienstleistungen von MTX-Webdesign sowie der Information über Webdesign, Suchmaschinenoptimierung (SEO), Webentwicklung und verwandte Themen.
