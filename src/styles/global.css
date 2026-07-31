@@ -15,7 +15,12 @@
   --ink-3: #586780;      /* AA-konform (5.05:1) für kleinen Text / Sekundär-Info */
   --brass: #c7913f;      /* Deko, Icons, große Highlights */
   --brass-2: #b07f31;
-  --brass-text: #8d6818; /* Goldton des Logo-„M" (H41°/S71%), abgedunkelt für AA (4.5:1) */
+  --brass-text: #8d6818; /* Kleintext (Labels, Daten, 11–16px) — AA 4.5:1 */
+  /* Große Headline-Akzente (h1/h2, ab ~24px bzw. 19px fett). WCAG verlangt
+     dort nur 3:1, deshalb deutlich näher am Logo-Gold als --brass-text.
+     Heller geht nicht, ohne die Barrierefreiheit zu verlieren — das reine
+     Logo-Gold #e2b452 käme auf 1,7:1. */
+  --brass-display: #b3831e;
   --brass-tint: rgba(199, 145, 63, 0.12);
 
   /* Typografie */
