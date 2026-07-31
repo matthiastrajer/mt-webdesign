@@ -17,6 +17,7 @@ Kokoschkagasse 6d
 
 ## Kontakt
 
+Telefon: [+43 670 6530702](tel:+436706530702)
 E-Mail: [hallo@mtx-webdesign.at](mailto:hallo@mtx-webdesign.at)
 Kontaktformular: [mtx-webdesign.at/#kontakt](https://mtx-webdesign.at/#kontakt)
 

@@ -44,7 +44,11 @@ const settings = defineCollection({
   type: 'data',
   schema: z.object({
     email: z.string().email(),
+    // Anzeige-Format frei wählbar (z. B. "+43 670 6530702") — für tel:- und
+    // wa.me-Links wird im Code auf reine Ziffern normalisiert.
     phone: z.string().optional(),
+    // Vorausgefüllte Nachricht im WhatsApp-Chat. Leer = Chat ohne Text.
+    whatsappText: z.string().optional(),
     company: z.string(),
     ownerName: z.string(),
     addressStreet: z.string(),

@@ -17,7 +17,7 @@ Sobald Sie als Benutzer auf unsere Webseite zugreifen oder diese besuchen wird I
 
 ## Kontakt mit uns
 
-Wenn Sie uns, entweder über unser Kontaktformular auf unserer Webseite, oder per E-Mail kontaktieren, dann werden die von Ihnen an uns übermittelten Daten zwecks Bearbeitung Ihrer Anfrage oder für den Fall von weiteren Anschlussfragen für sechs Monate bei uns gespeichert. Es erfolgt, ohne Ihre Einwilligung, keine Weitergabe Ihrer übermittelten Daten.
+Wenn Sie uns über unser Kontaktformular auf unserer Webseite, per E-Mail, telefonisch oder über WhatsApp kontaktieren, dann werden die von Ihnen an uns übermittelten Daten zwecks Bearbeitung Ihrer Anfrage oder für den Fall von weiteren Anschlussfragen für sechs Monate bei uns gespeichert. Es erfolgt, ohne Ihre Einwilligung, keine Weitergabe Ihrer übermittelten Daten.
 
 ## Cookies
 
@@ -36,6 +36,16 @@ Beim Absenden eines Formulars werden die von Ihnen eingegebenen Daten (Name, E-M
 Rechtsgrundlage der Verarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines Vertragsverhältnisses) sowie Ihre ausdrückliche Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO durch das Setzen des Zustimmungshäkchens im Formular.
 
 Die Datenübertragung erfolgt in die USA. Details zu Datenverarbeitung und Speicherfristen entnehmen Sie der Datenschutzerklärung des Anbieters: [https://formsubmit.co/legal/privacy-policy](https://formsubmit.co/legal/privacy-policy).
+
+## Kontaktaufnahme über WhatsApp
+
+Auf unserer Website finden Sie einen WhatsApp-Button. Dabei handelt es sich um einen **einfachen Verweis (Link)** auf `wa.me` — es ist **kein Widget und kein Tracking-Skript** eingebunden. Solange Sie den Button nicht anklicken, werden **keinerlei Daten** an WhatsApp oder Meta übertragen und es werden dadurch keine Cookies gesetzt.
+
+Wenn Sie den Button anklicken, verlassen Sie unsere Website und es öffnet sich WhatsApp (App oder WhatsApp Web) mit einem Chat an unsere Telefonnummer. Ab diesem Zeitpunkt gilt die Datenschutzerklärung der **WhatsApp Ireland Limited** (Merrion Road, Dublin 4, Irland), einem Unternehmen der Meta-Gruppe. Dabei werden insbesondere Ihre Telefonnummer, Ihr WhatsApp-Profil und der Nachrichteninhalt gegenüber WhatsApp verarbeitet; eine Übermittlung in Drittländer (u. a. USA) ist möglich.
+
+Nachrichten, die Sie uns über WhatsApp senden, verarbeiten wir ausschließlich zur Bearbeitung Ihrer Anfrage. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines Vertragsverhältnisses) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an effizienter Kundenkommunikation). Die Nutzung von WhatsApp ist freiwillig — Sie können uns jederzeit stattdessen per E-Mail, Telefon oder über das Kontaktformular erreichen.
+
+Details zur Datenverarbeitung durch WhatsApp: [https://www.whatsapp.com/legal/privacy-policy-eea](https://www.whatsapp.com/legal/privacy-policy-eea)
 
 ## Hosting (Hostinger)
 

@@ -1,4 +1,6 @@
 ---
+import { getEntry } from 'astro:content';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 import '../styles/global.css';
 
 // Self-hosted fonts — kein Google-CDN, kein Datentransfer an Dritte
@@ -84,6 +86,16 @@ const absoluteOgImage = new URL(ogImage, Astro.site).href;
 // ---------------------------------------------------------------
 const siteHref = Astro.site!.href;
 
+// Kontaktdaten kommen aus der settings-Collection, damit Schema, Footer,
+// Impressum und Kontaktbereich nie auseinanderlaufen (und der Kunde sie
+// im CMS pflegen kann). Telefon in E.164 fürs Schema — Google erwartet
+// dort das internationale Format ohne Leerzeichen.
+const siteSettings = (await getEntry('settings', 'site'))!.data;
+const contactEmail = siteSettings.email;
+const phoneE164 = siteSettings.phone
+  ? `+${siteSettings.phone.replace(/\D/g, '')}`
+  : undefined;
+
 const orgNode = {
   '@type': 'Organization',
   '@id': `${siteHref}#organization`,
@@ -91,13 +103,15 @@ const orgNode = {
   url: siteHref,
   logo: { '@id': `${siteHref}#logo` },
   image: { '@id': `${siteHref}#logo` },
-  email: 'hallo@mtx-webdesign.at',
+  email: contactEmail,
+  ...(phoneE164 ? { telephone: phoneE164 } : {}),
   founder: { '@type': 'Person', name: AUTHOR },
   sameAs: SAME_AS,
   contactPoint: [
     {
       '@type': 'ContactPoint',
-      email: 'hallo@mtx-webdesign.at',
+      email: contactEmail,
+      ...(phoneE164 ? { telephone: phoneE164 } : {}),
       contactType: 'customer service',
       availableLanguage: ['de', 'de-AT'],
       areaServed: 'AT',
@@ -139,7 +153,8 @@ const localBusinessNode = {
   description:
     'Webdesign-Agentur in St. Pölten und Niederösterreich. Professionelle Websites für kleine und mittlere Unternehmen.',
   url: siteHref,
-  email: 'hallo@mtx-webdesign.at',
+  email: contactEmail,
+  ...(phoneE164 ? { telephone: phoneE164 } : {}),
   image: { '@id': `${siteHref}#logo` },
   logo: { '@id': `${siteHref}#logo` },
   address: {
@@ -292,6 +307,10 @@ const jsonLd = {
   <body>
     <a class="skip-link" href="#main">Zum Inhalt springen</a>
     <slot />
+
+    <!-- Schwebender WhatsApp-Kontakt. Rendert sich selbst nur, wenn in
+         settings/site.json eine Telefonnummer hinterlegt ist. -->
+    <WhatsAppButton />
 
     <!-- ============ Cookie-/Consent-Banner ============
          Google Analytics ist DSGVO-relevant und darf nur nach ausdrücklicher
