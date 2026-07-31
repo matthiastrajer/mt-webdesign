@@ -164,7 +164,8 @@ collections:
         file: "src/content/settings/site.json"
         fields:
           - {label: "E-Mail-Adresse", name: "email", widget: "string", hint: "Diese Adresse empfängt alle Kontakt- und Briefing-Anfragen."}
-          - {label: "Telefonnummer", name: "phone", widget: "string", required: false}
+          - {label: "Telefonnummer", name: "phone", widget: "string", required: false, hint: "Mit Ländervorwahl, z. B. +43 670 6530702. Wird für Anruf- und WhatsApp-Button verwendet."}
+          - {label: "WhatsApp-Begrüßung", name: "whatsappText", widget: "string", required: false, hint: "Text, der im WhatsApp-Chat schon vorausgefüllt ist, wenn ein Kunde auf den Button tippt. Leer lassen = leerer Chat."}
           - {label: "Firmen-/Betriebsname", name: "company", widget: "string"}
           - {label: "Inhaber-Name", name: "ownerName", widget: "string"}
           - {label: "Straße + Nummer", name: "addressStreet", widget: "string"}
