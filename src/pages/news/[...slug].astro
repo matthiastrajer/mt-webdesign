@@ -30,6 +30,20 @@ const metaTitle = `${trimmedTitle}${brand}`;
 // Cover-Bild absolut fürs OG-Tag; ohne Cover Fallback auf Favicon
 const ogImagePath = post.data.cover ? `/news/${post.data.cover}` : '/favicon.png';
 const articlePath = `/news/${post.slug}/`;
+
+// FAQPage-JSON-LD, falls der Artikel FAQ-Frontmatter mitbringt — Google
+// kann die Q&A dann als Rich-Snippet direkt im Suchergebnis zeigen.
+const faqSchema = post.data.faq && post.data.faq.length > 0
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: post.data.faq.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    }
+  : null;
 ---
 
 <Base
@@ -50,6 +64,14 @@ const articlePath = `/news/${post.slug}/`;
     articleUrl: articlePath,
   }}
 >
+  {faqSchema && (
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(faqSchema)}
+      slot="head"
+    />
+  )}
   <Nav />
 
   <main class="article">

@@ -16,6 +16,9 @@ const news = defineCollection({
     cover: z.string().optional().transform(stripNewsPrefix),
     coverAlt: z.string().optional(),
     draft: z.boolean().default(false),
+    // Optionales FAQPage-JSON-LD für Rich-Snippets. Muss inhaltlich mit
+    // dem sichtbaren FAQ-Abschnitt im Artikel übereinstimmen.
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
   }),
 });
 
