@@ -2,156 +2,52 @@
 title: Homepage selbst erstellen oder erstellen lassen? Vergleich 2026
 date: 2026-08-03
 excerpt: 'Wix, Jimdo, WordPress oder Agentur? Der ehrliche Vergleich für Betriebe in Österreich: Kosten, Zeit, SEO, Eigentum – und wann sich was wirklich lohnt.'
+cover: /news/ChatGPT Image 3. Aug. 2026, 08_49_33.png
+coverAlt: ''
 draft: false
 faq:
-  - q: "Kann ich kostenlos eine Homepage erstellen?"
-    a: >-
-      Technisch ja, mit den Gratis-Stufen von Wix, Jimdo oder WordPress.com.
-      In der Praxis sind diese Gratis-Versionen für einen Betrieb aber kaum
-      brauchbar: Sie laufen unter einer fremden Subdomain (z. B.
-      ihrname.wixsite.com/betrieb), zeigen oft Werbung des Anbieters und
-      wirken dadurch unseriös. Für ein Unternehmen ist eine eigene Domain
-      (10–20 €/Jahr) das Minimum, alles andere kostet Vertrauen bei Kunden.
-  - q: "Ist Wix gut für ein kleines Unternehmen?"
-    a: >-
-      Für ein sehr kleines, unkompliziertes Angebot ja. Wix ist einfach zu
-      bedienen, das Design sieht ordentlich aus, und man kommt ohne
-      Vorwissen zu einem brauchbaren Ergebnis. Bei mehreren Leistungen,
-      Wachstumsplänen oder wenn Google-Rankings wichtig sind, stößt Wix an
-      Grenzen – vor allem bei Ladezeit und SEO-Feinheiten.
-  - q: "Was kostet eine Homepage im Monat?"
-    a: >-
-      Bei einem Baukasten meist 15 bis 30 € im Monat (Business-Tarif inkl.
-      eigener Domain). Bei einer individuell gebauten Website meist 10 bis
-      25 € im Monat für Hosting und Domain zusammen – dafür fällt einmalig
-      die Erstellung an (800 bis 5.000 €, siehe Kostenvergleich oben).
-  - q: "Brauche ich Hosting, wenn ich einen Baukasten wie Wix nutze?"
-    a: >-
-      Nein, das Hosting ist im Baukasten-Preis bereits enthalten – das ist
-      einer der Vorteile. Bei einer individuell programmierten Website
-      brauchen Sie dagegen einen eigenen Hosting-Vertrag, meist 3 bis 10 €
-      im Monat.
-  - q: "Was kostet eine Domain in Österreich?"
-    a: >-
-      Eine .at-Domain kostet meist 10 bis 20 € pro Jahr, eine .com-Domain
-      ähnlich. Die Domain sollten Sie unabhängig vom Website-Anbieter selbst
-      registrieren (z. B. bei Namecheap oder direkt beim Hoster), damit sie
-      immer Ihnen gehört – unabhängig davon, wer später Ihre Website baut.
-  - q: "Kann ich später von Wix zu WordPress oder einer individuellen Website wechseln?"
-    a: >-
-      Technisch nur eingeschränkt. Wix, Jimdo und Squarespace exportieren
-      Inhalte nicht in einem Format, das eine andere Plattform direkt
-      übernehmen kann. In der Praxis bedeutet ein Wechsel fast immer:
-      Website komplett neu bauen, nur Texte und Bilder lassen sich
-      kopieren. Bei individuell gebauten Websites (Astro, WordPress mit
-      eigenem Theme) ist ein Anbieterwechsel dagegen unproblematisch.
-  - q: "Wie lange dauert es, eine Homepage selbst zu erstellen?"
-    a: >-
-      Für eine brauchbare Website mit Baukasten realistisch 20 bis 40
-      Stunden, verteilt auf mehrere Wochen – die meiste Zeit geht für
-      Textentwürfe, Bildauswahl und Design-Feintuning drauf. Wer schnell
-      etwas Einfaches will, kommt an einem Wochenende auf einen ersten
-      groben Stand, braucht dann aber noch mehrere Anläufe zur Feinjustierung.
-  - q: "Wie lange dauert es, eine Homepage erstellen zu lassen?"
-    a: >-
-      Von Auftrag bis Live-Gang meist 2 bis 4 Wochen. Der reine
-      Bauprozess dauert 10 bis 14 Werktage, dazu kommen Feedback-Runden und
-      die Zeit, die Sie für Texte, Bilder und Rückmeldungen brauchen.
-  - q: "Was ist besser: Wix oder WordPress?"
-    a: >-
-      Kommt auf das Ziel an. Wix ist einfacher zu bedienen und eignet sich
-      für sehr kleine, unkomplizierte Auftritte. WordPress ist flexibler,
-      hat mehr SEO-Potenzial und mehr Funktionen über Plugins – erfordert
-      aber mehr technisches Verständnis und laufende Pflege (Updates,
-      Sicherheit). Für die meisten kleinen Betriebe ohne IT-Kenntnisse ist
-      Wix der leichtere Einstieg, für wachsende Betriebe mit SEO-Ambitionen
-      ist WordPress oder eine individuelle Lösung meist die bessere Wahl.
-  - q: "Ist Jimdo für einen Handwerksbetrieb ausreichend?"
-    a: >-
-      Für einen sehr kleinen Betrieb mit einer klaren Leistung ja – Jimdo
-      ist einfach, günstig und ausreichend professionell. Bei mehreren
-      Leistungen, einem Team oder dem Wunsch, über Google gefunden zu
-      werden, wird es schnell eng: Jimdos SEO-Werkzeuge und Design-Freiheit
-      sind begrenzter als bei WordPress oder einer individuellen Website.
-  - q: "Welche Homepage-Lösung ist am besten?"
-    a: >-
-      Es gibt keine universell „beste" Lösung – nur die passende für Ihre
-      Situation. Ein Einzelunternehmer mit klarer Kernleistung und wenig
-      Budget fährt oft mit einem Baukasten gut. Ein wachsender Betrieb, der
-      über Google Kunden gewinnen will, profitiert meist stärker von einer
-      individuellen Website. Die Entscheidungshilfe weiter oben in diesem
-      Artikel führt Sie durch die relevanten Fragen.
-  - q: "Lohnt sich eine Agentur für eine kleine Firma?"
-    a: >-
-      Wenn Sie wenig Zeit haben, technisch unsicher sind oder Ihre Website
-      über Google Kunden gewinnen soll, ja – die Investition rechnet sich
-      meist bereits durch wenige zusätzliche Kunden. Wenn Sie sehr kleines
-      Budget haben, technisch versiert sind und Zeit übrighaben, kann ein
-      Baukasten für den Start ausreichen.
-  - q: "Wie viel Zeit kostet mich eine Website mit einem Baukasten wirklich?"
-    a: >-
-      Deutlich mehr, als die Werbung der Baukasten-Anbieter suggeriert.
-      Realistisch sind 20 bis 60 Stunden für eine brauchbare Website –
-      Texte schreiben, Bilder aussuchen und zuschneiden, Design anpassen,
-      mobile Ansicht prüfen, Formulare testen. Diese Zeit fehlt Ihnen im
-      Betrieb.
-  - q: "Ist eine selbst gebaute Website schlechter für Google?"
-    a: >-
-      Nicht automatisch schlechter, aber im Schnitt schwächer aufgestellt.
-      Baukasten-Websites laden oft langsamer (mehr Grundcode, mehr externe
-      Skripte) und bieten weniger Feinkontrolle über technisches SEO
-      (Struktur, Ladezeit, strukturierte Daten). Eine sauber gebaute,
-      individuelle Website hat hier von Haus aus einen Vorsprung.
-  - q: "Brauche ich für meine Website ein Impressum?"
-    a: >-
-      Ja, praktisch immer. In Österreich sind Websites mit Geschäftsbezug
-      laut Mediengesetz und E-Commerce-Gesetz impressumspflichtig – auch
-      Baukasten-Websites und auch Onepager. Das Impressum muss unter allen
-      genutzten Plattformen leicht auffindbar sein.
-  - q: "Muss meine Website DSGVO-konform sein?"
-    a: >-
-      Ja, unabhängig davon, ob Sie die Website selbst bauen oder bauen
-      lassen. Das betrifft insbesondere Cookie-Consent (z. B. für Google
-      Analytics oder eingebettete Google-Maps-Karten), eine
-      Datenschutzerklärung und den sorgsamen Umgang mit Formulardaten.
-      Baukasten-Anbieter liefern oft eine Grundausstattung mit, die
-      Verantwortung für die korrekte Umsetzung bleibt aber bei Ihnen als
-      Website-Betreiber.
-  - q: "Gehört mir meine Website, wenn ich Wix oder Jimdo nutze?"
-    a: >-
-      Die Inhalte (Texte, Bilder, die Sie selbst hochladen) gehören Ihnen.
-      Das technische Fundament – Design-System, Code, Hosting – bleibt aber
-      Eigentum des Baukasten-Anbieters. Sie mieten quasi die Infrastruktur.
-      Bei einer individuell gebauten Website gehört Ihnen die komplette
-      Website inklusive Quellcode.
-  - q: "Was ist ein Onepager und reicht der für meinen Betrieb?"
-    a: >-
-      Ein Onepager ist eine einzige lange Seite, durch die man scrollt,
-      statt durch ein Menü mit Unterseiten zu navigieren. Er reicht gut für
-      Einzelunternehmer mit einer klaren Kernleistung. Sobald Sie mehrere
-      Leistungen anbieten oder mit Content Kunden über Google gewinnen
-      wollen, ist eine Website mit mehreren Unterseiten die bessere Wahl.
-  - q: "Was kostet es, eine Homepage erstellen zu lassen?"
-    a: >-
-      Bei einem Freelancer oder einer kleinen Agentur in Österreich
-      typischerweise 800 bis 3.500 € einmalig für eine kleine bis mittlere
-      Firmenwebsite, plus 15 bis 30 € monatlich laufend. Eine ausführliche
-      Aufschlüsselung nach Website-Typ finden Sie in der Kostentabelle
-      weiter oben.
-  - q: "Sollte ich zuerst selbst probieren, bevor ich eine Agentur beauftrage?"
-    a: >-
-      Kann sinnvoll sein, wenn Sie noch unsicher sind, was Sie überhaupt
-      brauchen. Ein selbst gebauter Baukasten-Entwurf hilft dabei, Inhalte
-      und Struktur zu klären – ist aber selten die Website, mit der Sie am
-      Ende live gehen. Wer sich unsicher ist, spart oft Zeit, wenn er gleich
-      mit einer kurzen, unverbindlichen Beratung startet.
-  - q: "Wie erkenne ich, ob ein Baukasten für meinen Betrieb ausreicht?"
-    a: >-
-      Wenn Sie eine klare Kernleistung haben, wenig Konkurrenzdruck bei
-      Google spüren und hauptsächlich über Empfehlung neue Kunden gewinnen,
-      reicht ein Baukasten meist aus. Wenn Sie über Google gefunden werden
-      müssen, mehrere Leistungen zeigen wollen oder Ihr Betrieb wachsen
-      soll, wird eine individuelle Website schnell zur besseren Investition.
+  - q: Kann ich kostenlos eine Homepage erstellen?
+    a: 'Technisch ja, mit den Gratis-Stufen von Wix, Jimdo oder WordPress.com. In der Praxis sind diese Gratis-Versionen für einen Betrieb aber kaum brauchbar: Sie laufen unter einer fremden Subdomain (z. B. ihrname.wixsite.com/betrieb), zeigen oft Werbung des Anbieters und wirken dadurch unseriös. Für ein Unternehmen ist eine eigene Domain (10–20 €/Jahr) das Minimum, alles andere kostet Vertrauen bei Kunden.'
+  - q: Ist Wix gut für ein kleines Unternehmen?
+    a: Für ein sehr kleines, unkompliziertes Angebot ja. Wix ist einfach zu bedienen, das Design sieht ordentlich aus, und man kommt ohne Vorwissen zu einem brauchbaren Ergebnis. Bei mehreren Leistungen, Wachstumsplänen oder wenn Google-Rankings wichtig sind, stößt Wix an Grenzen – vor allem bei Ladezeit und SEO-Feinheiten.
+  - q: Was kostet eine Homepage im Monat?
+    a: Bei einem Baukasten meist 15 bis 30 € im Monat (Business-Tarif inkl. eigener Domain). Bei einer individuell gebauten Website meist 10 bis 25 € im Monat für Hosting und Domain zusammen – dafür fällt einmalig die Erstellung an (800 bis 5.000 €, siehe Kostenvergleich oben).
+  - q: Brauche ich Hosting, wenn ich einen Baukasten wie Wix nutze?
+    a: Nein, das Hosting ist im Baukasten-Preis bereits enthalten – das ist einer der Vorteile. Bei einer individuell programmierten Website brauchen Sie dagegen einen eigenen Hosting-Vertrag, meist 3 bis 10 € im Monat.
+  - q: Was kostet eine Domain in Österreich?
+    a: Eine .at-Domain kostet meist 10 bis 20 € pro Jahr, eine .com-Domain ähnlich. Die Domain sollten Sie unabhängig vom Website-Anbieter selbst registrieren (z. B. bei Namecheap oder direkt beim Hoster), damit sie immer Ihnen gehört – unabhängig davon, wer später Ihre Website baut.
+  - q: Kann ich später von Wix zu WordPress oder einer individuellen Website wechseln?
+    a: 'Technisch nur eingeschränkt. Wix, Jimdo und Squarespace exportieren Inhalte nicht in einem Format, das eine andere Plattform direkt übernehmen kann. In der Praxis bedeutet ein Wechsel fast immer: Website komplett neu bauen, nur Texte und Bilder lassen sich kopieren. Bei individuell gebauten Websites (Astro, WordPress mit eigenem Theme) ist ein Anbieterwechsel dagegen unproblematisch.'
+  - q: Wie lange dauert es, eine Homepage selbst zu erstellen?
+    a: Für eine brauchbare Website mit Baukasten realistisch 20 bis 40 Stunden, verteilt auf mehrere Wochen – die meiste Zeit geht für Textentwürfe, Bildauswahl und Design-Feintuning drauf. Wer schnell etwas Einfaches will, kommt an einem Wochenende auf einen ersten groben Stand, braucht dann aber noch mehrere Anläufe zur Feinjustierung.
+  - q: Wie lange dauert es, eine Homepage erstellen zu lassen?
+    a: Von Auftrag bis Live-Gang meist 2 bis 4 Wochen. Der reine Bauprozess dauert 10 bis 14 Werktage, dazu kommen Feedback-Runden und die Zeit, die Sie für Texte, Bilder und Rückmeldungen brauchen.
+  - q: 'Was ist besser: Wix oder WordPress?'
+    a: Kommt auf das Ziel an. Wix ist einfacher zu bedienen und eignet sich für sehr kleine, unkomplizierte Auftritte. WordPress ist flexibler, hat mehr SEO-Potenzial und mehr Funktionen über Plugins – erfordert aber mehr technisches Verständnis und laufende Pflege (Updates, Sicherheit). Für die meisten kleinen Betriebe ohne IT-Kenntnisse ist Wix der leichtere Einstieg, für wachsende Betriebe mit SEO-Ambitionen ist WordPress oder eine individuelle Lösung meist die bessere Wahl.
+  - q: Ist Jimdo für einen Handwerksbetrieb ausreichend?
+    a: 'Für einen sehr kleinen Betrieb mit einer klaren Leistung ja – Jimdo ist einfach, günstig und ausreichend professionell. Bei mehreren Leistungen, einem Team oder dem Wunsch, über Google gefunden zu werden, wird es schnell eng: Jimdos SEO-Werkzeuge und Design-Freiheit sind begrenzter als bei WordPress oder einer individuellen Website.'
+  - q: Welche Homepage-Lösung ist am besten?
+    a: Es gibt keine universell „beste" Lösung – nur die passende für Ihre Situation. Ein Einzelunternehmer mit klarer Kernleistung und wenig Budget fährt oft mit einem Baukasten gut. Ein wachsender Betrieb, der über Google Kunden gewinnen will, profitiert meist stärker von einer individuellen Website. Die Entscheidungshilfe weiter oben in diesem Artikel führt Sie durch die relevanten Fragen.
+  - q: Lohnt sich eine Agentur für eine kleine Firma?
+    a: Wenn Sie wenig Zeit haben, technisch unsicher sind oder Ihre Website über Google Kunden gewinnen soll, ja – die Investition rechnet sich meist bereits durch wenige zusätzliche Kunden. Wenn Sie sehr kleines Budget haben, technisch versiert sind und Zeit übrighaben, kann ein Baukasten für den Start ausreichen.
+  - q: Wie viel Zeit kostet mich eine Website mit einem Baukasten wirklich?
+    a: Deutlich mehr, als die Werbung der Baukasten-Anbieter suggeriert. Realistisch sind 20 bis 60 Stunden für eine brauchbare Website – Texte schreiben, Bilder aussuchen und zuschneiden, Design anpassen, mobile Ansicht prüfen, Formulare testen. Diese Zeit fehlt Ihnen im Betrieb.
+  - q: Ist eine selbst gebaute Website schlechter für Google?
+    a: Nicht automatisch schlechter, aber im Schnitt schwächer aufgestellt. Baukasten-Websites laden oft langsamer (mehr Grundcode, mehr externe Skripte) und bieten weniger Feinkontrolle über technisches SEO (Struktur, Ladezeit, strukturierte Daten). Eine sauber gebaute, individuelle Website hat hier von Haus aus einen Vorsprung.
+  - q: Brauche ich für meine Website ein Impressum?
+    a: Ja, praktisch immer. In Österreich sind Websites mit Geschäftsbezug laut Mediengesetz und E-Commerce-Gesetz impressumspflichtig – auch Baukasten-Websites und auch Onepager. Das Impressum muss unter allen genutzten Plattformen leicht auffindbar sein.
+  - q: Muss meine Website DSGVO-konform sein?
+    a: Ja, unabhängig davon, ob Sie die Website selbst bauen oder bauen lassen. Das betrifft insbesondere Cookie-Consent (z. B. für Google Analytics oder eingebettete Google-Maps-Karten), eine Datenschutzerklärung und den sorgsamen Umgang mit Formulardaten. Baukasten-Anbieter liefern oft eine Grundausstattung mit, die Verantwortung für die korrekte Umsetzung bleibt aber bei Ihnen als Website-Betreiber.
+  - q: Gehört mir meine Website, wenn ich Wix oder Jimdo nutze?
+    a: Die Inhalte (Texte, Bilder, die Sie selbst hochladen) gehören Ihnen. Das technische Fundament – Design-System, Code, Hosting – bleibt aber Eigentum des Baukasten-Anbieters. Sie mieten quasi die Infrastruktur. Bei einer individuell gebauten Website gehört Ihnen die komplette Website inklusive Quellcode.
+  - q: Was ist ein Onepager und reicht der für meinen Betrieb?
+    a: Ein Onepager ist eine einzige lange Seite, durch die man scrollt, statt durch ein Menü mit Unterseiten zu navigieren. Er reicht gut für Einzelunternehmer mit einer klaren Kernleistung. Sobald Sie mehrere Leistungen anbieten oder mit Content Kunden über Google gewinnen wollen, ist eine Website mit mehreren Unterseiten die bessere Wahl.
+  - q: Was kostet es, eine Homepage erstellen zu lassen?
+    a: Bei einem Freelancer oder einer kleinen Agentur in Österreich typischerweise 800 bis 3.500 € einmalig für eine kleine bis mittlere Firmenwebsite, plus 15 bis 30 € monatlich laufend. Eine ausführliche Aufschlüsselung nach Website-Typ finden Sie in der Kostentabelle weiter oben.
+  - q: Sollte ich zuerst selbst probieren, bevor ich eine Agentur beauftrage?
+    a: Kann sinnvoll sein, wenn Sie noch unsicher sind, was Sie überhaupt brauchen. Ein selbst gebauter Baukasten-Entwurf hilft dabei, Inhalte und Struktur zu klären – ist aber selten die Website, mit der Sie am Ende live gehen. Wer sich unsicher ist, spart oft Zeit, wenn er gleich mit einer kurzen, unverbindlichen Beratung startet.
+  - q: Wie erkenne ich, ob ein Baukasten für meinen Betrieb ausreicht?
+    a: Wenn Sie eine klare Kernleistung haben, wenig Konkurrenzdruck bei Google spüren und hauptsächlich über Empfehlung neue Kunden gewinnen, reicht ein Baukasten meist aus. Wenn Sie über Google gefunden werden müssen, mehrere Leistungen zeigen wollen oder Ihr Betrieb wachsen soll, wird eine individuelle Website schnell zur besseren Investition.
 ---
 
 # Homepage selbst erstellen oder erstellen lassen?
@@ -170,10 +66,10 @@ passiert – und für welchen Betriebstyp welche Lösung wirklich passt.
 
 ## Kurze Antwort
 
-Für die meisten kleinen und mittleren Betriebe in Österreich gilt: **Ein
+Für die meisten kleinen und mittleren Betriebe in Österreich gilt: \*\*Ein
 Baukasten wie Wix oder Jimdo eignet sich für einen einfachen, schnellen
 Start mit wenig Budget. Eine individuell erstellte Website lohnt sich, sobald
-Google-Rankings, mehrere Leistungen oder Wachstum eine Rolle spielen.**
+Google-Rankings, mehrere Leistungen oder Wachstum eine Rolle spielen.\*\*
 
 Grob zusammengefasst:
 
@@ -357,8 +253,8 @@ für Ihre eigene Arbeitszeit.
 | **Gesamt über 5 Jahre** | **≈ 4.000 €** | **≈ 5.000 €** | **≈ 4.200 €** |
 
 Das überraschende Ergebnis: Über fünf Jahre gerechnet liegen alle drei
-Wege überraschend nahe beieinander – **wenn man die eigene Zeit
-mitrechnet**. Rechnet man die eigene Zeit nicht mit (weil man sie ohnehin
+Wege überraschend nahe beieinander – \*\*wenn man die eigene Zeit
+mitrechnet\*\*. Rechnet man die eigene Zeit nicht mit (weil man sie ohnehin
 „in der Freizeit" investiert), sieht die Rechnung anders aus und der
 Baukasten wird günstiger. Genau das ist der Punkt, den Sie für sich selbst
 ehrlich beantworten müssen: Ist Ihre Zeit im Betrieb mehr wert, als Sie für
@@ -528,7 +424,7 @@ Alle bisherigen Kriterien laufen letztlich auf eine Grundsatzfrage hinaus:
 Wollen Sie ein fertiges System mieten, oder wollen Sie etwas Eigenes
 besitzen?
 
-| | Baukasten | Individuelle Website |
+|  | Baukasten | Individuelle Website |
 | --- | --- | --- |
 | Charakter | Miete eines fertigen Systems | Eigentum an einer eigenen Lösung |
 | Ideal für | schnellen, günstigen Start | langfristige Investition |
@@ -695,8 +591,8 @@ warum niemand zurückgerufen hat.
 Das erschwert später sowohl einen Anbieterwechsel als auch den Umzug zu
 einem günstigeren Hosting.
 
-**SEO-Grundeinstellungen (Seitentitel, Meta-Beschreibung) bleiben auf den
-Standardwerten.** Viele Baukasten-Vorlagen liefern generische
+**SEO-Grundeinstellungen (Seitentitel, Meta-Beschreibung) bleiben auf den**
+**Standardwerten.** Viele Baukasten-Vorlagen liefern generische
 Platzhaltertexte mit aus, die dann unverändert live gehen – eine verschenkte
 Chance, weil genau diese Texte im Google-Suchergebnis angezeigt werden.
 
@@ -760,16 +656,16 @@ Antworten zeigt die passende Richtung:
 1. **Habe ich mehr freie Zeit oder mehr freies Budget?** Zeit → Baukasten
    tendenziell passender. Budget → individuelle Website tendenziell
    passender.
-2. **Will ich über Google aktiv neue Kunden gewinnen, oder reicht
-   „gefunden werden, wenn man nach mir sucht"?** Aktive Kundengewinnung →
+2. **Will ich über Google aktiv neue Kunden gewinnen, oder reicht**
+\*\*   „gefunden werden, wenn man nach mir sucht"?\*\* Aktive Kundengewinnung →
    individuelle Website. Reine Auffindbarkeit → Baukasten oft ausreichend.
 3. **Habe ich eine oder mehrere Kernleistungen?** Eine → Onepager/Baukasten
    oft ausreichend. Mehrere → strukturierte, individuelle Website sinnvoller.
 4. **Wie lange will ich mit dieser Website online bleiben?** Unter zwei
    Jahren → Baukasten vertretbar. Länger → individuelle Website meist
    wirtschaftlicher.
-5. **Wie wichtig ist mir der erste Eindruck bei Vertrauensentscheidungen
-   (Gesundheit, Recht, Finanzen, höherpreisige Leistungen)?** Sehr wichtig
+5. **Wie wichtig ist mir der erste Eindruck bei Vertrauensentscheidungen**
+\*\*   (Gesundheit, Recht, Finanzen, höherpreisige Leistungen)?\*\* Sehr wichtig
    → individuelle Website empfehlenswert. Eher nebensächlich → Baukasten
    kann reichen.
 
