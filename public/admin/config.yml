@@ -41,6 +41,14 @@ collections:
       - {label: "Alt-Text zum Cover", name: "coverAlt", widget: "string", required: false}
       - {label: "Als Entwurf speichern (nicht veröffentlichen)", name: "draft", widget: "boolean", default: false, required: false}
       - {label: "Inhalt", name: "body", widget: "markdown"}
+      - label: "FAQ (für Google Rich-Snippet)"
+        name: "faq"
+        widget: "list"
+        required: false
+        hint: "Muss inhaltlich mit dem FAQ-Abschnitt im Fließtext übereinstimmen."
+        fields:
+          - {label: "Frage", name: "q", widget: "string"}
+          - {label: "Antwort", name: "a", widget: "text"}
 
   # ==============================================================
   # STARTSEITE — Alle Sektionen der Homepage
