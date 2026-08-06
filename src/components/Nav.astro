@@ -77,9 +77,24 @@ const isNewsPage = Astro.url.pathname.replace(/\/$/, '') === `${base}news`.repla
     top: 0;
     z-index: 40;
     background: color-mix(in srgb, var(--paper) 82%, transparent);
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* Blur als eigenes Pseudo-Element statt direkt auf .nav: backdrop-filter
+     auf .nav selbst würde einen neuen Containing Block für position:fixed-
+     Nachfahren erzeugen (v. a. iOS Safari) — genau das mobile Menü
+     (.nav__menu, s. u.) ist so ein fixed-Nachfahre und würde dadurch statt
+     am Viewport an der ~60px hohen Nav-Box ausgerichtet, wodurch es nur
+     als winziger, nicht scrollbarer Streifen statt als Vollbild-Overlay
+     erscheint. */
+  .nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
     backdrop-filter: saturate(140%) blur(10px);
     -webkit-backdrop-filter: saturate(140%) blur(10px);
-    border-bottom: 1px solid var(--line);
   }
 
   .nav__inner {
