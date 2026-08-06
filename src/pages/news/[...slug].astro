@@ -283,6 +283,149 @@ const faqSchema = post.data.faq && post.data.faq.length > 0
     margin: 1.5rem 0;
   }
 
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 1.5rem;
+    font-size: 14px;
+    display: block;
+    overflow-x: auto;
+  }
+
+  .prose :global(th),
+  .prose :global(td) {
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .prose :global(th) {
+    background: var(--paper-2);
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .prose :global(tbody tr:nth-child(even)) {
+    background: color-mix(in srgb, var(--paper) 60%, var(--paper-2));
+  }
+
+  /* ============ Inhaltsverzeichnis ============ */
+  .prose :global(.toc) {
+    margin: 0 0 2rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+  }
+
+  .prose :global(.toc__label) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brass-text);
+    margin: 0 0 0.85rem;
+  }
+
+  .prose :global(.toc__label::before) {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-left: 1px solid var(--brass);
+    border-top: 1px solid var(--brass);
+  }
+
+  .prose :global(.toc ol) {
+    margin: 0;
+    padding-left: 1.1rem;
+    columns: 2;
+    column-gap: 2rem;
+  }
+
+  .prose :global(.toc li) {
+    margin-bottom: 0.45rem;
+    break-inside: avoid;
+    font-size: 14px;
+  }
+
+  .prose :global(.toc a) {
+    border-bottom: 1px solid transparent;
+    color: var(--ink-2);
+  }
+
+  .prose :global(.toc a:hover) {
+    color: var(--brass-text);
+    border-bottom-color: var(--brass);
+  }
+
+  @media (max-width: 640px) {
+    .prose :global(.toc ol) {
+      columns: 1;
+    }
+  }
+
+  /* ============ Infoboxen / Callouts ============ */
+  .prose :global(.callout) {
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    background: var(--paper-2);
+    border-left: 3px solid var(--brass);
+  }
+
+  .prose :global(.callout__label) {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brass-text);
+    margin: 0 0 0.4rem;
+  }
+
+  .prose :global(.callout p) {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 15px;
+  }
+
+  .prose :global(.callout--warning) {
+    border-left-color: var(--line-strong);
+  }
+
+  .prose :global(.callout--warning .callout__label) {
+    color: var(--ink-2);
+  }
+
+  /* ============ Conversion-Boxen ============ */
+  .prose :global(.cta-box) {
+    margin: 2.25rem 0;
+    padding: 1.5rem 1.75rem;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  .prose :global(.cta-box p) {
+    margin: 0;
+    color: var(--paper-2);
+    font-size: 15.5px;
+    max-width: 46ch;
+  }
+
+  .prose :global(.cta-box .btn) {
+    flex-shrink: 0;
+  }
+
   .article__footer {
     margin-top: 3rem;
     padding-top: 2rem;
