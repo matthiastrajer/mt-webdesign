@@ -34,8 +34,8 @@ const waHref = phoneDigits
             <img
               src={`${base}brand/matthias-trajer.jpg`}
               alt="Matthias Trajer, Gründer von MTX-Webdesign"
-              width="120"
-              height="160"
+              width="88"
+              height="88"
               loading="lazy"
               class="contact__person-img"
             />
@@ -249,11 +249,15 @@ const waHref = phoneDigits
 
   .contact__person-img {
     display: block;
-    width: 76px;
-    height: auto;
-    aspect-ratio: 3 / 4;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
     object-fit: cover;
-    border: 1px solid var(--line);
+    object-position: center 15%;
+    /* Doppelring statt kantigem Rahmen: schmaler Paper-Spalt, dann ein
+       Messing-Ring — passt zu den brass-farbigen Akzenten der Seite,
+       ohne einen neuen Farbton einzuführen. */
+    box-shadow: 0 0 0 3px var(--paper), 0 0 0 4.5px var(--brass);
   }
 
   .contact__person-info {
