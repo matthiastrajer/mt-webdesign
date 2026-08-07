@@ -28,6 +28,24 @@ const waHref = phoneDigits
 
     <div class="contact__grid">
       <div class="contact__intro reveal">
+        <div class="contact__person">
+          <picture>
+            <source srcset={`${base}brand/matthias-trajer.webp`} type="image/webp" />
+            <img
+              src={`${base}brand/matthias-trajer.jpg`}
+              alt="Matthias Trajer, Gründer von MTX-Webdesign"
+              width="120"
+              height="160"
+              loading="lazy"
+              class="contact__person-img"
+            />
+          </picture>
+          <div class="contact__person-info">
+            <span class="contact__person-name">{s.ownerName}</span>
+            <span class="mono contact__person-role">Gründer · {s.company}</span>
+          </div>
+        </div>
+
         <p class="eyebrow">{c.eyebrow}</p>
         <h2>{c.heading}</h2>
         <p class="lead">{c.lead}</p>
@@ -198,7 +216,12 @@ const waHref = phoneDigits
     display: grid;
     grid-template-columns: 1fr 1.1fr;
     gap: clamp(2rem, 6vw, 5rem);
-    margin-top: 3rem;
+    /* padding-top statt margin-top: ein margin hier würde durch
+       .container kollabieren (kein padding-top/border dort, und
+       .section-label steht davor nur als position:absolute, blockiert
+       das Kollabieren also nicht) — der Abstand zum Label wäre dann
+       lautlos weg. padding kollabiert nie, daher garantiert sichtbar. */
+    padding-top: 3rem;
     align-items: start;
   }
 
@@ -209,6 +232,49 @@ const waHref = phoneDigits
     position: sticky;
     top: 100px;
     align-self: start;
+  }
+
+  .contact__person {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact__person picture {
+    position: relative;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .contact__person-img {
+    display: block;
+    width: 76px;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border: 1px solid var(--line);
+  }
+
+  .contact__person-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .contact__person-name {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+
+  .contact__person-role {
+    color: var(--brass-text);
+    letter-spacing: 0.06em;
+    font-size: 11px;
+    text-transform: uppercase;
   }
 
   .contact__direct {
