@@ -7,6 +7,13 @@ const f = footerEntry!.data;
 const settingsEntry = await getEntry('settings', 'site');
 const s = settingsEntry!.data;
 const base = import.meta.env.BASE_URL;
+
+// Interimslink zu Google Maps aus der Adresse gebaut (funktioniert sofort,
+// ohne dass das Google-Business-Profil öffentlich sein muss). Sobald das
+// Profil live ist, hier auf die stabile maps.google.com/?cid=…-URL wechseln
+// (dieselbe, die dann auch in Base.astro als SAME_AS eingetragen wird).
+const mapsQuery = encodeURIComponent(`${s.company}, ${s.addressStreet}, ${s.addressCity}`);
+const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
 ---
 
 <footer class="footer">
@@ -37,8 +44,10 @@ const base = import.meta.env.BASE_URL;
 
         <div class="footer__col">
           <span class="mono footer__label">Standort</span>
-          <span>{s.addressStreet}</span>
-          <span>{s.addressCity} · AT</span>
+          <a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="footer__address">
+            <span>{s.addressStreet}</span>
+            <span>{s.addressCity} · AT</span>
+          </a>
         </div>
       </div>
     </div>
@@ -122,6 +131,15 @@ const base = import.meta.env.BASE_URL;
 
   .footer__col a:hover {
     color: var(--brass-text);
+  }
+
+  /* Standort-Link umschließt zwei Zeilen (Straße + Ort) — eigener Flex-
+     Column-Gap, damit der Abstand zwischen den beiden Zeilen exakt so
+     bleibt wie bei den übrigen, ungelinkten .footer__col-Kindern. */
+  .footer__address {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
   }
 
   .footer__label {
