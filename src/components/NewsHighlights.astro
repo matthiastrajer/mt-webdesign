@@ -86,7 +86,13 @@ const dateFmt = (d: Date) =>
     justify-content: space-between;
     align-items: flex-end;
     gap: 1.5rem;
-    margin: 3rem 0 2.5rem;
+    /* padding-top statt margin-top: kollabiert sonst lautlos durch
+       .container (kein padding-top/border dort, .section-label ist
+       position:absolute und blockiert das Kollabieren nicht) — der
+       Abstand zum "006 News"-Label wäre dann weg. Gleiches Muster wie
+       der Fix in Contact.astro/Process.astro/Services.astro/Faq.astro. */
+    padding-top: 3rem;
+    margin-bottom: 2.5rem;
   }
 
   .news-highlights__header h2 {

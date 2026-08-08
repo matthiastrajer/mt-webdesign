@@ -120,6 +120,8 @@ const process = defineCollection({
     eyebrow: z.string(),
     heading: z.string(),
     lead: z.string(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
     steps: z.array(z.object({
       n: z.string(),
       title: z.string(),

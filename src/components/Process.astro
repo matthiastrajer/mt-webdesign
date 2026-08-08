@@ -13,11 +13,30 @@ const steps = p.steps;
       <span>Ablauf</span>
     </span>
 
-    <header class="process__header reveal">
-      <p class="eyebrow">{p.eyebrow}</p>
-      <h2>{p.heading}</h2>
-      <p class="lead">{p.lead}</p>
-    </header>
+    <div class="process__intro">
+      <header class="process__header reveal">
+        <p class="eyebrow">{p.eyebrow}</p>
+        <h2>{p.heading}</h2>
+        <p class="lead">{p.lead}</p>
+      </header>
+
+      {p.image && (
+        <figure class="process__photo reveal reveal--delay-1">
+          <picture>
+            {p.image.endsWith('.jpg') && (
+              <source srcset={p.image.replace(/\.jpg$/, '.webp')} type="image/webp" />
+            )}
+            <img
+              src={p.image}
+              alt={p.imageAlt ?? ''}
+              width="840"
+              height="560"
+              loading="lazy"
+            />
+          </picture>
+        </figure>
+      )}
+    </div>
 
     <ol class="process__list">
       {
@@ -42,12 +61,79 @@ const steps = p.steps;
 </section>
 
 <style>
+  .process__intro {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    /* padding-top statt margin-top: ein margin würde hier durch
+       .container kollabieren (kein padding-top/border dort, und
+       .section-label blockiert das Kollabieren nicht, weil es
+       position:absolute ist) — der Abstand zum "003 Ablauf"-Label
+       wäre dann lautlos weg. padding kollabiert nie. Selbes Muster
+       wie der Fix in Contact.astro (.contact__grid). */
+    padding-top: 3rem;
+    margin-bottom: 4rem;
+  }
+
   .process__header {
-    max-width: 720px;
-    margin: 3rem 0 4rem;
+    max-width: 560px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .process__photo {
+    margin: 0;
+    position: relative;
+  }
+
+  .process__photo picture {
+    display: block;
+    position: relative;
+    border: 1px solid var(--line);
+  }
+
+  .process__photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Messing-Eckmarken, gleiches Muster wie .contact__form/.contact__success */
+  .process__photo picture::before,
+  .process__photo picture::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: var(--brass-text);
+    border-style: solid;
+    border-width: 0;
+    pointer-events: none;
+  }
+
+  .process__photo picture::before {
+    top: -1px;
+    left: -1px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+  }
+
+  .process__photo picture::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+  }
+
+  @media (max-width: 900px) {
+    .process__intro {
+      grid-template-columns: 1fr;
+    }
+    .process__photo {
+      max-width: 420px;
+    }
   }
 
   .process__list {
