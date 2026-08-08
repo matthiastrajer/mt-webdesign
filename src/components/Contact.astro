@@ -17,6 +17,13 @@ const telHref = phoneDigits ? `+${phoneDigits}` : null;
 const waHref = phoneDigits
   ? `https://wa.me/${phoneDigits}${s.whatsappText ? `?text=${encodeURIComponent(s.whatsappText)}` : ''}`
   : null;
+
+// Interimslink zu Google Maps aus der Adresse gebaut — sobald das
+// Google-Business-Profil öffentlich ist, hier auf die stabile
+// maps.google.com/?cid=…-URL wechseln (dieselbe wie in Footer.astro
+// und im SAME_AS-Eintrag in Base.astro).
+const mapsQuery = encodeURIComponent(`${s.company}, ${s.addressStreet}, ${s.addressCity}`);
+const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
 ---
 
 <section class="section contact" id="kontakt">
@@ -81,10 +88,15 @@ const waHref = phoneDigits
             <span class="mono contact__label">Antwortzeit</span>
             <span class="contact__value">{s.responseTime}</span>
           </div>
-          <div class="contact__direct-item">
+          <a
+            href={mapsUrl}
+            class="contact__direct-item"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span class="mono contact__label">Standort</span>
             <span class="contact__value">{s.addressCity} · AT</span>
-          </div>
+          </a>
         </div>
       </div>
 
