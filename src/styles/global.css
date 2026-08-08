@@ -209,6 +209,18 @@ p {
 .section {
   padding: clamp(4rem, 8vw, 7rem) 0;
   position: relative;
+  /* Ohne das würde ein Anker-Sprung (Nav-Klick auf "Leistungen" etc.,
+     oder eine URL mit #kontakt) die Section bündig unter die position:
+     sticky-Nav scrollen — der Section-Label + Header-Anfang landen dann
+     unsichtbar hinter der Nav-Leiste. Höhe muss zur Nav-Höhe passen
+     (Nav.astro: 76px Desktop, 60px ab 780px). */
+  scroll-margin-top: 76px;
+}
+
+@media (max-width: 780px) {
+  .section {
+    scroll-margin-top: 60px;
+  }
 }
 
 .section + .section {

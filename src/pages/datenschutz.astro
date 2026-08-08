@@ -59,7 +59,11 @@ const base = import.meta.env.BASE_URL;
   }
   .legal__body {
     max-width: 720px;
-    margin: 3rem 0 0;
+    /* padding-top statt margin-top: kollabiert sonst lautlos durch
+       .container (kein padding-top/border dort, .section-label ist
+       position:absolute und blockiert das Kollabieren nicht). Gleiches
+       Muster wie der Fix in Contact.astro/Process.astro/etc. */
+    padding-top: 3rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;

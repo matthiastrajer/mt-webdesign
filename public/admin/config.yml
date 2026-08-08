@@ -107,6 +107,8 @@ collections:
           - {label: "Eyebrow", name: "eyebrow", widget: "string"}
           - {label: "Überschrift", name: "heading", widget: "string"}
           - {label: "Lead", name: "lead", widget: "text"}
+          - {label: "Foto (neben dem Text)", name: "image", widget: "image", required: false}
+          - {label: "Alt-Text zum Foto", name: "imageAlt", widget: "string", required: false}
           - label: "Schritte"
             name: "steps"
             widget: "list"
